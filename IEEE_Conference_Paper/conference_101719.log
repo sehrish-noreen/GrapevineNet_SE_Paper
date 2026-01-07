@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  7 JAN 2026 13:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  7 JAN 2026 18:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -483,24 +483,24 @@ LaTeX Warning: Label `fig:models' multiply defined.
 )
 \openout1 = `conference_101719.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -525,152 +525,164 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 37.
+Package hyperref Info: Link coloring ON on input line 40.
  (./conference_101719.out) (./conference_101719.out)
 \@outlinefile=\write3
 \openout3 = `conference_101719.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 51.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package acronym Info: Label `acro:dl' newly defined as it shall be overridden
-although it is yet undefined on input line 53.
+although it is yet undefined on input line 56.
 Package acronym Info: Label `acro:se' newly defined as it shall be overridden
-although it is yet undefined on input line 53.
+although it is yet undefined on input line 56.
 Package acronym Info: Label `acro:cv' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 66.
 Package acronym Info: Label `acro:cnn' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 66.
 Package acronym Info: Label `acro:map' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 66.
 Package acronym Info: Label `acro:ml' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 66.
 Package acronym Info: Label `acro:svm' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 63.
+although it is yet undefined on input line 66.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 66.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
+Package acronym Info: Label `acro:iou' newly defined as it shall be overridden
+although it is yet undefined on input line 83.
 
-LaTeX Warning: Reference `sec:results' on page 2 undefined on input line 75.
+Underfull \hbox (badness 2495) in paragraph at lines 83--84
+[]\OT1/ptm/m/n/10 Grapevine leaf dis-ease de-tec-tion has seen sig-nif-i-cant
+ []
 
-<images/methodology.png, id=95, 1580.90625pt x 278.54062pt>
+Package acronym Info: Label `acro:vit' newly defined as it shall be overridden
+although it is yet undefined on input line 85.
+Package acronym Info: Label `acro:dcnn' newly defined as it shall be overridden
+although it is yet undefined on input line 85.
+Package acronym Info: Label `acro:gradcam' newly defined as it shall be overridden
+although it is yet undefined on input line 89.
+<images/methodology.png, id=92, 1580.90625pt x 278.54062pt>
 File: images/methodology.png Graphic file (type png)
 <use images/methodology.png>
-Package pdftex.def Info: images/methodology.png  used on input line 90.
+Package pdftex.def Info: images/methodology.png  used on input line 93.
 (pdftex.def)             Requested size: 516.0pt x 90.91563pt.
-[2]
-<images/fresh.png, id=113, 225.84375pt x 225.84375pt>
+<images/fresh.png, id=94, 225.84375pt x 225.84375pt>
 File: images/fresh.png Graphic file (type png)
 <use images/fresh.png>
-Package pdftex.def Info: images/fresh.png  used on input line 124.
+Package pdftex.def Info: images/fresh.png  used on input line 127.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage1.png, id=114, 225.84375pt x 225.84375pt>
+<images/stage1.png, id=95, 225.84375pt x 225.84375pt>
 File: images/stage1.png Graphic file (type png)
 <use images/stage1.png>
-Package pdftex.def Info: images/stage1.png  used on input line 130.
+Package pdftex.def Info: images/stage1.png  used on input line 133.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage2.png, id=115, 225.84375pt x 225.84375pt>
+<images/stage2.png, id=96, 225.84375pt x 225.84375pt>
 File: images/stage2.png Graphic file (type png)
 <use images/stage2.png>
-Package pdftex.def Info: images/stage2.png  used on input line 136.
+Package pdftex.def Info: images/stage2.png  used on input line 139.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage3.png, id=116, 225.84375pt x 225.84375pt>
+<images/stage3.png, id=97, 225.84375pt x 225.84375pt>
 File: images/stage3.png Graphic file (type png)
 <use images/stage3.png>
-Package pdftex.def Info: images/stage3.png  used on input line 142.
+Package pdftex.def Info: images/stage3.png  used on input line 145.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/preprocessing.png, id=117, 1120.185pt x 574.5465pt>
+<images/preprocessing.png, id=98, 1120.185pt x 574.5465pt>
 File: images/preprocessing.png Graphic file (type png)
 <use images/preprocessing.png>
-Package pdftex.def Info: images/preprocessing.png  used on input line 154.
+Package pdftex.def Info: images/preprocessing.png  used on input line 157.
 (pdftex.def)             Requested size: 226.79846pt x 116.31873pt.
-<images/model.png, id=118, 1053.9375pt x 542.025pt>
+[2]
+<images/model.png, id=120, 1053.9375pt x 542.025pt>
 File: images/model.png Graphic file (type png)
 <use images/model.png>
-Package pdftex.def Info: images/model.png  used on input line 163.
+Package pdftex.def Info: images/model.png  used on input line 166.
 (pdftex.def)             Requested size: 464.39685pt x 238.8391pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 169.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 177.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 172.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 180.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 2376) in paragraph at lines 178--179
+Underfull \hbox (badness 2376) in paragraph at lines 181--182
 [] []\OT1/ptm/m/n/10 Integrate SE at-ten-tion mod-ule: Adap-tiveAvg-Pool $\OMS/cmsy/m/n/10 !$
  []
 
 
-Underfull \hbox (badness 5741) in paragraph at lines 190--191
+Underfull \hbox (badness 5741) in paragraph at lines 193--194
 [] []\OT1/ptm/m/n/10 Update un-frozen pa-ram-e-ters us-ing op-ti-mizer (e.g.,
  []
 
 [3 <./images/methodology.png> <./images/fresh.png> <./images/stage1.png> <./images/stage2.png> <./images/stage3.png> <./images/preprocessing.png>]
-<images/per_class_accuracy_all_sets.png, id=157, 3508.10625pt x 1923.185pt>
+<images/per_class_accuracy_all_sets.png, id=163, 3508.10625pt x 1923.185pt>
 File: images/per_class_accuracy_all_sets.png Graphic file (type png)
 <use images/per_class_accuracy_all_sets.png>
-Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 233.
+Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 236.
 (pdftex.def)             Requested size: 226.79846pt x 124.30711pt.
-<images/accuracy_plot.png, id=158, 867.24pt x 578.16pt>
+<images/accuracy_plot.png, id=164, 867.24pt x 578.16pt>
 File: images/accuracy_plot.png Graphic file (type png)
 <use images/accuracy_plot.png>
-Package pdftex.def Info: images/accuracy_plot.png  used on input line 242.
+Package pdftex.def Info: images/accuracy_plot.png  used on input line 245.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/precision_plot.png, id=159, 867.24pt x 578.16pt>
+<images/precision_plot.png, id=165, 867.24pt x 578.16pt>
 File: images/precision_plot.png Graphic file (type png)
 <use images/precision_plot.png>
-Package pdftex.def Info: images/precision_plot.png  used on input line 248.
+Package pdftex.def Info: images/precision_plot.png  used on input line 251.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/recall_plot.png, id=160, 867.24pt x 578.16pt>
+<images/recall_plot.png, id=166, 867.24pt x 578.16pt>
 File: images/recall_plot.png Graphic file (type png)
 <use images/recall_plot.png>
-Package pdftex.def Info: images/recall_plot.png  used on input line 254.
+Package pdftex.def Info: images/recall_plot.png  used on input line 257.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/f1_plot.png, id=161, 867.24pt x 578.16pt>
+<images/f1_plot.png, id=167, 867.24pt x 578.16pt>
 File: images/f1_plot.png Graphic file (type png)
 <use images/f1_plot.png>
-Package pdftex.def Info: images/f1_plot.png  used on input line 260.
+Package pdftex.def Info: images/f1_plot.png  used on input line 263.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/test_samples_visualization.png, id=162, 3231.07124pt x 4074.22125pt>
+<images/test_samples_visualization.png, id=168, 3231.07124pt x 4074.22125pt>
 File: images/test_samples_visualization.png Graphic file (type png)
 <use images/test_samples_visualization.png>
-Package pdftex.def Info: images/test_samples_visualization.png  used on input line 270.
+Package pdftex.def Info: images/test_samples_visualization.png  used on input line 273.
 (pdftex.def)             Requested size: 252.0pt x 317.73825pt.
- [4 <./images/model.png> <./images/per_class_accuracy_all_sets.png>]
-<images/confusion_matrix_test.png, id=178, 2237.35875pt x 1949.2825pt>
+<images/confusion_matrix_test.png, id=169, 2237.35875pt x 1949.2825pt>
 File: images/confusion_matrix_test.png Graphic file (type png)
 <use images/confusion_matrix_test.png>
-Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 277.
+Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 280.
 (pdftex.def)             Requested size: 176.39923pt x 153.68527pt.
 
-Overfull \hbox (9.75267pt too wide) in paragraph at lines 291--291
+Overfull \hbox (9.75267pt too wide) in paragraph at lines 294--294
 []|\OT1/ptm/b/n/8 Accuracy| 
  []
 
 
-Overfull \hbox (8.72855pt too wide) in paragraph at lines 291--291
+Overfull \hbox (8.72855pt too wide) in paragraph at lines 294--294
 []|\OT1/ptm/b/n/8 Precision| 
  []
 
 
-Overfull \hbox (3.45677pt too wide) in paragraph at lines 291--292
+Overfull \hbox (3.45677pt too wide) in paragraph at lines 294--295
 []|\OT1/ptm/b/n/8 Params
  []
 
 
-Overfull \hbox (1.59245pt too wide) in paragraph at lines 293--293
+Overfull \hbox (1.59245pt too wide) in paragraph at lines 296--296
 []|\OT1/ptm/b/it/8 GrapevineNet[]SE| 
  []
 
-(./conference_101719.bbl [5 <./images/accuracy_plot.png> <./images/precision_plot.png> <./images/recall_plot.png> <./images/f1_plot.png> <./images/test_samples_visualization.png> <./images/confusion_matrix_test.png>])
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./images/model.png> <./images/per_class_accuracy_all_sets.png>] (./conference_101719.bbl [5 <./images/accuracy_plot.png> <./images/precision_plot.png> <./images/recall_plot.png> <./images/f1_plot.png> <./images/test_samples_visualization.png> <./images/confusion_matrix_test.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -691,36 +703,24 @@ L3 programming layer <2024-01-22>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `conference_101719.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `conference_101719.out':
-(rerunfilecheck)             Before: 0B7585A5C51EFFEEA3A9BF09B72EC0E6;1501
-(rerunfilecheck)             After:  F169D38D2B56C72A1C4429CA5A130AC2;1501.
+Package rerunfilecheck Info: File `conference_101719.out' has not changed.
+(rerunfilecheck)             Checksum: A95990002A20FFE53AC26A67059B5DC2;1501.
  ) 
 Here is how much of TeX's memory you used:
- 13832 strings out of 474222
- 220190 string characters out of 5748732
- 1947975 words of memory out of 5000000
- 35817 multiletter control sequences out of 15000+600000
+ 13853 strings out of 474222
+ 220475 string characters out of 5748732
+ 1948975 words of memory out of 5000000
+ 35835 multiletter control sequences out of 15000+600000
  603440 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,2190b,650s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{section*.19} has been referenced but does not exist, replaced by a fixed one
-
+ 75i,11n,79p,1700b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_101719.pdf (6 pages, 6340738 bytes).
+Output written on conference_101719.pdf (6 pages, 6339685 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 80 named destinations out of 1000 (max. 500000)
  159 words of extra memory for PDF output out of 10000 (max. 10000000)
 
