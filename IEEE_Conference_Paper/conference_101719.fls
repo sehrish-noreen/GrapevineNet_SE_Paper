@@ -288,6 +288,11 @@ INPUT ./images/stage3.png
 INPUT ./images/stage3.png
 INPUT ./images/stage3.png
 INPUT ./images/stage3.png
+INPUT ./images/preprocessing.png
+INPUT ./images/preprocessing.png
+INPUT ./images/preprocessing.png
+INPUT ./images/preprocessing.png
+INPUT ./images/preprocessing.png
 INPUT ./images/model.png
 INPUT ./images/model.png
 INPUT ./images/model.png
@@ -316,11 +321,6 @@ INPUT ./images/accuracy_plot.png
 INPUT ./images/accuracy_plot.png
 INPUT ./images/accuracy_plot.png
 INPUT ./images/accuracy_plot.png
-INPUT ./images/f1_plot.png
-INPUT ./images/f1_plot.png
-INPUT ./images/f1_plot.png
-INPUT ./images/f1_plot.png
-INPUT ./images/f1_plot.png
 INPUT ./images/precision_plot.png
 INPUT ./images/precision_plot.png
 INPUT ./images/precision_plot.png
@@ -331,6 +331,11 @@ INPUT ./images/recall_plot.png
 INPUT ./images/recall_plot.png
 INPUT ./images/recall_plot.png
 INPUT ./images/recall_plot.png
+INPUT ./images/f1_plot.png
+INPUT ./images/f1_plot.png
+INPUT ./images/f1_plot.png
+INPUT ./images/f1_plot.png
+INPUT ./images/f1_plot.png
 INPUT ./images/test_samples_visualization.png
 INPUT ./images/test_samples_visualization.png
 INPUT ./images/test_samples_visualization.png

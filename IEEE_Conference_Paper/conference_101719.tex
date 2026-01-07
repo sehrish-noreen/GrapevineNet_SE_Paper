@@ -17,12 +17,16 @@
 \usepackage{array}
 \renewcommand{\arraystretch}{1.2}
 \usepackage{acronym}
+% \newacro{pd}[PD]{Pierce's Disease}
 \newacro{ai}[AI]{Artificial Intelligence}
 \newacro{ann}[ANN]{Artificial Neural Networks}
 \newacro{dl}[DL]{Deep Learning}
 \newacro{ml}[ML]{Machine Learning}
 \newacro{cv}[CV]{Computer Vision}
 \newacro{cnn}[CNN]{Convolutional Neural Network}
+\newacro{svm}[SVM]{Support Vector Machine}
+\newacro{se}[SE]{Squeeze-and-Excitation}
+\newacro{map}[mAP]{Mean Average Precision}
 \newacro{vit}[ViT]{Vision Transormer}
 \newacro{yolo}[YOLO]{You Look Only Once}
 \newacro{fpn}[FPN]{Feature Pyramid Network}
@@ -46,7 +50,7 @@ sehrishnoreen31@gmail.com}
 \maketitle
 
 \begin{abstract}
-Accurate assessment of grapevine leaf health and ripening stages is essential for precision viticulture, yet traditional manual inspection is labor-intensive, subjective, and often inconsistent. Recent advances in deep learning have enabled automated analysis, but most high-performing models are computationally intensive and require large datasets, limiting their applicability in resource-constrained vineyard settings. In this paper, we propose \textit{GrapevineNet\_SE}, a lightweight transfer learning model optimized for multi-stage grapevine leaf classification on a relatively small dataset (4,004 images). The model employs a frozen EfficientNet-B0 backbone, enhanced with a squeeze-and-excitation attention module, and a compact classification head, enabling efficient feature extraction and robust stage-wise discrimination. Extensive experiments demonstrate that \textit{GrapevineNet\_SE} achieves a validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline EfficientNet-B0 (73.07\%) and ResNet50 (65.34\%) architectures while maintaining a low computational footprint suitable for real-time edge deployment. These results highlight the model's potential to facilitate timely disease monitoring, support vineyard management, and bridge the gap between high-performing research models and practical precision viticulture applications.
+Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{GrapevineNet\_SE}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an EfficientNet-B0 backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline EfficientNet-B0 (73.07\%) and ResNet50 (65.34\%) architectures. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -54,25 +58,25 @@ Deep Learning, Computer Vision, Grapevine, Pierce Disease, EfficientNet, SE Atte
 \end{IEEEkeywords}
 
 \section{Introduction}
-Grapevine health and fruit quality are critical determinants of vineyard productivity and wine quality, making early detection and accurate assessment of leaf conditions essential for precision viticulture. Traditionally, disease and physiological stress monitoring has relied on manual inspection, which is labor-intensive, subjective, and prone to error. Recent advances in computer vision and machine learning have transformed this domain, enabling automated analysis of grapevine leaves through high-resolution imagery. In particular, deep learning approaches, such as convolutional neural networks (CNNs), have demonstrated remarkable performance in capturing intricate morphological and spectral patterns associated with leaf health and ripening stages \cite{Zhang2024GMamba}.
+Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture. Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
 
-Supportive studies highlight the efficacy of these approaches. CNN-based classification models have achieved accuracies exceeding 95\% \cite{Sagar2025}, while hybrid architectures incorporating multi-backbone fusion or transformer modules have reported near-perfect performance \cite{AlNasseri2025}. Object detection models, such as YOLO variants, have shown strong potential for in-field deployment, reaching mean average precision (mAP) up to 95\% \cite{Zhou2025YOLOGrape}. Complementary techniques including spectroscopic sensing and machine learning approaches like support vector machines and chemometric regression have further enabled nutrient assessment and early pathogen detection, with reported R² values up to 0.90 for macro- and micronutrient prediction \cite{Manzano2025}. Collectively, these results underscore the transformative potential of combining deep learning, attention mechanisms, and data-driven feature engineering in viticultural applications.Despite these advancements, several challenges remain. Most existing models are either computationally intensive or rely on large-scale datasets, limiting their applicability in small-scale vineyards or resource-constrained settings. Moreover, while classification accuracy is often high, many studies focus solely on binary disease detection or single-stage ripening classification, neglecting the nuanced multi-stage progression of grapevine leaves. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research performance and practical vineyard implementation.
+Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed greate performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages \cite{Zhang2024GMamba}. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved accuracies exceeding 95\% \cite{Sagar2025}. While hybrid architectures incorporating multi-backbone fusion or transformer modules have reported almost perfect performance near 100\% accuracy \cite{AlNasseri2025}. Object detection models, such as YOLO variants, have shown strong potential for on-field deployment of models, reaching \ac{map} up to 95\% \cite{Zhou2025YOLOGrape}. Complementary techniques including Spectroscopic Sensing and \ac{ml} approaches like \ac{svm} and Chemometric Regression have further enabled nutrient assessment and early pathogen detection with R² values up to 0.90 for macro and micronutrient prediction \cite{Manzano2025}. 
 
-To address these gaps, this paper proposes \textit{GrapevineNet\_SE}, a lightweight transfer learning model optimized for multi-stage grapevine leaf classification on a relatively small dataset (~4,000 images). The model leverages a frozen EfficientNet-B0 backbone with selective feature extraction, enhanced by a lightweight squeeze-and-excitation attention module, and a compact classification head. By fine-tuning only a subset of the network parameters, \textit{GrapevineNet\_SE} achieves high accuracy while maintaining low computational cost, making it suitable for real-time applications on edge devices.
+Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation. To address these gaps, this paper proposes \textit{GrapevineNet\_SE}, a relatively lightweight transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen EfficientNet-B0 backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention module, and a compact classification head. By fine-tuning only a subset of the EfficientNet-B0 parameters, \textit{GrapevineNet\_SE} achieves high accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices.
 
 The key contributions of this work are as follows:
 \begin{itemize}
-    \item A lightweight, multi-stage grapevine leaf classification model that balances performance and computational efficiency.
-    \item Integration of a squeeze-and-excitation attention mechanism to enhance feature representation and improve stage-wise classification accuracy.
-    \item Demonstration of robust performance on training, validation, and test splits, achieving a validation accuracy of 90\% and a test accuracy of 86.5\%, indicating generalizability to unseen data.
+    \item A multi-stage grapevine leaf Pierce's Disease classification model.
+    \item Integration of a \ac{se} attention mechanism to enhance feature representation and improve stage wise disease classification accuracy.
+    \item Robust performance on training, validation, and test splits, achieving a high accuracy on all splits that indicates generalizability to unseen data.
 \end{itemize}
 
 
-The remainder of this paper is structured as follows. Section \ref{sec:lr} reviews relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation, and comparative analysis with baseline pretrained models. Finally, Section \ref{sec:con} concludes the paper with key findings, discussion of limitations, and directions for future work.
+The rest of the paper is structured as follows. Section \ref{sec:rw} reviews most recent and relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation, and comparative analysis with baseline pretrained models. Finally, Section \ref{sec:con} concludes the paper with key findings, discussion of limitations, and directions for future work.
 
 
 \section{Related Work}
-\label{sec:lr}
+\label{sec:rw}
 Grapevine leaf disease detection has experienced significant progress over the past decade, driven by advancements in deep learning, machine learning, and spectroscopic analysis. Among these, convolutional neural networks (CNNs) have emerged as the predominant approach, owing to their superior capability in extracting spatial, textural, and morphological features from complex leaf images. For instance, \cite{Malagol2025} applied a ResNet-based architecture to quantify hair structures on grape leaves, achieving an accuracy of 95.41\%, demonstrating that CNNs can effectively capture fine-scale morphological traits. Beyond simple classification, segmentation of diseased regions has been explored to improve model interpretability and to focus on biologically relevant features. \cite{Zhang2024GMamba}, for example, employed a UNet-based state-space model on PlantVillage data, achieving an intersection-over-union (IoU) of 3.28, which highlights the potential of pixel-level disease localization for precise phenotyping. In addition, object detection methods have facilitated practical field applications by enabling automated identification of diseased areas in situ. \cite{Khan2025YOLOv7} reported a mean average precision (mAP) of 64.6\%, while a more recent YOLOv11-based approach \cite{Zhou2025YOLOGrape} significantly improved detection performance, reaching a mAP of 95.2\%.
 
 High-performance classification has also been achieved through a wide spectrum of deep learning architectures, each offering unique advantages in accuracy, efficiency, and generalizability. ResNet variants have consistently demonstrated robust performance, as in \cite{Sagar2025}, which achieved 95\% accuracy on grape leaf datasets. Multi-backbone fusion strategies have further pushed the limits of accuracy by leveraging complementary feature representations from multiple architectures. For example, \cite{Vo2026AFCNet} combined ResNet50, EfficientNetB0, and MobileNetV2, attaining an impressive 99.83\% accuracy, showing that integrating different feature extractors can enhance classification robustness. Hybrid models that incorporate transformer-based architectures have also shown promise; \cite{Zhang2025Transformer} achieved 98.48\% accuracy, demonstrating the value of self-attention mechanisms for capturing long-range dependencies in leaf images. Similarly, cascaded CNN models, as proposed by \cite{AlNasseri2025}, approached near-perfect classification, illustrating the potential of multi-stage architectures for sequential feature refinement. Lightweight architectures optimized for computational efficiency have gained attention for edge applications. MobileNetV2 combined with Vision Transformer (ViT) modules \cite{Tanvir2025} achieved 99.2\% accuracy, while comparative evaluations \cite{Mathew2025} reported 99.5\% accuracy, highlighting the feasibility of deploying high-performing models on resource-constrained platforms. Deep convolutional neural networks (DCNNs) based on VGG16 \cite{Prasad2024} reached 99.18\% accuracy, showing that classical architectures, when carefully optimized, can still offer competitive performance. Optimized CNN models have further enhanced classification results, as evidenced by \cite{Talaat2025} achieving 99.7\% accuracy and \cite{Karim2024} reaching 99.66\%, while even simpler optimized CNN approaches \cite{Naik2025} demonstrated consistently reliable performance across multiple grape leaf disease datasets.
@@ -96,9 +100,9 @@ This study implements a deep learning-based approach for detecting and classifyi
 The dataset comprises labeled images of grapevine leaves organized into four classes representing progressive stages of Pierce's Disease. The classification includes Fresh (healthy leaves), Stage1 (early infection), Stage-2 (moderate progression), and Stage-3 (advanced infection). Images were sourced from the GrapeVineDataSplits dataset, which provides pre-defined training, validation, and test partitions. The dataset contains 4,004 images distributed as follows: 3,203 training images, 400 validation images, and 401 test images. A consistent integer mapping was established to standardize label encoding across all subsets.
 
 \begin{table}[h!]
-    \caption{Distribution of physical images across dataset splits for grapevine Pierce disease stages.}
+    \caption{Distribution of physical images across dataset splits for grapevine Pierce's Disease stages.}
     \centering
-    \begin{tabular}{m{0.18\columnwidth} m{0.18\columnwidth} m{0.18\columnwidth} m{0.18\columnwidth}}
+    \begin{tabular}{m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth}}
         \toprule
         \textbf{Stage} & \textbf{Training} & \textbf{Validation} & \textbf{Test} \\
         \midrule
@@ -146,6 +150,11 @@ The dataset comprises labeled images of grapevine leaves organized into four cla
 
 \subsection{Preprocessing}
 Two distinct preprocessing pipelines were implemented: one for training with extensive data augmentation and another for validation/testing with minimal transformations. Training transformations included resizing to 224×224 pixels, random horizontal and vertical flipping, ±20-degree rotation, color jittering (brightness, contrast, saturation, hue adjustments), random affine transformations (translation, scaling, shearing), and ImageNet normalization. Validation and test transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization while maintaining evaluation consistency.
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
+	\caption{Data preprocessing}
+	\label{fig:models}
+\end{figure}
 
 \subsection{Classification and Evaluation}
 The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning.
@@ -165,7 +174,7 @@ The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight arc
 
 \STATE \textbf{Step 1: Model Setup}
 \STATE Load pretrained EfficientNet-B0 backbone
-\STATE Freeze first 6 blocks of \texttt{features} (~75\% layers)
+\STATE Freeze first 6 blocks of \texttt{features}
 \STATE Integrate SE attention module: AdaptiveAvgPool $\rightarrow$ Conv2d $\rightarrow$ ReLU $\rightarrow$ Conv2d $\rightarrow$ Sigmoid
 \STATE Add classification head: AdaptiveAvgPool $\rightarrow$ Flatten $\rightarrow$ Linear(1280,512) $\rightarrow$ ReLU $\rightarrow$ Dropout $\rightarrow$ Linear(512,4)
 
@@ -193,9 +202,9 @@ Approximately 75\% of early backbone layers were frozen to preserve pretrained f
 Model performance was quantitatively assessed using standard classification metrics computed from the confusion matrix. The macro-averaging approach was employed to give equal weight to all classes regardless of sample distribution.
 
 \begin{itemize}
-    \item \textbf{Accuracy}: Proportion of correctly classified samples:
+    \item \textbf{Accuracy}: Macro-averaged proportion of correctly classified samples:
     \begin{equation}
-        \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of samples}}
+        \text{Accuracy} = \frac{1}{N} \sum_{i=1}^{N} \frac{TP_i + TN_i}{TP_i + TN_i + FP_i + FN_i}
     \end{equation}
 
     \item \textbf{Precision}: Macro-averaged ratio of true positive predictions to all positive predictions for each class:
@@ -216,6 +225,7 @@ Model performance was quantitatively assessed using standard classification metr
 
 Confusion matrices were visualized to analyze misclassification patterns, and per-class classification reports were generated to provide detailed performance across all disease stages.
 
+
 \section{Results and Discussion}
 \textit{GrapevineNet\_SE} achieved superior performance across all evaluation metrics. On the test set, the model attained 95.26\% accuracy, with comparable precision, recall, and F1-scores.
 
@@ -227,7 +237,7 @@ Confusion matrices were visualized to analyze misclassification patterns, and pe
 
 \begin{figure*}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.24\textwidth}
+    \begin{subfigure}[b]{0.24\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/accuracy_plot.png} 
 		\caption{Accuracy}
@@ -235,20 +245,20 @@ Confusion matrices were visualized to analyze misclassification patterns, and pe
 	\end{subfigure}
 	\begin{subfigure}[b]{0.24\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{images/f1_plot.png} 
-		\caption{F1-Score}
-		\label{fig:annot_sub}
-	\end{subfigure}
-    \begin{subfigure}[b]{0.24\textwidth}
-		\centering
 		\includegraphics[width=\linewidth]{images/precision_plot.png} 
 		\caption{Precision}
-		\label{fig:mango_sub}
+		\label{fig:annot_sub}
 	\end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/recall_plot.png} 
 		\caption{Recall}
+		\label{fig:mango_sub}
+	\end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/f1_plot.png} 
+		\caption{F1-Score}
 		\label{fig:mango_sub}
 	\end{subfigure}
 	\caption{\textit{GrapevineNet\_SE} Metrics}
@@ -257,14 +267,14 @@ Confusion matrices were visualized to analyze misclassification patterns, and pe
 
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.9\columnwidth]{images/test_samples_visualization.png}}
+\centerline{\includegraphics[width=\columnwidth]{images/test_samples_visualization.png}}
 	\caption{\textit{GrapevineNet\_SE} Model prediction samples for test data}
 	\label{fig:models}
 \end{figure}
 The confusion matrix revealed that most misclassifications occurred between adjacent disease stages, indicating logical progression in severity classification rather than random errors. Model convergence showed consistent improvement throughout training, with validation accuracy reaching 92.25\% at the best epoch and test performance exceeding both baseline architectures.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.8\columnwidth]{images/confusion_matrix_test.png}}
+\centerline{\includegraphics[width=0.7\columnwidth]{images/confusion_matrix_test.png}}
 	\caption{\textit{GrapevineNet\_SE} Confusion Matrix for test data}
 	\label{fig:models}
 \end{figure}
