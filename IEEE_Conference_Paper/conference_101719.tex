@@ -34,12 +34,12 @@
 \newacro{iou}[IoU]{Intersection over Union}
 \newacro{gradcam}[Grad-CAM]{Gradient-weighted Class Activation Mapping}
 
-\usepackage[colorlinks=true, allcolors=blue]{hyperref} 
+\usepackage[colorlinks=true, allcolors=red]{hyperref} 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{GrapevineNet\_SE: Lightweight EfficientNet Model with SE Attention for Pierce's Disease Stage Classification}
+\title{GrapevineNet\_SE: EfficientNet Model with SE Attention for Pierce's Disease Stage Classification}
 
 
 \author{
@@ -60,6 +60,12 @@ Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects
 Deep Learning, Computer Vision, Grapevine, Pierce Disease, EfficientNet, SE Attention
 \end{IEEEkeywords}
 
+\begin{figure*}[htbp]
+\centerline{\includegraphics[width=\textwidth]{images/methodology.png}}
+	\caption{Methodology}
+	\label{fig:models}
+\end{figure*}
+
 \section{Introduction}
 Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture. Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
 
@@ -77,7 +83,6 @@ The key contributions of this work are as follows:
 
 % The rest of the paper is structured as follows. Section \ref{sec:rw} reviews most recent and relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation, and comparative analysis with baseline pretrained models. Finally, Section \ref{sec:con} concludes the paper with key findings, discussion of limitations, and directions for future work.
 
-
 \section{Related Work}
 \label{sec:rw}
 Grapevine leaf disease detection has seen significant progress over the past decade. Advancements in \ac{dl}, \ac{ml}, and spectroscopic analysis. Among all, \ac{cnn}s have emerged as the most effective approach withh their capability of extracting spatial, textural, and morphological features from complex leaf images. For instance, \cite{Malagol2025} applied a ResNet based architecture to quantify hair structures on grape leaves with an accuracy of 95.41\%. Other than classification, segmentation of diseased regions has also been explored to focus on biologically relevant features only. Study \cite{Zhang2024GMamba} used a UNet state space model on PlantVillage dataset, achieving an \ac{iou} of 3.28. Object detection methods have also facilitated the on-field applications by enabling automated identification of diseased areas in leafs. \cite{Khan2025YOLOv7} reported a \ac{map} of 64.6\%, while a more recent YOLOv11 approach \cite{Zhou2025YOLOGrape} improved detection performance with a \ac{map} of 95.2\%.
@@ -87,13 +92,6 @@ Classification tasks have also reached strong levels of performance. ResNet mode
 Beyond \ac{dl} methods, classical \ac{ml} methods also provide complementary insights that are reliable for nutrient assessment and early pathogen detection. \ac{svm}s combined with feature optimization  were applied by \cite{Shi2025} to classify fungal spores. They report 97.5\% accuracy, highlighting the usefulness of traditional \ac{ml} techniques when paired with domain specific feature engineering. Chemometric regression models have been successfully used for predicting macro and micro-nutrient concentrations, \cite{Manzano2025} reported an R² of 0.90 for sodium content. Early detection of viral infections has been made possible through hyperspectral and multispectral sensing techniques. As presented in paper \cite{Lee2024} where strong infections were identified at CT values below 35.
 
 These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone fusion, and feature based \ac{ml} provides accurate solutions for grape leaf disease detection, nutrient assessment, and pathogen monitoring. Edge deployable models with explainable AI techniques like \ac{gradcam} enable practical precision viticulture. They support the rapid disease assessment and optimized vineyard management. Spectroscopic and chemometric methods complement imaging for non destructive plant health monitoring.
-
-
-\begin{figure*}[htbp]
-\centerline{\includegraphics[width=\textwidth]{images/methodology.png}}
-	\caption{Methodology}
-	\label{fig:models}
-\end{figure*}
 
 \section{Material and Methods}
 \label{sec:methodology}
@@ -238,6 +236,12 @@ Confusion matrices were visualized to analyze misclassification patterns, and pe
 	\label{fig:models}
 \end{figure}
 
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.7\columnwidth]{images/confusion_matrix_test.png}}
+	\caption{\textit{GrapevineNet\_SE} Confusion Matrix for test data}
+	\label{fig:models}
+\end{figure}
+
 \begin{figure*}[htbp]
 	\centering
     \begin{subfigure}[b]{0.24\textwidth}
@@ -268,19 +272,12 @@ Confusion matrices were visualized to analyze misclassification patterns, and pe
 	\label{fig:objdet_sub}
 \end{figure*}
 
-
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\columnwidth]{images/test_samples_visualization.png}}
 	\caption{\textit{GrapevineNet\_SE} Model prediction samples for test data}
 	\label{fig:models}
 \end{figure}
 The confusion matrix revealed that most misclassifications occurred between adjacent disease stages, indicating logical progression in severity classification rather than random errors. Model convergence showed consistent improvement throughout training, with validation accuracy reaching 92.25\% at the best epoch and test performance exceeding both baseline architectures.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=0.7\columnwidth]{images/confusion_matrix_test.png}}
-	\caption{\textit{GrapevineNet\_SE} Confusion Matrix for test data}
-	\label{fig:models}
-\end{figure}
 
 
 \section{Comparison and Analysis}
@@ -301,6 +298,9 @@ ResNet50 & 0.6534 & 0.6816 & 0.6534 & 0.6563 & 25.6  \\
 \label{tab:model_comparison}
 \end{table}
 
+\section{Limitations and Future Directions}
+\label{sec:ld}
+TIn this paper, we developed a lightweight and efficient model for multi-stage classification of grapevine leaves affected by Pierce disease. The combination of a frozen EfficientNet-B0 backbone, SE attention module, and compact classification head enabled high accuracy while keeping computational costs low. Analysis of misclassifications showed that errors were primarily between adjacent stages, indicating the model captures disease progression effectively. Overall, the model provides a practical solution for real-time vineyard monitoring, supporting early disease detection and precision viticulture. Future work will focus on in-field deployment and extension to other grapevine diseases.
 
 \section{Conclusion}
 \label{sec:con}
