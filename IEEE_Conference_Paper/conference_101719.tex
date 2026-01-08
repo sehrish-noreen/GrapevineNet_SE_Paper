@@ -15,25 +15,16 @@
 \usepackage{xurl} 
 \usepackage{array}
 \renewcommand{\arraystretch}{1.2}
-\usepackage{acronym}
 \usepackage{listings} 
 \lstdefinestyle{ieeelisting}{
-    basicstyle=\ttfamily\footnotesize,
+	basicstyle=\ttfamily\footnotesize,
     frame=single,
     breaklines=true,
     numbers=none,
     showstringspaces=false,
     columns=fullflexible
-}
-% \lstdefinestyle{outputstyle}{
-%     basicstyle=\ttfamily\small,
-%     frame=single,
-%     breaklines=true,
-%     numbers=none,
-%     showstringspaces=false
-% }
-
-% \newacro{pd}[PD]{Pierce's Disease}
+	}
+\usepackage{acronym}
 \newacro{ai}[AI]{Artificial Intelligence}
 \newacro{ann}[ANN]{Artificial Neural Networks}
 \newacro{dl}[DL]{Deep Learning}
@@ -181,7 +172,7 @@ Two different preprocessing pipelines were implemented. One for training with ex
 \end{figure}
 
 \subsection{Classification and Evaluation}
-The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning. Model architecture is given in Figure~\ref{fig:model}. Approximately 75\% of early backbone layers were frozen to preserve pretrained feature representations. A \ac{se} attention module was integrated to enhance discriminative feature learning, followed by a custom classification head with dropout regularization. Training employed AdamW optimizer with differential learning rates (backbone: 1e-4, classifier: 1e-3), cross-entropy loss with label smoothing, OneCycleLR scheduler with cosine annealing, mixed precision training, and early stopping after five epochs without validation improvement. Details given in Algorithm~\ref{alg:grapevinenet} For benchmarking, standard EfficientNet-B0 and ResNet50 architectures were implemented under identical training conditions.
+The primary model, \textit{GrapevineNet\_SE}, is based on EfficientNet-B0. It uses transfer learning. The architecture integrates a lightweight \ac{se} module to enhance feature discrimination. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard EfficientNet-B0 and ResNet50 architectures were implemented under identical conditions.
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
@@ -215,9 +206,72 @@ The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight arc
 \end{algorithmic}
 \end{algorithm}
 
+\subsubsection{Backbone}
+The backbone of \textit{GrapevineNet\_SE} is based on EfficientNet-B0. EfficientNet-B0 provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. Listing~\ref{lst:backbone} shows backbone structure.
+
+\begin{lstlisting}[language=Python, caption=Backbone Initialization, label={lst:backbone}]
+# Pretrained EfficientNet-B0 backbone
+self.backbone = models.efficientnet_b0(weights="IMAGENET1K_V1")
+
+# Freeze ~75% of early layers
+for i, block in enumerate(self.backbone.features):
+    if i < 6:
+        for param in block.parameters():
+            param.requires_grad = False
+\end{lstlisting}
 
 
-\subsubsection{Evaluation Metrics}
+\subsubsection{\ac{se} Module}
+Next part is a lightweight \ac{se} module that is applied to the final feature maps. It performs global average pooling. Than there is a small bottleneck with ReLU and sigmoid activations to the compute channel-wise attention. The attention weights scale the feature maps. It emphasizes the most informative channels to improve classification. Listing~\ref{lst:semodule} shows the \ac{se} module.
+
+\begin{lstlisting}[language=Python, caption=\ac{se} Module, label={lst:semodule}]
+# Lightweight SE attention module
+self.se = nn.Sequential(
+    nn.AdaptiveAvgPool2d(1),
+    nn.Conv2d(1280, 1280 // 16, 1),
+    nn.ReLU(inplace=True),
+    nn.Conv2d(1280 // 16, 1280, 1),
+    nn.Sigmoid()
+)
+\end{lstlisting}
+
+\subsubsection{Classification Head}
+The last part is classification head. It maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Classification head is given in Listing~\ref{lst:classhead}.
+
+\begin{lstlisting}[language=Python, caption=Classification Head, label={lst:classhead}]
+# Classification head
+self.classifier = nn.Sequential(
+    nn.AdaptiveAvgPool2d(1),
+    nn.Flatten(),
+    nn.Linear(1280, 512),
+    nn.ReLU(inplace=True),
+    nn.Dropout(dropout),
+    nn.Linear(512, num_classes)
+)
+\end{lstlisting}
+
+\subsubsection{Forward Pass}
+During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention and scales the features. Finally, the classification head processes those features and gives the class predictions. As shown in Listing~\ref{lst:fpass}.
+
+\begin{lstlisting}[language=Python, caption=Forward pass for GrapevineNet\_SE, label={lst:fpass}]
+def forward(self, x):
+    x = self.backbone.features(x)
+    x = self.se(x) * x
+    x = self.classifier(x)
+    return x
+\end{lstlisting}
+
+\subsubsection{Device Setup and Model Summary}
+The model is initialized and moved to the available GPU device. We used google colab. A summary of the network is generated to visualize layer dimensions and parameters. Given in Listing~\ref{lst:msummary}.
+
+\begin{lstlisting}[language=Python, caption=Model Init and Summary, label={lst:msummary}]
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = GrapevineNet_SE(num_classes=4, dropout=0.3).to(device)
+summary(model, input_size=(3, 224, 224), device=device)
+\end{lstlisting}
+
+
+\subsection{Evaluation Metrics}
 Model performance was quantitatively assessed using standard classification metrics computed from the confusion matrix. The macro-averaging approach was employed to give equal weight to all classes regardless of sample distribution.
 
 \begin{itemize}
