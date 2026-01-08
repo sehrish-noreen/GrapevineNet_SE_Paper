@@ -111,10 +111,10 @@ These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone 
 
 \section{Material and Methods}
 \label{sec:methodology}
-This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease stages in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment as shown in Fig. \ref{fig:methodology}. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
+This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease stages in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment as shown in Figure~\ref{fig:methodology}. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
 
 \subsection{Data Description}
-The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure \ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table \ref{tab:data_distribution} shows the data distribution. As shown in listing \ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets. 
+The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure~\ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table~\ref{tab:data_distribution} shows the data distribution. As shown in Listing~\ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets. 
 
 \begin{table}[h!]
     \caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages}
@@ -160,7 +160,7 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 		\caption{Stage 3}
 		\label{fig:stage3}
 	\end{subfigure}
-	\caption{Samples from Grapevine Pierce Disease dataset}
+	\caption{Samples from Grapevine Pierce's Disease dataset}
 	\label{fig:datasamples}
 \end{figure}
 
@@ -172,8 +172,8 @@ Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
 \end{lstlisting}
 
 
-\subsection{Preprocessing}
-Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization and also maitains evaluation consistency. Figure \ref{fig:preprocessing} shows some of preprocessing transformations.
+\subsection{Pre-processing}
+Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
 	\caption{Data preprocessing}
@@ -181,7 +181,7 @@ Two different preprocessing pipelines were implemented. One for training with ex
 \end{figure}
 
 \subsection{Classification and Evaluation}
-The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning. Model architecture is given in figure \ref{fig:model}.
+The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning. Model architecture is given in Figure~\ref{fig:model}. Approximately 75\% of early backbone layers were frozen to preserve pretrained feature representations. A \ac{se} attention module was integrated to enhance discriminative feature learning, followed by a custom classification head with dropout regularization. Training employed AdamW optimizer with differential learning rates (backbone: 1e-4, classifier: 1e-3), cross-entropy loss with label smoothing, OneCycleLR scheduler with cosine annealing, mixed precision training, and early stopping after five epochs without validation improvement. Details given in Algorithm~\ref{alg:grapevinenet} For benchmarking, standard EfficientNet-B0 and ResNet50 architectures were implemented under identical training conditions.
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
@@ -190,37 +190,32 @@ The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight arc
 \end{figure*}
 
 \begin{algorithm}
-\caption{GrapevineNet\_SE: Lightweight EfficientNet with SE Attention}
+\caption{GrapevineNet\_SE Training, Validation, and Testing}
 \label{alg:grapevinenet}
 \begin{algorithmic}[1]
-\STATE \textbf{Input:} Batch of grape leaf images $I$
-\STATE \textbf{Output:} Predicted disease stage for each image
+\STATE \textbf{Input:} Image batch $I$
+\STATE \textbf{Output:} Predicted disease class labels
 
-\STATE \textbf{Step 1: Model Setup}
 \STATE Load pretrained EfficientNet-B0 backbone
-\STATE Freeze first 6 blocks of \texttt{features}
-\STATE Integrate SE attention module: AdaptiveAvgPool $\rightarrow$ Conv2d $\rightarrow$ ReLU $\rightarrow$ Conv2d $\rightarrow$ Sigmoid
-\STATE Add classification head: AdaptiveAvgPool $\rightarrow$ Flatten $\rightarrow$ Linear(1280,512) $\rightarrow$ ReLU $\rightarrow$ Dropout $\rightarrow$ Linear(512,4)
+\STATE Freeze first six feature blocks
+\STATE Insert SE attention module
+\STATE Construct classifier head
 
-\STATE \textbf{Step 2: Forward Pass}
-\FOR{each batch of images}
-    \STATE Extract features: $x \gets \texttt{backbone.features}(I)$
-    \STATE Apply SE attention: $x \gets \texttt{SE}(x) * x$
-    \STATE Compute predictions: $y \gets \texttt{classifier}(x)$
+\FOR{each training batch $I$}
+    \STATE $x \gets \texttt{Backbone}(I)$
+    \STATE $x \gets \texttt{SE}(x) \odot x$
+    \STATE $y \gets \texttt{Classifier}(x)$
+    \STATE Compute cross-entropy loss
+    \STATE Update trainable parameters
 \ENDFOR
 
-\STATE \textbf{Step 3: Training and Optimization}
-\STATE Compute cross-entropy loss
-\STATE Update unfrozen parameters using optimizer (e.g., AdamW)
-\STATE Apply learning rate scheduling and early stopping based on validation performance
-
-\STATE \textbf{Step 4: Evaluation}
-\STATE Evaluate on validation set and return trained model
+\STATE Evaluate model on validation data
+\STATE Evaluate model on test data
+\STATE Return trained GrapevineNet\_SE model and test predictions
 \end{algorithmic}
 \end{algorithm}
 
 
-Approximately 75\% of early backbone layers were frozen to preserve pretrained feature representations. A Squeeze-and-Excitation attention module was integrated to enhance discriminative feature learning, followed by a custom classification head with dropout regularization. Training employed AdamW optimizer with differential learning rates (backbone: 1e-4, classifier: 1e-3), cross-entropy loss with label smoothing, OneCycleLR scheduler with cosine annealing, mixed precision training, and early stopping after five epochs without validation improvement. For benchmarking, standard EfficientNet-B0 and ResNet50 architectures were implemented under identical training conditions.
 
 \subsubsection{Evaluation Metrics}
 Model performance was quantitatively assessed using standard classification metrics computed from the confusion matrix. The macro-averaging approach was employed to give equal weight to all classes regardless of sample distribution.

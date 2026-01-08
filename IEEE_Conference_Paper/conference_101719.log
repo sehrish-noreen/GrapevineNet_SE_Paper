@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  8 JAN 2026 11:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  8 JAN 2026 11:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -603,78 +603,65 @@ File: images/preprocessing.png Graphic file (type png)
 <use images/preprocessing.png>
 Package pdftex.def Info: images/preprocessing.png  used on input line 178.
 (pdftex.def)             Requested size: 226.79846pt x 116.31873pt.
-<images/model.png, id=130, 1053.9375pt x 542.025pt>
+<images/model.png, id=131, 1053.9375pt x 542.025pt>
 File: images/model.png Graphic file (type png)
 <use images/model.png>
 Package pdftex.def Info: images/model.png  used on input line 187.
 (pdftex.def)             Requested size: 464.39685pt x 238.8391pt.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 193.
-
-Underfull \hbox (badness 2376) in paragraph at lines 202--203
-[] []\OT1/ptm/m/n/10 Integrate SE at-ten-tion mod-ule: Adap-tiveAvg-Pool $\OMS/cmsy/m/n/10 !$
- []
-
-
-Underfull \hbox (badness 5741) in paragraph at lines 214--215
-[] []\OT1/ptm/m/n/10 Update un-frozen pa-ram-e-ters us-ing op-ti-mizer (e.g.,
- []
-
-
-Underfull \vbox (badness 1005) has occurred while \output is active []
-
  [3 <./images/fresh.png> <./images/stage1.png> <./images/stage2.png> <./images/stage3.png> <./images/preprocessing.png>]
-<images/per_class_accuracy_all_sets.png, id=175, 3508.10625pt x 1923.185pt>
+<images/per_class_accuracy_all_sets.png, id=174, 3508.10625pt x 1923.185pt>
 File: images/per_class_accuracy_all_sets.png Graphic file (type png)
 <use images/per_class_accuracy_all_sets.png>
-Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 257.
+Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 252.
 (pdftex.def)             Requested size: 226.79846pt x 124.30711pt.
-<images/confusion_matrix_test.png, id=176, 2237.35875pt x 1949.2825pt>
+<images/confusion_matrix_test.png, id=175, 2237.35875pt x 1949.2825pt>
 File: images/confusion_matrix_test.png Graphic file (type png)
 <use images/confusion_matrix_test.png>
-Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 263.
+Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 258.
 (pdftex.def)             Requested size: 176.39923pt x 153.68527pt.
-<images/accuracy_plot.png, id=177, 867.24pt x 578.16pt>
+<images/accuracy_plot.png, id=176, 867.24pt x 578.16pt>
 File: images/accuracy_plot.png Graphic file (type png)
 <use images/accuracy_plot.png>
-Package pdftex.def Info: images/accuracy_plot.png  used on input line 272.
+Package pdftex.def Info: images/accuracy_plot.png  used on input line 267.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/precision_plot.png, id=178, 867.24pt x 578.16pt>
+<images/precision_plot.png, id=177, 867.24pt x 578.16pt>
 File: images/precision_plot.png Graphic file (type png)
 <use images/precision_plot.png>
-Package pdftex.def Info: images/precision_plot.png  used on input line 278.
+Package pdftex.def Info: images/precision_plot.png  used on input line 273.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/recall_plot.png, id=179, 867.24pt x 578.16pt>
+<images/recall_plot.png, id=178, 867.24pt x 578.16pt>
 File: images/recall_plot.png Graphic file (type png)
 <use images/recall_plot.png>
-Package pdftex.def Info: images/recall_plot.png  used on input line 284.
+Package pdftex.def Info: images/recall_plot.png  used on input line 279.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/f1_plot.png, id=180, 867.24pt x 578.16pt>
+<images/f1_plot.png, id=179, 867.24pt x 578.16pt>
 File: images/f1_plot.png Graphic file (type png)
 <use images/f1_plot.png>
-Package pdftex.def Info: images/f1_plot.png  used on input line 290.
+Package pdftex.def Info: images/f1_plot.png  used on input line 285.
 (pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
-<images/test_samples_visualization.png, id=181, 3231.07124pt x 4074.22125pt>
+<images/test_samples_visualization.png, id=180, 3231.07124pt x 4074.22125pt>
 File: images/test_samples_visualization.png Graphic file (type png)
 <use images/test_samples_visualization.png>
-Package pdftex.def Info: images/test_samples_visualization.png  used on input line 299.
+Package pdftex.def Info: images/test_samples_visualization.png  used on input line 294.
 (pdftex.def)             Requested size: 252.0pt x 317.73825pt.
  [4 <./images/model.png> <./images/per_class_accuracy_all_sets.png> <./images/confusion_matrix_test.png>]
-Overfull \hbox (9.75267pt too wide) in paragraph at lines 314--314
+Overfull \hbox (9.75267pt too wide) in paragraph at lines 309--309
 []|\OT1/ptm/b/n/8 Accuracy| 
  []
 
 
-Overfull \hbox (8.72855pt too wide) in paragraph at lines 314--314
+Overfull \hbox (8.72855pt too wide) in paragraph at lines 309--309
 []|\OT1/ptm/b/n/8 Precision| 
  []
 
 
-Overfull \hbox (3.45677pt too wide) in paragraph at lines 314--315
+Overfull \hbox (3.45677pt too wide) in paragraph at lines 309--310
 []|\OT1/ptm/b/n/8 Params
  []
 
 
-Overfull \hbox (1.59245pt too wide) in paragraph at lines 316--316
+Overfull \hbox (1.59245pt too wide) in paragraph at lines 311--311
 []|\OT1/ptm/b/it/8 GrapevineNet[]SE| 
  []
 
@@ -705,21 +692,21 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `conference_101719.out' has not changed.
-(rerunfilecheck)             Checksum: 6739F48C75EC5DDBB22260D1CD3C2C75;1719.
+(rerunfilecheck)             Checksum: EA9FDA04CBD943B513F004F7F0F27B85;1724.
  ) 
 Here is how much of TeX's memory you used:
- 15493 strings out of 474222
- 242426 string characters out of 5748732
+ 15490 strings out of 474222
+ 242387 string characters out of 5748732
  1979975 words of memory out of 5000000
  37459 multiletter control sequences out of 15000+600000
  603955 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,1700b,1129s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_101719.pdf (6 pages, 6343958 bytes).
+Output written on conference_101719.pdf (6 pages, 6343499 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 86 named destinations out of 1000 (max. 500000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 83 named destinations out of 1000 (max. 500000)
  167 words of extra memory for PDF output out of 10000 (max. 10000000)
 
