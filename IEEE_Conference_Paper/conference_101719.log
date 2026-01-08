@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  8 JAN 2026 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  8 JAN 2026 17:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -105,7 +105,16 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtranrubishbin=\box52
 )
 ** ATTENTION: Overriding command lockouts (line 2).
-(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 112.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)) (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
@@ -118,7 +127,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
+\@emptytoks=\toks20
 \ex@=\dimen164
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -156,21 +165,21 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \dotsspace@=\muskip16
 \c@parentequation=\count275
 \dspbrk@lvl=\count276
-\tag@help=\toks19
+\tag@help=\toks21
 \row@=\count277
 \column@=\count278
 \maxfields@=\count279
-\andhelp@=\toks20
+\andhelp@=\toks22
 \eqnshift@=\dimen167
 \alignsep@=\dimen168
 \tagshift@=\dimen169
 \tagwidth@=\dimen170
 \totwidth@=\dimen171
 \lineht@=\dimen172
-\@envbody=\toks21
+\@envbody=\toks23
 \multlinegap=\skip52
 \multlinetaggap=\skip53
-\mathdisplay@stack=\toks22
+\mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
@@ -188,7 +197,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks23
+\KV@toks@=\toks25
 )
 \c@ALC@unique=\count280
 \c@ALC@line=\count281
@@ -201,12 +210,12 @@ Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environ
  (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count284
-\float@exts=\toks24
+\float@exts=\toks26
 \float@box=\box55
-\@float@everytoks=\toks25
+\@float@everytoks=\toks27
 \@floatcapt=\box56
 )
-\@float@every@algorithm=\toks26
+\@float@every@algorithm=\toks28
 \c@algorithm=\count285
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
@@ -301,14 +310,14 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen196
 \ar@mcellbox=\box57
 \extrarowheight=\dimen197
-\NC@list=\toks27
+\NC@list=\toks29
 \extratabsurround=\skip56
 \backup@length=\skip57
 \ar@cellbox=\box58
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count294
 \lst@gtempboxa=\box59
-\lst@token=\toks28
+\lst@token=\toks30
 \lst@length=\count295
 \lst@currlwidth=\dimen198
 \lst@column=\count296
@@ -337,7 +346,7 @@ Package: suffix 2006/07/15 1.5a Variant command support
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
-\AC@clearlist=\toks29
+\AC@clearlist=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
@@ -469,24 +478,24 @@ LaTeX Warning: Label `fig:models' multiply defined.
 )
 \openout1 = `conference_101719.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -496,12 +505,12 @@ LaTeX Font Info:    ... okay on input line 47.
 \scratchbox=\box62
 \nofMPsegments=\count318
 \nofMParguments=\count319
-\everyMPshowfont=\toks30
+\everyMPshowfont=\toks32
 \MPscratchCnt=\count320
 \MPscratchDim=\dimen263
 \MPnumerator=\count321
 \makeMPintoPDFobject=\count322
-\everyMPtoPDFconversion=\toks31
+\everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -513,104 +522,203 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count323
-Package hyperref Info: Link coloring ON on input line 47.
+Package hyperref Info: Link coloring ON on input line 49.
  (./conference_101719.out) (./conference_101719.out)
 \@outlinefile=\write3
 \openout3 = `conference_101719.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 61.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 63.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 63.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package acronym Info: Label `acro:dl' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 65.
 Package acronym Info: Label `acro:se' newly defined as it shall be overridden
-although it is yet undefined on input line 63.
+although it is yet undefined on input line 65.
 <images/methodology.png, id=72, 1580.90625pt x 278.54062pt>
 File: images/methodology.png Graphic file (type png)
 <use images/methodology.png>
-Package pdftex.def Info: images/methodology.png  used on input line 71.
+Package pdftex.def Info: images/methodology.png  used on input line 73.
 (pdftex.def)             Requested size: 516.0pt x 90.91563pt.
 Package acronym Info: Label `acro:cv' newly defined as it shall be overridden
-although it is yet undefined on input line 79.
+although it is yet undefined on input line 84.
 Package acronym Info: Label `acro:cnn' newly defined as it shall be overridden
-although it is yet undefined on input line 79.
-Package acronym Info: Label `acro:yolo' newly defined as it shall be overridden
-although it is yet undefined on input line 79.
+although it is yet undefined on input line 84.
 Package acronym Info: Label `acro:ml' newly defined as it shall be overridden
-although it is yet undefined on input line 79.
-Package acronym Info: Label `acro:svm' newly defined as it shall be overridden
-although it is yet undefined on input line 79.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 79.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+although it is yet undefined on input line 98.
 Package acronym Info: Label `acro:iou' newly defined as it shall be overridden
-although it is yet undefined on input line 95.
+although it is yet undefined on input line 98.
 Package acronym Info: Label `acro:map' newly defined as it shall be overridden
-although it is yet undefined on input line 95.
+although it is yet undefined on input line 98.
 
-Underfull \hbox (badness 2495) in paragraph at lines 95--96
-[]\OT1/ptm/m/n/10 Grapevine leaf dis-ease de-tec-tion has seen sig-nif-i-cant
+Underfull \hbox (badness 2495) in paragraph at lines 98--99
+[]\T1/ptm/m/n/10 Grapevine leaf dis-ease de-tec-tion has seen sig-nif-i-cant
  []
 
-
-Underfull \vbox (badness 1968) has occurred while \output is active []
-
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
 Package acronym Info: Label `acro:vit' newly defined as it shall be overridden
-although it is yet undefined on input line 97.
+although it is yet undefined on input line 100.
 Package acronym Info: Label `acro:dcnn' newly defined as it shall be overridden
-although it is yet undefined on input line 97.
+although it is yet undefined on input line 100.
+Package acronym Info: Label `acro:svm' newly defined as it shall be overridden
+although it is yet undefined on input line 102.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 102.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
 Package acronym Info: Label `acro:gradcam' newly defined as it shall be overridden
-although it is yet undefined on input line 101.
- [2 <./images/methodology.png>]
-<images/fresh.png, id=143, 225.84375pt x 225.84375pt>
+although it is yet undefined on input line 104.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<images/fresh.png, id=115, 225.84375pt x 225.84375pt>
 File: images/fresh.png Graphic file (type png)
 <use images/fresh.png>
-Package pdftex.def Info: images/fresh.png  used on input line 132.
+Package pdftex.def Info: images/fresh.png  used on input line 135.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage1.png, id=144, 225.84375pt x 225.84375pt>
+<images/stage1.png, id=116, 225.84375pt x 225.84375pt>
 File: images/stage1.png Graphic file (type png)
 <use images/stage1.png>
-Package pdftex.def Info: images/stage1.png  used on input line 138.
+Package pdftex.def Info: images/stage1.png  used on input line 141.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage2.png, id=145, 225.84375pt x 225.84375pt>
+<images/stage2.png, id=117, 225.84375pt x 225.84375pt>
 File: images/stage2.png Graphic file (type png)
 <use images/stage2.png>
-Package pdftex.def Info: images/stage2.png  used on input line 144.
+Package pdftex.def Info: images/stage2.png  used on input line 147.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-<images/stage3.png, id=146, 225.84375pt x 225.84375pt>
+<images/stage3.png, id=118, 225.84375pt x 225.84375pt>
 File: images/stage3.png Graphic file (type png)
 <use images/stage3.png>
-Package pdftex.def Info: images/stage3.png  used on input line 150.
+Package pdftex.def Info: images/stage3.png  used on input line 153.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 160.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 160.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 163.
+[2 <./images/methodology.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 163.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<images/preprocessing.png, id=148, 1120.185pt x 574.5465pt>
+<images/preprocessing.png, id=153, 1120.185pt x 574.5465pt>
 File: images/preprocessing.png Graphic file (type png)
 <use images/preprocessing.png>
-Package pdftex.def Info: images/preprocessing.png  used on input line 169.
+Package pdftex.def Info: images/preprocessing.png  used on input line 172.
 (pdftex.def)             Requested size: 226.79846pt x 116.31873pt.
 
-Underfull \hbox (badness 4673) in paragraph at lines 175--176
-[]\OT1/ptm/m/n/10 The pri-mary model, \OT1/ptm/m/it/10 GrapevineNet[]SE\OT1/ptm/m/n/10 , is based on
+Underfull \hbox (badness 4673) in paragraph at lines 178--179
+[]\T1/ptm/m/n/10 The pri-mary model, \T1/ptm/m/it/10 GrapevineNet_SE\T1/ptm/m/n/10 , is based on
  []
 
-<images/model.png, id=150, 1053.9375pt x 542.025pt>
+<images/model.png, id=155, 1053.9375pt x 542.025pt>
 File: images/model.png Graphic file (type png)
 <use images/model.png>
-Package pdftex.def Info: images/model.png  used on input line 178.
+Package pdftex.def Info: images/model.png  used on input line 181.
 (pdftex.def)             Requested size: 464.39685pt x 238.8391pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on i
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 187.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ac' on input line 232.
+
+[3 <./images/fresh.png> <./images/stage1.png> <./images/stage2.png> <./images/stage3.png> <./images/preprocessing.png>]
+<images/per_class_accuracy_all_sets.png, id=191, 3508.10625pt x 1923.185pt>
+File: images/per_class_accuracy_all_sets.png Graphic file (type png)
+<use images/per_class_accuracy_all_sets.png>
+Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 318.
+(pdftex.def)             Requested size: 226.79846pt x 124.30711pt.
+<images/confusion_matrix_test.png, id=192, 2237.35875pt x 1949.2825pt>
+File: images/confusion_matrix_test.png Graphic file (type png)
+<use images/confusion_matrix_test.png>
+Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 324.
+(pdftex.def)             Requested size: 176.39923pt x 153.68527pt.
+<images/accuracy_plot.png, id=193, 867.24pt x 578.16pt>
+File: images/accuracy_plot.png Graphic file (type png)
+<use images/accuracy_plot.png>
+Package pdftex.def Info: images/accuracy_plot.png  used on input line 333.
+(pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
+<images/precision_plot.png, id=194, 867.24pt x 578.16pt>
+File: images/precision_plot.png Graphic file (type png)
+<use images/precision_plot.png>
+Package pdftex.def Info: images/precision_plot.png  used on input line 339.
+(pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
+<images/recall_plot.png, id=195, 867.24pt x 578.16pt>
+File: images/recall_plot.png Graphic file (type png)
+<use images/recall_plot.png>
+Package pdftex.def Info: images/recall_plot.png  used on input line 345.
+(pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
+<images/f1_plot.png, id=196, 867.24pt x 578.16pt>
+File: images/f1_plot.png Graphic file (type png)
+<use images/f1_plot.png>
+Package pdftex.def Info: images/f1_plot.png  used on input line 351.
+(pdftex.def)             Requested size: 123.84283pt x 82.55627pt.
+<images/test_samples_visualization.png, id=197, 3231.07124pt x 4074.22125pt>
+File: images/test_samples_visualization.png Graphic file (type png)
+<use images/test_samples_visualization.png>
+Package pdftex.def Info: images/test_samples_visualization.png  used on input line 360.
+(pdftex.def)             Requested size: 252.0pt x 317.73825pt.
+ [4 <./images/model.png> <./images/per_class_accuracy_all_sets.png> <./images/confusion_matrix_test.png>]
+Overfull \hbox (9.75267pt too wide) in paragraph at lines 375--375
+[]|\T1/ptm/b/n/8 Accuracy| 
+ []
+
+
+Overfull \hbox (8.72855pt too wide) in paragraph at lines 375--375
+[]|\T1/ptm/b/n/8 Precision| 
+ []
+
+
+Overfull \hbox (3.45677pt too wide) in paragraph at lines 375--376
+[]|\T1/ptm/b/n/8 Params
+ []
+
+
+Overfull \hbox (1.59245pt too wide) in paragraph at lines 377--377
+[]|\T1/ptm/b/it/8 GrapevineNet_SE| 
+ []
+
+(./conference_101719.bbl [5 <./images/accuracy_plot.png> <./images/precision_plot.png> <./images/recall_plot.png> <./images/f1_plot.png> <./images/test_samples_visualization.png>])
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[6] (./conference_101719.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `conference_101719.out' has not changed.
+(rerunfilecheck)             Checksum: 51E3107EB53110939E5D5DBE111C7F25;2465.
+ ) 
+Here is how much of TeX's memory you used:
+ 15793 strings out of 474222
+ 245792 string characters out of 5748732
+ 1969975 words of memory out of 5000000
+ 37743 multiletter control sequences out of 15000+600000
+ 676248 words of font info for 170 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,11n,79p,1813b,1117s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on conference_101719.pdf (6 pages, 6345433 bytes).
+PDF statistics:
+ 302 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
+

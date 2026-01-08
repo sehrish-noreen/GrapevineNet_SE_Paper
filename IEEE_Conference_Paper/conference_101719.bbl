@@ -20,6 +20,12 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{GimenezRomero2025}
+{\'A}.~Gim{\'e}nez-Romero, E.~Moralejo, and M.~A. Mat{\'i}as, ``High-resolution climate data reveals increased risk of pierce’s disease for grapevines worldwide,'' \emph{Scientific Reports}, vol.~15, no.~1, p. 31282, 2025.
+
+\bibitem{GimenezRomero2024}
+{\'A}.~Gim{\'e}nez-Romero, M.~Iturbide, E.~Moralejo, J.~M. Guti{\'e}rrez, and M.~A. Mat{\'i}as, ``Global warming significantly increases the risk of pierce’s disease epidemics in european vineyards,'' \emph{Scientific Reports}, vol.~14, no.~1, p. 9648, 2024.
+
 \bibitem{Malagol2025}
 N.~Malagol, T.~Rao, A.~Werner, R.~T{\"o}pfer, and L.~Hausmann, ``A high-throughput resnet cnn approach for automated grapevine leaf hair quantification,'' \emph{Scientific Reports}, vol.~15, no.~1, p. 1590, 2025.
 

@@ -1,6 +1,8 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -74,11 +76,12 @@ Deep Learning, Computer Vision, Grapevine, Pierce Disease, EfficientNet, SE Atte
 \end{figure*}
 
 \section{Introduction}
-Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture. Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
+Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. 
+Recent climate studies indicate an increasing global risk of grapevine Pierce’s disease. Analyses of over 100,000 vineyards show that the area at risk in Europe has increased from 22\% to over 41\%. While in South Africa it has increased from roughly 6\% to more than 47\% \cite{GimenezRomero2025}. Global warming may also cause the spread of Pierce’s disease  into major European wine growing regions \cite{GimenezRomero2024}.
 
-Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies. While hybrid architectures incorporating multi-backbone fusion or transformer modules have reported almost perfect performance near 100\% accuracy. Object detection models, such as \ac{yolo} variants, have shown strong potentyial for on-field deployment of models. Complementary techniques including Spectroscopic Sensing and \ac{ml} approaches like \ac{svm} and Chemometric Regression have further enabled nutrient assessment and early pathogen detection with R² values up to 0.90 for macro and micronutrient prediction. 
+Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
 
-Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation. To address these gaps, this paper proposes \textit{GrapevineNet\_SE}, a relatively lightweight transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen EfficientNet-B0 backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention module, and a compact classification head. By fine-tuning only a subset of the EfficientNet-B0 parameters, \textit{GrapevineNet\_SE} achieves high accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices.
+Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies.  Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation. To address these gaps, this paper proposes \textit{GrapevineNet\_SE}, a relatively lightweight transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen EfficientNet-B0 backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention module, and a compact classification head. By fine-tuning only a subset of the EfficientNet-B0 parameters, \textit{GrapevineNet\_SE} achieves high accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices.
 
 The key contributions of this work are as follows:
 \begin{itemize}
@@ -207,86 +210,81 @@ The primary model, \textit{GrapevineNet\_SE}, is based on EfficientNet-B0. It us
 \end{algorithm}
 
 \subsubsection{Backbone}
-The backbone of \textit{GrapevineNet\_SE} is based on EfficientNet-B0. EfficientNet-B0 provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. Listing~\ref{lst:backbone} shows backbone structure.
+The backbone of \textit{GrapevineNet\_SE} is based on EfficientNet-B0. EfficientNet-B0 provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. 
 
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Backbone Initialization},
-label={lst:backbone}]
-# Pretrained EfficientNet-B0 backbone
-self.backbone = models.efficientnet_b0(weights="IMAGENET1K_V1")
-
-# Freeze ~75% of early layers
-for i, block in enumerate(self.backbone.features):
-    if i < 6:
-        for param in block.parameters():
-            param.requires_grad = False
-\end{lstlisting}
-
+% \begin{figure*}[!t]
+% \begin{lstlisting}[style=ieeelisting, frame=none,
+% caption={Backbone Initialization of GrapevineNet\_SE},
+% label={lst:backbone}]
+% Initialize EfficientNet-B0 with ImageNet pretrained weights
+% Divide the backbone into ordered feature blocks
+% For each feature block with index i do
+%     If i < 6 then
+%         Freeze all parameters of the block
+%     Else
+%         Allow parameters to be updated during training
+%     End if
+% End for
+% \end{lstlisting}
+% \end{figure*}
 
 \subsubsection{\ac{se} Module}
-Next part is a lightweight \ac{se} module that is applied to the final feature maps. It performs global average pooling. Than there is a small bottleneck with ReLU and sigmoid activations to the compute channel-wise attention. The attention weights scale the feature maps. It emphasizes the most informative channels to improve classification. Listing~\ref{lst:semodule} shows the \ac{se} module.
+Next part is a lightweight \ac{se} module that is applied to the final feature maps. It performs global average pooling. Than there is a small bottleneck with ReLU and sigmoid activations to the compute channel-wise attention. The attention weights scale the feature maps. It emphasizes the most informative channels to improve classification.
 
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={\ac{se} Module},
-label={lst:semodule}]
-# Lightweight SE attention module
-self.se = nn.Sequential(
-    nn.AdaptiveAvgPool2d(1),
-    nn.Conv2d(1280, 1280 // 16, 1),
-    nn.ReLU(inplace=True),
-    nn.Conv2d(1280 // 16, 1280, 1),
-    nn.Sigmoid()
-)
-\end{lstlisting}
+% \begin{figure*}[!t]
+% \begin{lstlisting}[style=ieeelisting, frame=none,
+% caption={Squeeze-and-Excitation (SE) Module},
+% label={lst:semodule}]
+% Input: Feature map F (1280 channels)
 
+% Global average pool F to get channel descriptors
+% Reduce channels to 1280/16, apply ReLU, restore to 1280
+% Apply sigmoid and scale F by attention weights
+
+% Output: Recalibrated feature map
+% \end{lstlisting}
+% \end{figure*}
 
 \subsubsection{Classification Head}
-The last part is classification head. It maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Classification head is given in Listing~\ref{lst:classhead}.
+The last part is classification head. It maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes.
 
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Classification Head},
-label={lst:classhead}]
-# Classification head
-self.classifier = nn.Sequential(
-    nn.AdaptiveAvgPool2d(1),
-    nn.Flatten(),
-    nn.Linear(1280, 512),
-    nn.ReLU(inplace=True),
-    nn.Dropout(dropout),
-    nn.Linear(512, num_classes)
-)
-\end{lstlisting}
+% \begin{figure*}[!t] 
+% \begin{lstlisting}[style=ieeelisting, frame=none,
+% caption={Classification Head},
+% label={lst:classhead}]
+% Input: Feature map F
+
+% Apply global average pooling and flatten
+% Fully connected layer: 1280 -> 512, apply ReLU and dropout
+% Fully connected layer: 512 -> number of classes
+
+% Output: Class scores
+% \end{lstlisting}
+% \end{figure*}
 
 
 \subsubsection{Forward Pass}
-During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention and scales the features. Finally, the classification head processes those features and gives the class predictions. As shown in Listing~\ref{lst:fpass}.
+During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention and scales the features. Finally, the classification head processes those features and gives the class predictions. 
 
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Forward Pass},
-label={lst:fpass}]
-def forward(self, x):
-    x = self.backbone.features(x)
-    x = self.se(x) * x
-    x = self.classifier(x)
-    return x
-\end{lstlisting}
+% \begin{figure*}[!t]
+% \begin{lstlisting}[style=ieeelisting, frame=none,
+% caption={Forward Pass of GrapevineNet\_SE},
+% label={lst:fpass}]
+% Input: Image batch X
 
+% Extract features using EfficientNet-B0 backbone
+% Apply SE module and reweight features with attention
+% Pass features through classification head
+
+% Output: Class predictions
+% \end{lstlisting}
+% \end{figure*}
 
 \subsubsection{Device Setup and Model Summary}
-The model is initialized and moved to the available GPU device. We used google colab. A summary of the network is generated to visualize layer dimensions and parameters. Given in Listing~\ref{lst:msummary}.
-
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Model Initialization and Summary},
-label={lst:msummary}]
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = GrapevineNet_SE(num_classes=4, dropout=0.3).to(device)
-summary(model, input_size=(3, 224, 224), device=device)
-\end{lstlisting}
-
-
+The model is initialized and moved to the available GPU device. We used google colab. A summary of the network is generated to visualize layer dimensions and parameters.
 
 \subsection{Evaluation Metrics}
-Model performance was quantitatively assessed using standard classification metrics computed from the confusion matrix. The macro-averaging approach was employed to give equal weight to all classes regardless of sample distribution.
+Model performance was assessed using standard classification metrics. The macro-averaging approach was employed to give equal weight to all classes regardless of sample distribution.
 
 \begin{itemize}
     \item \textbf{Accuracy}: Macro-averaged proportion of correctly classified samples:
@@ -396,5 +394,5 @@ TIn this paper, we developed a lightweight and efficient model for multi-stage c
 \color{black}
 
 \bibliographystyle{IEEEtran}
-\bibliography{references}
+\bibliography{references.bib}
 \end{document}
