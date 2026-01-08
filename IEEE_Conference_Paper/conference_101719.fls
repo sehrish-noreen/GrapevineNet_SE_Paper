@@ -311,13 +311,6 @@ INPUT ./images/model.png
 INPUT ./images/model.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
-INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8c.tfm
-INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
-INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
-INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
@@ -329,7 +322,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8c.vf
 INPUT ./images/per_class_accuracy_all_sets.png
 INPUT ./images/per_class_accuracy_all_sets.png
 INPUT ./images/per_class_accuracy_all_sets.png

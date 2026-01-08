@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{subcaption} 
-\usepackage{float}  
+% \usepackage{float}  
 \usepackage{booktabs}     
 \usepackage{xcolor}
 \usepackage{textcomp}
@@ -155,7 +155,7 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 	\label{fig:datasamples}
 \end{figure}
 
-\begin{lstlisting}[style=ieeelisting,
+\begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Class mapping in code},
 label={lst:classmapping}]
 Class mapping: {'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
@@ -209,7 +209,9 @@ The primary model, \textit{GrapevineNet\_SE}, is based on EfficientNet-B0. It us
 \subsubsection{Backbone}
 The backbone of \textit{GrapevineNet\_SE} is based on EfficientNet-B0. EfficientNet-B0 provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. Listing~\ref{lst:backbone} shows backbone structure.
 
-\begin{lstlisting}[language=Python, caption=Backbone Initialization, label={lst:backbone}]
+\begin{lstlisting}[style=ieeelisting, frame=none,
+caption={Backbone Initialization},
+label={lst:backbone}]
 # Pretrained EfficientNet-B0 backbone
 self.backbone = models.efficientnet_b0(weights="IMAGENET1K_V1")
 
@@ -224,7 +226,9 @@ for i, block in enumerate(self.backbone.features):
 \subsubsection{\ac{se} Module}
 Next part is a lightweight \ac{se} module that is applied to the final feature maps. It performs global average pooling. Than there is a small bottleneck with ReLU and sigmoid activations to the compute channel-wise attention. The attention weights scale the feature maps. It emphasizes the most informative channels to improve classification. Listing~\ref{lst:semodule} shows the \ac{se} module.
 
-\begin{lstlisting}[language=Python, caption=\ac{se} Module, label={lst:semodule}]
+\begin{lstlisting}[style=ieeelisting, frame=none,
+caption={\ac{se} Module},
+label={lst:semodule}]
 # Lightweight SE attention module
 self.se = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
@@ -235,10 +239,13 @@ self.se = nn.Sequential(
 )
 \end{lstlisting}
 
+
 \subsubsection{Classification Head}
 The last part is classification head. It maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Classification head is given in Listing~\ref{lst:classhead}.
 
-\begin{lstlisting}[language=Python, caption=Classification Head, label={lst:classhead}]
+\begin{lstlisting}[style=ieeelisting, frame=none,
+caption={Classification Head},
+label={lst:classhead}]
 # Classification head
 self.classifier = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
@@ -250,10 +257,13 @@ self.classifier = nn.Sequential(
 )
 \end{lstlisting}
 
+
 \subsubsection{Forward Pass}
 During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention and scales the features. Finally, the classification head processes those features and gives the class predictions. As shown in Listing~\ref{lst:fpass}.
 
-\begin{lstlisting}[language=Python, caption=Forward pass for GrapevineNet\_SE, label={lst:fpass}]
+\begin{lstlisting}[style=ieeelisting, frame=none,
+caption={Forward Pass},
+label={lst:fpass}]
 def forward(self, x):
     x = self.backbone.features(x)
     x = self.se(x) * x
@@ -261,14 +271,18 @@ def forward(self, x):
     return x
 \end{lstlisting}
 
+
 \subsubsection{Device Setup and Model Summary}
 The model is initialized and moved to the available GPU device. We used google colab. A summary of the network is generated to visualize layer dimensions and parameters. Given in Listing~\ref{lst:msummary}.
 
-\begin{lstlisting}[language=Python, caption=Model Init and Summary, label={lst:msummary}]
+\begin{lstlisting}[style=ieeelisting, frame=none,
+caption={Model Initialization and Summary},
+label={lst:msummary}]
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = GrapevineNet_SE(num_classes=4, dropout=0.3).to(device)
 summary(model, input_size=(3, 224, 224), device=device)
 \end{lstlisting}
+
 
 
 \subsection{Evaluation Metrics}
