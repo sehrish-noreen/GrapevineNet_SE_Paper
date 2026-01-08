@@ -8,49 +8,52 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
+Warning--entry type for "Islam2025PierceDisease" isn't style-file defined
+--line 207 of file references.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 17 entries,
+You've used 18 entries,
             4087 wiz_defined-function locations,
-            930 strings with 11657 characters,
-and the built_in function-call counts, 13591 in all, are:
-= -- 1146
-> -- 379
+            936 strings with 11850 characters,
+and the built_in function-call counts, 13955 in all, are:
+= -- 1175
+> -- 383
 < -- 76
-+ -- 191
-- -- 81
-* -- 643
-:= -- 2003
-add.period$ -- 38
-call.type$ -- 17
-change.case$ -- 17
++ -- 193
+- -- 82
+* -- 656
+:= -- 2073
+add.period$ -- 40
+call.type$ -- 18
+change.case$ -- 18
 chr.to.int$ -- 117
-cite$ -- 17
-duplicate$ -- 1070
-empty$ -- 1038
-format.name$ -- 97
-if$ -- 3208
+cite$ -- 18
+duplicate$ -- 1100
+empty$ -- 1074
+format.name$ -- 98
+if$ -- 3287
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 198
-newline$ -- 74
-num.names$ -- 17
-pop$ -- 457
+int.to.str$ -- 18
+missing$ -- 205
+newline$ -- 79
+num.names$ -- 18
+pop$ -- 479
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1095
+skip$ -- 1123
 stack$ -- 0
-substring$ -- 413
-swap$ -- 857
+substring$ -- 414
+swap$ -- 873
 text.length$ -- 37
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 17
+type$ -- 18
 warning$ -- 0
-while$ -- 49
-width$ -- 19
-write$ -- 195
+while$ -- 50
+width$ -- 20
+write$ -- 205
+(There was 1 warning)

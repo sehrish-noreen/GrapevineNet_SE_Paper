@@ -20,32 +20,29 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Malagol2025}
+N.~Malagol, T.~Rao, A.~Werner, R.~T{\"o}pfer, and L.~Hausmann, ``A high-throughput resnet cnn approach for automated grapevine leaf hair quantification,'' \emph{Scientific Reports}, vol.~15, no.~1, p. 1590, 2025.
+
 \bibitem{Zhang2024GMamba}
 X.~Zhang and W.~Mu, ``Gmamba: State space model with convolution for grape leaf disease segmentation,'' \emph{Computers and Electronics in Agriculture}, vol. 225, p. 109290, 2024.
 
-\bibitem{Sagar2025}
-N.~Sagar, K.~P. Suresh, S.~Sridhara, B.~Patil, C.~A. Archana, Y.~S. Sekar, Y.~B. Naveesh, A.~S. Nandan, and R.~Sushma, ``Precision detection of grapevine downy and powdery mildew diseased leaves and fruits using enhanced resnet50 with batch normalization,'' \emph{Computers and Electronics in Agriculture}, vol. 232, p. 110144, 2025.
-
-\bibitem{AlNasseri2025}
-K.~N. Al~Nasseri, K.~K.~A. Al~Hummadi, R.~A.~M. Al~Butrani, and N.~Kumar, ``Artificial intelligence enabled grape leaf disease detection model with improved cascaded convolutional neural network,'' in \emph{Adaptive Intelligence}.\hskip 1em plus 0.5em minus 0.4em\relax Singapore: Springer Nature Singapore, 2025, pp. 185--194.
+\bibitem{Khan2025YOLOv7}
+Z.~Khan, H.~Liu, Y.~Shen, Z.~Yang, L.~Zhang, and F.~Yang, ``Optimizing precision agriculture: A real-time detection approach for grape vineyard unhealthy leaves using deep learning improved yolov7 with feature extraction capabilities,'' \emph{Computers and Electronics in Agriculture}, vol. 231, p. 109969, 2025.
 
 \bibitem{Zhou2025YOLOGrape}
 Z.~Zhou and L.~Yu, ``Lightweight grape leaf disease identification for complex field scenes: Yolo-grape model and its boundary-lesion coalesce optimization policies,'' \emph{Signal, Image and Video Processing}, vol.~19, no.~16, p. 1378, 2025.
 
-\bibitem{Manzano2025}
-J.~I. Manzano, M.~Rodr{\'\i}guez-Febereiro, M.~Fandi{\~n}o, M.~Vilanova, and J.~J. Cancela, ``Spectroscopic analysis (uv-vis-nir) for predictive modeling of macro and micronutrients in grapevine leaves,'' \emph{Smart Agricultural Technology}, vol.~10, p. 100812, 2025.
-
-\bibitem{Malagol2025}
-N.~Malagol, T.~Rao, A.~Werner, R.~T{\"o}pfer, and L.~Hausmann, ``A high-throughput resnet cnn approach for automated grapevine leaf hair quantification,'' \emph{Scientific Reports}, vol.~15, no.~1, p. 1590, 2025.
-
-\bibitem{Khan2025YOLOv7}
-Z.~Khan, H.~Liu, Y.~Shen, Z.~Yang, L.~Zhang, and F.~Yang, ``Optimizing precision agriculture: A real-time detection approach for grape vineyard unhealthy leaves using deep learning improved yolov7 with feature extraction capabilities,'' \emph{Computers and Electronics in Agriculture}, vol. 231, p. 109969, 2025.
+\bibitem{Sagar2025}
+N.~Sagar, K.~P. Suresh, S.~Sridhara, B.~Patil, C.~A. Archana, Y.~S. Sekar, Y.~B. Naveesh, A.~S. Nandan, and R.~Sushma, ``Precision detection of grapevine downy and powdery mildew diseased leaves and fruits using enhanced resnet50 with batch normalization,'' \emph{Computers and Electronics in Agriculture}, vol. 232, p. 110144, 2025.
 
 \bibitem{Vo2026AFCNet}
 H.-T. Vo, N.~T. Nguyen, K.~M. Chau, H.~L. Lam, P.~T. Pham, H.~T. Nguyen, and V.~P. Nguyen, ``Afc-net: Attention-guided multi-backbone deep fusion for grape leaf disease classification,'' in \emph{Multi-disciplinary Trends in Artificial Intelligence}.\hskip 1em plus 0.5em minus 0.4em\relax Singapore: Springer Nature Singapore, 2026, pp. 255--266.
 
 \bibitem{Zhang2025Transformer}
 N.~Zhang, E.~Zhang, G.~Qi, F.~Li, and C.~Lv, ``Lightweight grape leaf disease recognition method based on transformer framework,'' \emph{Scientific Reports}, vol.~15, no.~1, p. 28974, 2025.
+
+\bibitem{AlNasseri2025}
+K.~N. Al~Nasseri, K.~K.~A. Al~Hummadi, R.~A.~M. Al~Butrani, and N.~Kumar, ``Artificial intelligence enabled grape leaf disease detection model with improved cascaded convolutional neural network,'' in \emph{Adaptive Intelligence}.\hskip 1em plus 0.5em minus 0.4em\relax Singapore: Springer Nature Singapore, 2025, pp. 185--194.
 
 \bibitem{Tanvir2025}
 K.~Tanvir, R.~Sharma, M.~S. Kabir, T.~S. Sintheia, S.~Basu, and S.~Banerjee, ``Pcnn-based grape leaf disease detection using mobilenetv2 and vit with xai,'' in \emph{Data Science and Security}.\hskip 1em plus 0.5em minus 0.4em\relax Singapore: Springer Nature Singapore, 2025, pp. 281--292.
@@ -68,7 +65,15 @@ V.~Naik, T.~Baraskar, V.~Khatri, P.~Kolhe, and M.~Katyarmal, ``Disease detection
 \bibitem{Shi2025}
 X.~Shi, S.~M. Javidan, Y.~Ampatzidis, and Z.~Zhang, ``Ai-driven identification of grapevine fungal spores via microscopic imaging and feature optimization with cuckoo search algorithm,'' \emph{Smart Agricultural Technology}, vol.~11, p. 101029, 2025.
 
+\bibitem{Manzano2025}
+J.~I. Manzano, M.~Rodr{\'\i}guez-Febereiro, M.~Fandi{\~n}o, M.~Vilanova, and J.~J. Cancela, ``Spectroscopic analysis (uv-vis-nir) for predictive modeling of macro and micronutrients in grapevine leaves,'' \emph{Smart Agricultural Technology}, vol.~10, p. 100812, 2025.
+
 \bibitem{Lee2024}
 L.~Lee, A.~Reynolds, Y.~Lan, and B.~Meng, ``Identification of unique electromagnetic signatures from glrav-3 infected grapevine leaves in different stages of virus development,'' \emph{Smart Agricultural Technology}, vol.~8, p. 100464, 2024.
+
+\bibitem{Islam2025PierceDisease}
+\BIBentryALTinterwordspacing
+M.~Islam, ``Piercedisease: Xylella fastidiosa affected grape leaves comprehensive image dataset,'' 2025. [Online]. Available: \url{https://doi.org/10.17632/p4rsrrmyg8.1}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

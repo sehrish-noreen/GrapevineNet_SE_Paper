@@ -12,11 +12,27 @@
 \usepackage{booktabs}     
 \usepackage{xcolor}
 \usepackage{textcomp}
-\usepackage{xcolor}
 \usepackage{xurl} 
 \usepackage{array}
 \renewcommand{\arraystretch}{1.2}
 \usepackage{acronym}
+\usepackage{listings} 
+\lstdefinestyle{ieeelisting}{
+    basicstyle=\ttfamily\footnotesize,
+    frame=single,
+    breaklines=true,
+    numbers=none,
+    showstringspaces=false,
+    columns=fullflexible
+}
+% \lstdefinestyle{outputstyle}{
+%     basicstyle=\ttfamily\small,
+%     frame=single,
+%     breaklines=true,
+%     numbers=none,
+%     showstringspaces=false
+% }
+
 % \newacro{pd}[PD]{Pierce's Disease}
 \newacro{ai}[AI]{Artificial Intelligence}
 \newacro{ann}[ANN]{Artificial Neural Networks}
@@ -63,13 +79,13 @@ Deep Learning, Computer Vision, Grapevine, Pierce Disease, EfficientNet, SE Atte
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=\textwidth]{images/methodology.png}}
 	\caption{Methodology}
-	\label{fig:models}
+	\label{fig:methodology}
 \end{figure*}
 
 \section{Introduction}
 Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture. Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
 
-Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages \cite{Zhang2024GMamba}. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved accuracies exceeding 95\% \cite{Sagar2025}. While hybrid architectures incorporating multi-backbone fusion or transformer modules have reported almost perfect performance near 100\% accuracy \cite{AlNasseri2025}. Object detection models, such as \ac{yolo} variants, have shown strong potentyial for on-field deployment of models, reaching \ac{map} up to 95\% \cite{Zhou2025YOLOGrape}. Complementary techniques including Spectroscopic Sensing and \ac{ml} approaches like \ac{svm} and Chemometric Regression have further enabled nutrient assessment and early pathogen detection with R² values up to 0.90 for macro and micronutrient prediction \cite{Manzano2025}. 
+Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies. While hybrid architectures incorporating multi-backbone fusion or transformer modules have reported almost perfect performance near 100\% accuracy. Object detection models, such as \ac{yolo} variants, have shown strong potentyial for on-field deployment of models. Complementary techniques including Spectroscopic Sensing and \ac{ml} approaches like \ac{svm} and Chemometric Regression have further enabled nutrient assessment and early pathogen detection with R² values up to 0.90 for macro and micronutrient prediction. 
 
 Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation. To address these gaps, this paper proposes \textit{GrapevineNet\_SE}, a relatively lightweight transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen EfficientNet-B0 backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention module, and a compact classification head. By fine-tuning only a subset of the EfficientNet-B0 parameters, \textit{GrapevineNet\_SE} achieves high accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices.
 
@@ -95,17 +111,17 @@ These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone 
 
 \section{Material and Methods}
 \label{sec:methodology}
-This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
+This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease stages in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment as shown in Fig. \ref{fig:methodology}. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
 
 \subsection{Data Description}
-The dataset comprises labeled images of grapevine leaves organized into four classes representing progressive stages of Pierce's Disease. The classification includes Fresh (healthy leaves), Stage1 (early infection), Stage-2 (moderate progression), and Stage-3 (advanced infection). Images were sourced from the GrapeVineDataSplits dataset, which provides pre-defined training, validation, and test partitions. The dataset contains 4,004 images distributed as follows: 3,203 training images, 400 validation images, and 401 test images. A consistent integer mapping was established to standardize label encoding across all subsets.
+The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure \ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table \ref{tab:data_distribution} shows the data distribution. As shown in listing \ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets. 
 
 \begin{table}[h!]
-    \caption{Distribution of physical images across dataset splits for grapevine Pierce's Disease stages.}
+    \caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages}
     \centering
     \begin{tabular}{m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth}}
         \toprule
-        \textbf{Stage} & \textbf{Training} & \textbf{Validation} & \textbf{Test} \\
+        \textbf{Stage} & \textbf{Train} & \textbf{Validation} & \textbf{Test} \\
         \midrule
         Fresh   & 800 & 100 & 100 \\
         Stage 1 & 800 & 100 & 100 \\
@@ -115,7 +131,7 @@ The dataset comprises labeled images of grapevine leaves organized into four cla
         \textbf{Total} & \textbf{3203} & \textbf{400} & \textbf{401} \\
         \bottomrule
     \end{tabular}
-    \label{tab:image_distribution}
+    \label{tab:data_distribution}
 \end{table}
 
 \begin{figure}[htbp]
@@ -124,46 +140,53 @@ The dataset comprises labeled images of grapevine leaves organized into four cla
 		\centering
 		\includegraphics[width=\linewidth]{images/fresh.png} 
 		\caption{Fresh Leaf}
-		\label{fig:mango_sub}
+		\label{fig:fresh}
 	\end{subfigure}
     \begin{subfigure}[b]{0.24\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage1.png} 
 		\caption{Stage 1}
-		\label{fig:mango_sub}
+		\label{fig:stage1}
 	\end{subfigure}
     \begin{subfigure}[b]{0.24\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage2.png} 
 		\caption{Stage 2}
-		\label{fig:mango_sub}
+		\label{fig:stage2}
 	\end{subfigure}
     \begin{subfigure}[b]{0.24\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage3.png} 
 		\caption{Stage 3}
-		\label{fig:mango_sub}
+		\label{fig:stage3}
 	\end{subfigure}
 	\caption{Samples from Grapevine Pierce Disease dataset}
-	\label{fig:objdet_sub}
+	\label{fig:datasamples}
 \end{figure}
+
+\begin{lstlisting}[style=ieeelisting,
+caption={Class mapping in code},
+label={lst:classmapping}]
+Class mapping: {'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
+Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
+\end{lstlisting}
 
 
 \subsection{Preprocessing}
-Two distinct preprocessing pipelines were implemented: one for training with extensive data augmentation and another for validation/testing with minimal transformations. Training transformations included resizing to 224×224 pixels, random horizontal and vertical flipping, ±20-degree rotation, color jittering (brightness, contrast, saturation, hue adjustments), random affine transformations (translation, scaling, shearing), and ImageNet normalization. Validation and test transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization while maintaining evaluation consistency.
+Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization and also maitains evaluation consistency. Figure \ref{fig:preprocessing} shows some of preprocessing transformations.
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
 	\caption{Data preprocessing}
-	\label{fig:models}
+	\label{fig:preprocessing}
 \end{figure}
 
 \subsection{Classification and Evaluation}
-The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning.
+The primary model, \textit{GrapevineNet\_SE}, was developed as a lightweight architecture based on EfficientNet-B0 with transfer learning. Model architecture is given in figure \ref{fig:model}.
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
 	\caption{\textit{GrapevineNet\_SE} Model architecture}
-	\label{fig:models}
+	\label{fig:model}
 \end{figure*}
 
 \begin{algorithm}
