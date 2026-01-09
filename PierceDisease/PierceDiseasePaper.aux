@@ -5,10 +5,8 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{GimenezRomero2025}
 \citation{GimenezRomero2024}
-\citation{Malagol2025}
-\citation{Zhang2024GMamba}
-\citation{Khan2025YOLOv7}
-\citation{Zhou2025YOLOGrape}
+\citation{pmlr-v97-tan19a}
+\citation{Hu_2018_CVPR}
 \AC@undonewlabel{acro:dl}
 \newlabel{acro:dl}{{}{1}{}{section*.1}{}}
 \acronymused{dl}
@@ -28,11 +26,11 @@
 \acronymused{cnn}
 \acronymused{se}
 \acronymused{se}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{section.2}\protected@file@percent }
-\newlabel{sec:rw}{{II}{1}{Related Work}{section.2}{}}
 \acronymused{dl}
-\AC@undonewlabel{acro:ml}
-\newlabel{acro:ml}{{II}{1}{Related Work}{section*.6}{}}
+\citation{Malagol2025}
+\citation{Zhang2024GMamba}
+\citation{Khan2025YOLOv7}
+\citation{Zhou2025YOLOGrape}
 \citation{Sagar2025}
 \citation{Vo2026AFCNet}
 \citation{Zhang2025Transformer}
@@ -50,6 +48,11 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Methodology}}{2}{figure.caption.3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:methodology}{{1}{2}{Methodology}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:rw}{{II}{2}{Related Work}{section.2}{}}
+\acronymused{dl}
+\AC@undonewlabel{acro:ml}
+\newlabel{acro:ml}{{II}{2}{Related Work}{section*.6}{}}
 \acronymused{ml}
 \acronymused{cnn}
 \AC@undonewlabel{acro:iou}
@@ -98,86 +101,90 @@
 \newlabel{lst:classmapping}{{1}{3}{Class mapping in code}{lstlisting.1}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Class mapping in code}}{3}{lstlisting.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Pre-processing}{3}{subsection.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Data preprocessing}}{3}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:preprocessing}{{3}{3}{Data preprocessing}{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Classification and Evaluation}{3}{subsection.3.3}\protected@file@percent }
 \acronymused{se}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces GrapevineNet\_SE Training, Validation, and Testing}}{3}{algorithm.1}\protected@file@percent }
-\newlabel{alg:grapevinenet}{{1}{3}{GrapevineNet\_SE Training, Validation, and Testing}{algorithm.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Data preprocessing}}{3}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:preprocessing}{{3}{3}{Data preprocessing}{figure.caption.15}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces SEGrapeStageNet Training, Validation, and Testing}}{3}{algorithm.1}\protected@file@percent }
+\newlabel{alg:segrapestagenet}{{1}{3}{SEGrapeStageNet Training, Validation, and Testing}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}1}Backbone}{3}{subsubsection.3.3.1}\protected@file@percent }
-\newlabel{lst:backbone}{{2}{3}{Backbone Initialization of GrapevineNet\_SE}{lstlisting.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Backbone Initialization of GrapevineNet\_SE}}{3}{lstlisting.2}\protected@file@percent }
+\newlabel{lst:backbone}{{2}{3}{Backbone Initialization of SEGrapeStageNet}{lstlisting.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Backbone Initialization of SEGrapeStageNet}}{3}{lstlisting.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {SEGrapeStageNet} Model architecture}}{4}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:model}{{4}{4}{\textit {SEGrapeStageNet} Model architecture}{figure.caption.16}{}}
 \acronymused{se}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}2}\ac {se} Module}{3}{subsubsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}2}\ac {se} Attention Module}{4}{subsubsection.3.3.2}\protected@file@percent }
 \acronymused{se}
 \acronymused{se}
-\newlabel{lst:semodule}{{3}{3}{Squeeze-and-Excitation (SE) Module}{lstlisting.3}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Squeeze-and-Excitation (SE) Module}}{3}{lstlisting.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {GrapevineNet\_SE} Model architecture}}{4}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:model}{{4}{4}{\textit {GrapevineNet\_SE} Model architecture}{figure.caption.16}{}}
+\newlabel{lst:semodule}{{3}{4}{\ac {se} Module}{lstlisting.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces \ac {se} Module}}{4}{lstlisting.3}\protected@file@percent }
+\acronymused{se}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}3}Classification Head}{4}{subsubsection.3.3.3}\protected@file@percent }
 \newlabel{lst:classhead}{{4}{4}{Classification Head}{lstlisting.4}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Classification Head}}{4}{lstlisting.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}4}Forward Pass}{4}{subsubsection.3.3.4}\protected@file@percent }
 \acronymused{se}
-\newlabel{lst:fpass}{{5}{4}{Forward Pass of GrapevineNet\_SE}{lstlisting.5}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Forward Pass of GrapevineNet\_SE}}{4}{lstlisting.5}\protected@file@percent }
+\newlabel{lst:fpass}{{5}{4}{Forward Pass of SEGrapeStageNet}{lstlisting.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Forward Pass of SEGrapeStageNet}}{4}{lstlisting.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}5}Device Setup and Model Summary}{4}{subsubsection.3.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Evaluation Metrics}{4}{subsection.3.4}\protected@file@percent }
-\newlabel{fig:accuracy}{{5a}{5}{Accuracy}{figure.caption.17}{}}
-\newlabel{sub@fig:accuracy}{{a}{5}{Accuracy}{figure.caption.17}{}}
-\newlabel{fig:precision}{{5b}{5}{Precision}{figure.caption.17}{}}
-\newlabel{sub@fig:precision}{{b}{5}{Precision}{figure.caption.17}{}}
-\newlabel{fig:recall}{{5c}{5}{Recall}{figure.caption.17}{}}
-\newlabel{sub@fig:recall}{{c}{5}{Recall}{figure.caption.17}{}}
-\newlabel{fig:f1}{{5d}{5}{F1-Score}{figure.caption.17}{}}
-\newlabel{sub@fig:f1}{{d}{5}{F1-Score}{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textit  {GrapevineNet\_SE} performance metrics.}}{5}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:performance}{{5}{5}{\textit {GrapevineNet\_SE} performance metrics}{figure.caption.17}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{5}{section.4}\protected@file@percent }
 \newlabel{sec:results}{{IV}{5}{Results}{section.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Training, Validation, and Test Metrics for \textit  {GrapevineNet\_SE}}}{5}{table.caption.18}\protected@file@percent }
-\newlabel{tab:grapevinenet_metrics}{{II}{5}{Training, Validation, and Test Metrics for \textit {GrapevineNet\_SE}}{table.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textit  {GrapevineNet\_SE} model prediction samples for test data. Correctly predicted samples show high confidence, while misclassified images reflect subtle visual ambiguities.}}{5}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:predictions}{{6}{5}{\textit {GrapevineNet\_SE} model prediction samples for test data. Correctly predicted samples show high confidence, while misclassified images reflect subtle visual ambiguities}{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textit  {GrapevineNet\_SE} per-class accuracies across training, validation, and test datasets. The model maintains consistently high performance across all disease stages.}}{6}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:perclass}{{7}{6}{\textit {GrapevineNet\_SE} per-class accuracies across training, validation, and test datasets. The model maintains consistently high performance across all disease stages}{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textit  {GrapevineNet\_SE} confusion matrix for test data. Misclassifications occur mostly between consecutive disease stages.}}{6}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:cmatrix}{{8}{6}{\textit {GrapevineNet\_SE} confusion matrix for test data. Misclassifications occur mostly between consecutive disease stages}{figure.caption.21}{}}
+\acronymused{se}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Training, Validation, and Test Metrics for \textit  {SEGrapeStageNet}}}{5}{table.caption.18}\protected@file@percent }
+\newlabel{tab:segrapestagenet_metrics}{{II}{5}{Training, Validation, and Test Metrics for \textit {SEGrapeStageNet}}{table.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textit  {SEGrapeStageNet} model prediction samples for test data. Correctly predicted samples shown in green text, misclassifications in red text}}{5}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:predictions}{{6}{5}{\textit {SEGrapeStageNet} model prediction samples for test data. Correctly predicted samples shown in green text, misclassifications in red text}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Class wise accuracies across training, validation, and test datasets}}{5}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:perclass}{{7}{5}{Class wise accuracies across training, validation, and test datasets}{figure.caption.20}{}}
+\newlabel{fig:accuracy}{{5a}{6}{Accuracy}{figure.caption.17}{}}
+\newlabel{sub@fig:accuracy}{{a}{6}{Accuracy}{figure.caption.17}{}}
+\newlabel{fig:precision}{{5b}{6}{Precision}{figure.caption.17}{}}
+\newlabel{sub@fig:precision}{{b}{6}{Precision}{figure.caption.17}{}}
+\newlabel{fig:recall}{{5c}{6}{Recall}{figure.caption.17}{}}
+\newlabel{sub@fig:recall}{{c}{6}{Recall}{figure.caption.17}{}}
+\newlabel{fig:f1}{{5d}{6}{F1-score}{figure.caption.17}{}}
+\newlabel{sub@fig:f1}{{d}{6}{F1-score}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textit  {SEGrapeStageNet} performance metrics across training and validation subsets}}{6}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:performance}{{5}{6}{\textit {SEGrapeStageNet} performance metrics across training and validation subsets}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix for test data}}{6}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:cmatrix}{{8}{6}{Confusion matrix for test data}{figure.caption.21}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Comparison and Analysis}{6}{section.5}\protected@file@percent }
 \newlabel{sec:comparison}{{V}{6}{Comparison and Analysis}{section.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Validation accuracy and loss curves for EfficientNet-B0. Peak accuracy = 78.25\%.}}{6}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:eb0}{{9}{6}{Validation accuracy and loss curves for EfficientNet-B0. Peak accuracy = 78.25\%}{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Validation accuracy and loss curves for ResNet50. Peak accuracy = 73.25\%.}}{6}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:resnet}{{10}{6}{Validation accuracy and loss curves for ResNet50. Peak accuracy = 73.25\%}{figure.caption.24}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Performance Comparison of \textit  {SEGrapeStageNet} and Baseline Models Across Training, Validation, and Test Sets; Training accuracy corresponds to the epoch yielding the best validation performance}}{7}{table.caption.22}\protected@file@percent }
+\newlabel{tab:model_comparison}{{III}{7}{Performance Comparison of \textit {SEGrapeStageNet} and Baseline Models Across Training, Validation, and Test Sets; Training accuracy corresponds to the epoch yielding the best validation performance}{table.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Validation accuracy and loss curves for EfficientNet-B0. Peak accuracy = 78.25\%.}}{7}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:eb0}{{9}{7}{Validation accuracy and loss curves for EfficientNet-B0. Peak accuracy = 78.25\%}{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Validation accuracy and loss curves for ResNet50. Peak accuracy = 73.25\%.}}{7}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:resnet}{{10}{7}{Validation accuracy and loss curves for ResNet50. Peak accuracy = 73.25\%}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations and Future Directions}{7}{section.6}\protected@file@percent }
+\newlabel{sec:limitations}{{VI}{7}{Limitations and Future Directions}{section.6}{}}
 \bibstyle{IEEEtran}
 \bibdata{references.bib}
 \bibcite{GimenezRomero2025}{1}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Comparison of \textit  {GrapevineNet\_SE} with Pretrained Models on the Test Set}}{7}{table.caption.22}\protected@file@percent }
-\newlabel{tab:model_comparison_updated}{{III}{7}{Comparison of \textit {GrapevineNet\_SE} with Pretrained Models on the Test Set}{table.caption.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations and Future Directions}{7}{section.6}\protected@file@percent }
-\newlabel{sec:limitations}{{VI}{7}{Limitations and Future Directions}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{7}{section.7}\protected@file@percent }
-\newlabel{sec:con}{{VII}{7}{Conclusion}{section.7}{}}
-\acronymused{se}
 \bibcite{GimenezRomero2024}{2}
-\bibcite{Malagol2025}{3}
-\bibcite{Zhang2024GMamba}{4}
-\bibcite{Khan2025YOLOv7}{5}
-\bibcite{Zhou2025YOLOGrape}{6}
-\bibcite{Sagar2025}{7}
-\bibcite{Vo2026AFCNet}{8}
-\bibcite{Zhang2025Transformer}{9}
-\bibcite{AlNasseri2025}{10}
-\bibcite{Tanvir2025}{11}
-\bibcite{Mathew2025}{12}
-\bibcite{Prasad2024}{13}
-\bibcite{Talaat2025}{14}
-\bibcite{Karim2024}{15}
-\bibcite{Naik2025}{16}
-\bibcite{Shi2025}{17}
-\bibcite{Manzano2025}{18}
-\bibcite{Lee2024}{19}
-\bibcite{Islam2025PierceDisease}{20}
+\bibcite{pmlr-v97-tan19a}{3}
+\bibcite{Hu_2018_CVPR}{4}
+\bibcite{Malagol2025}{5}
+\bibcite{Zhang2024GMamba}{6}
+\bibcite{Khan2025YOLOv7}{7}
+\bibcite{Zhou2025YOLOGrape}{8}
+\bibcite{Sagar2025}{9}
+\bibcite{Vo2026AFCNet}{10}
+\bibcite{Zhang2025Transformer}{11}
+\bibcite{AlNasseri2025}{12}
+\bibcite{Tanvir2025}{13}
+\bibcite{Mathew2025}{14}
+\bibcite{Prasad2024}{15}
+\bibcite{Talaat2025}{16}
+\bibcite{Karim2024}{17}
+\bibcite{Naik2025}{18}
+\bibcite{Shi2025}{19}
+\bibcite{Manzano2025}{20}
+\bibcite{Lee2024}{21}
+\bibcite{Islam2025PierceDisease}{22}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{8}{section.7}\protected@file@percent }
+\newlabel{sec:con}{{VII}{8}{Conclusion}{section.7}{}}
+\acronymused{se}
 \@writefile{toc}{\contentsline {section}{References}{8}{section*.25}\protected@file@percent }
 \gdef \@abspage@last{8}
