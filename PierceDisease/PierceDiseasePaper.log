@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  9 JAN 2026 09:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.24)  9 JAN 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -518,197 +518,198 @@ Package hyperref Info: Link coloring ON on input line 51.
 \@outlinefile=\write3
 \openout3 = `PierceDiseasePaper.out'.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 64.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 93.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 93.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 93.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package acronym Info: Label `acro:dl' newly defined as it shall be overridden
-although it is yet undefined on input line 66.
+although it is yet undefined on input line 95.
 Package acronym Info: Label `acro:se' newly defined as it shall be overridden
-although it is yet undefined on input line 66.
+although it is yet undefined on input line 95.
 <images/methodology.png, id=72, 1580.90625pt x 278.54062pt>
 File: images/methodology.png Graphic file (type png)
 <use images/methodology.png>
-Package pdftex.def Info: images/methodology.png  used on input line 74.
+Package pdftex.def Info: images/methodology.png  used on input line 103.
 (pdftex.def)             Requested size: 516.0pt x 90.91563pt.
 Package acronym Info: Label `acro:cv' newly defined as it shall be overridden
-although it is yet undefined on input line 85.
+although it is yet undefined on input line 114.
 Package acronym Info: Label `acro:cnn' newly defined as it shall be overridden
-although it is yet undefined on input line 85.
+although it is yet undefined on input line 114.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
 Package acronym Info: Label `acro:ml' newly defined as it shall be overridden
-although it is yet undefined on input line 101.
+although it is yet undefined on input line 127.
 Package acronym Info: Label `acro:iou' newly defined as it shall be overridden
-although it is yet undefined on input line 101.
+although it is yet undefined on input line 127.
 Package acronym Info: Label `acro:map' newly defined as it shall be overridden
-although it is yet undefined on input line 101.
+although it is yet undefined on input line 127.
 
-Underfull \hbox (badness 2495) in paragraph at lines 101--102
+Underfull \hbox (badness 2495) in paragraph at lines 127--128
 []\T1/ptm/m/n/10 Grapevine leaf dis-ease de-tec-tion has seen sig-nif-i-cant
  []
 
 Package acronym Info: Label `acro:vit' newly defined as it shall be overridden
-although it is yet undefined on input line 103.
+although it is yet undefined on input line 129.
 Package acronym Info: Label `acro:dcnn' newly defined as it shall be overridden
-although it is yet undefined on input line 103.
+although it is yet undefined on input line 129.
 Package acronym Info: Label `acro:svm' newly defined as it shall be overridden
-although it is yet undefined on input line 105.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 105.
+although it is yet undefined on input line 131.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 131.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 Package acronym Info: Label `acro:gradcam' newly defined as it shall be overridden
-although it is yet undefined on input line 107.
+although it is yet undefined on input line 133.
  [2 <./images/methodology.png>]
 <images/fresh.png, id=154, 225.84375pt x 225.84375pt>
 File: images/fresh.png Graphic file (type png)
 <use images/fresh.png>
-Package pdftex.def Info: images/fresh.png  used on input line 138.
+Package pdftex.def Info: images/fresh.png  used on input line 164.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
 <images/stage1.png, id=155, 225.84375pt x 225.84375pt>
 File: images/stage1.png Graphic file (type png)
 <use images/stage1.png>
-Package pdftex.def Info: images/stage1.png  used on input line 144.
+Package pdftex.def Info: images/stage1.png  used on input line 170.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
 <images/stage2.png, id=156, 225.84375pt x 225.84375pt>
 File: images/stage2.png Graphic file (type png)
 <use images/stage2.png>
-Package pdftex.def Info: images/stage2.png  used on input line 150.
+Package pdftex.def Info: images/stage2.png  used on input line 176.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
 <images/stage3.png, id=157, 225.84375pt x 225.84375pt>
 File: images/stage3.png Graphic file (type png)
 <use images/stage3.png>
-Package pdftex.def Info: images/stage3.png  used on input line 156.
+Package pdftex.def Info: images/stage3.png  used on input line 182.
 (pdftex.def)             Requested size: 60.48138pt x 60.47893pt.
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 166.
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 166.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 192.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 192.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<images/preprocessing.png, id=159, 1120.185pt x 574.5465pt>
+<images/preprocessing.png, id=159, 1148.3703pt x 683.6742pt>
 File: images/preprocessing.png Graphic file (type png)
 <use images/preprocessing.png>
-Package pdftex.def Info: images/preprocessing.png  used on input line 175.
-(pdftex.def)             Requested size: 226.79846pt x 116.31873pt.
+Package pdftex.def Info: images/preprocessing.png  used on input line 200.
+(pdftex.def)             Requested size: 226.79846pt x 135.02156pt.
 
-Underfull \hbox (badness 4454) in paragraph at lines 181--182
-[]\T1/ptm/m/n/10 The pri-mary model, \T1/ptm/m/it/10 SEG-rapeSta-geNet\T1/ptm/m/n/10 , is based on
+Underfull \hbox (badness 4316) in paragraph at lines 206--207
+[]\T1/ptm/m/n/10 The pri-mary model, \T1/ptm/m/it/10 SEPierceS-ta-geNet\T1/ptm/m/n/10 , is based on
  []
 
 <images/model.png, id=162, 1053.9375pt x 542.025pt>
 File: images/model.png Graphic file (type png)
 <use images/model.png>
-Package pdftex.def Info: images/model.png  used on input line 184.
+Package pdftex.def Info: images/model.png  used on input line 209.
 (pdftex.def)             Requested size: 464.39685pt x 238.8391pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 190.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 215.
 
-Underfull \hbox (badness 3189) in paragraph at lines 216--217
+Underfull \hbox (badness 3189) in paragraph at lines 241--242
  \T1/ptm/m/it/10 1) Back-bone: [][][] \T1/ptm/m/n/10 The back-bone of model is based on
  []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ac' on input line 233.
-
 [3 <./images/fresh.png> <./images/stage1.png> <./images/stage2.png> <./images/stage3.png> <./images/preprocessing.png>]
 
-LaTeX Warning: Reference `{lst:classhead}' on page 4 undefined on input line 248.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ac' on input line 258.
 
 
-LaTeX Warning: Reference `{lst:fpass}' on page 4 undefined on input line 263.
+LaTeX Warning: Reference `{lst:classhead}' on page 4 undefined on input line 273.
+
+
+LaTeX Warning: Reference `{lst:fpass}' on page 4 undefined on input line 286.
 
 [4 <./images/model.png>]
-<images/accuracy_plot.png, id=249, 867.24pt x 578.16pt>
+<images/accuracy_plot.png, id=244, 867.24pt x 578.16pt>
 File: images/accuracy_plot.png Graphic file (type png)
 <use images/accuracy_plot.png>
-Package pdftex.def Info: images/accuracy_plot.png  used on input line 313.
-(pdftex.def)             Requested size: 227.04126pt x 151.35904pt.
-<images/precision_plot.png, id=250, 867.24pt x 578.16pt>
+Package pdftex.def Info: images/accuracy_plot.png  used on input line 336.
+(pdftex.def)             Requested size: 232.19843pt x 154.7908pt.
+<images/precision_plot.png, id=245, 867.24pt x 578.16pt>
 File: images/precision_plot.png Graphic file (type png)
 <use images/precision_plot.png>
-Package pdftex.def Info: images/precision_plot.png  used on input line 319.
-(pdftex.def)             Requested size: 227.04126pt x 151.35904pt.
-<images/recall_plot.png, id=251, 867.24pt x 578.16pt>
+Package pdftex.def Info: images/precision_plot.png  used on input line 342.
+(pdftex.def)             Requested size: 232.19843pt x 154.7908pt.
+<images/recall_plot.png, id=246, 867.24pt x 578.16pt>
 File: images/recall_plot.png Graphic file (type png)
 <use images/recall_plot.png>
-Package pdftex.def Info: images/recall_plot.png  used on input line 329.
-(pdftex.def)             Requested size: 227.04126pt x 151.35904pt.
-<images/f1_plot.png, id=252, 867.24pt x 578.16pt>
+Package pdftex.def Info: images/recall_plot.png  used on input line 352.
+(pdftex.def)             Requested size: 232.19843pt x 154.7908pt.
+<images/f1_plot.png, id=247, 867.24pt x 578.16pt>
 File: images/f1_plot.png Graphic file (type png)
 <use images/f1_plot.png>
-Package pdftex.def Info: images/f1_plot.png  used on input line 335.
-(pdftex.def)             Requested size: 227.04126pt x 151.35904pt.
+Package pdftex.def Info: images/f1_plot.png  used on input line 358.
+(pdftex.def)             Requested size: 232.19843pt x 154.7908pt.
 
-Overfull \hbox (7.23021pt too wide) in paragraph at lines 355--355
+Overfull \hbox (7.23021pt too wide) in paragraph at lines 378--378
 []|\T1/ptm/b/n/8 Accuracy| 
  []
 
 
-Overfull \hbox (6.20609pt too wide) in paragraph at lines 355--355
+Overfull \hbox (6.20609pt too wide) in paragraph at lines 378--378
 []|\T1/ptm/b/n/8 Precision| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 []|\T1/ptm/b/n/8 F1
  []
 
-<images/test_samples_visualization.png, id=255, 3231.07124pt x 4074.22125pt>
+<images/test_samples_visualization.png, id=250, 3231.07124pt x 4074.22125pt>
 File: images/test_samples_visualization.png Graphic file (type png)
 <use images/test_samples_visualization.png>
-Package pdftex.def Info: images/test_samples_visualization.png  used on input line 368.
+Package pdftex.def Info: images/test_samples_visualization.png  used on input line 391.
 (pdftex.def)             Requested size: 252.0pt x 317.73825pt.
-<images/per_class_accuracy_all_sets.png, id=257, 3508.10625pt x 1923.185pt>
+[5 <./images/test_samples_visualization.png>]
+<images/per_class_accuracy_all_sets.png, id=266, 3508.10625pt x 1923.185pt>
 File: images/per_class_accuracy_all_sets.png Graphic file (type png)
 <use images/per_class_accuracy_all_sets.png>
-Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 376.
-(pdftex.def)             Requested size: 226.79846pt x 124.30711pt.
-[5 <./images/test_samples_visualization.png> <./images/per_class_accuracy_all_sets.png>]
+Package pdftex.def Info: images/per_class_accuracy_all_sets.png  used on input line 399.
+(pdftex.def)             Requested size: 252.0pt x 138.1288pt.
 <images/confusion_matrix_test.png, id=268, 2237.35875pt x 1949.2825pt>
 File: images/confusion_matrix_test.png Graphic file (type png)
 <use images/confusion_matrix_test.png>
-Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 384.
+Package pdftex.def Info: images/confusion_matrix_test.png  used on input line 407.
 (pdftex.def)             Requested size: 226.79846pt x 197.58685pt.
 
-Underfull \hbox (badness 3199) in paragraph at lines 437--438
-[]\T1/ptm/m/n/10 The fi-nal test re-sults in-di-cate that \T1/ptm/m/it/10 SEG-rapeSta-geNet
+Underfull \hbox (badness 2772) in paragraph at lines 457--458
+[]\T1/ptm/m/n/10 To as-sess the ef-fec-tive-ness of \T1/ptm/m/it/10 SEPierceS-ta-geNet\T1/ptm/m/n/10 , we
  []
 
 
-Underfull \hbox (badness 2689) in paragraph at lines 437--438
-\T1/ptm/m/n/10 sub-stan-tially out-per-forms both base-lines. EfficientNet-B0
- []
+Underfull \vbox (badness 1331) has occurred while \output is active []
 
-
-Underfull \hbox (badness 2012) in paragraph at lines 439--440
-\T1/ptm/m/n/10 EfficientNet-B0 reached its peak val-i-da-tion ac-cu-racy of
- []
-
-[6 <./images/accuracy_plot.png> <./images/precision_plot.png> <./images/recall_plot.png> <./images/f1_plot.png> <./images/confusion_matrix_test.png>]
-<images/eb.png, id=285, 4157.5325pt x 1465.475pt>
+ [6 <./images/accuracy_plot.png> <./images/precision_plot.png> <./images/recall_plot.png> <./images/f1_plot.png> <./images/per_class_accuracy_all_sets.png> <./images/confusion_matrix_test.png>]
+<images/eb.png, id=282, 4157.5325pt x 1465.475pt>
 File: images/eb.png Graphic file (type png)
 <use images/eb.png>
-Package pdftex.def Info: images/eb.png  used on input line 442.
-(pdftex.def)             Requested size: 252.0pt x 88.81915pt.
-<images/resnet.png, id=286, 4157.5325pt x 1475.5125pt>
+Package pdftex.def Info: images/eb.png  used on input line 465.
+(pdftex.def)             Requested size: 412.80157pt x 145.5051pt.
+<images/resnet.png, id=283, 4157.5325pt x 1475.5125pt>
 File: images/resnet.png Graphic file (type png)
 <use images/resnet.png>
-Package pdftex.def Info: images/resnet.png  used on input line 448.
-(pdftex.def)             Requested size: 252.0pt x 89.4275pt.
+Package pdftex.def Info: images/resnet.png  used on input line 472.
+(pdftex.def)             Requested size: 412.80157pt x 146.50171pt.
 
-Underfull \hbox (badness 1859) in paragraph at lines 453--454
-[]\T1/ptm/m/n/10 Per-class eval-u-a-tion fur-ther em-pha-sizes the ro-bust-ness
+Underfull \hbox (badness 2368) in paragraph at lines 477--478
+[]\T1/ptm/m/n/10 Calss-wise eval-u-a-tion shows both \T1/ptm/m/it/10 EfficientNet-B0 \T1/ptm/m/n/10 and
  []
 
-[7 <./images/eb.png> <./images/resnet.png>] (./PierceDiseasePaper.bbl)
+
+Underfull \hbox (badness 6001) in paragraph at lines 495--496
+[]\T1/ptm/m/n/10 While \T1/ptm/m/it/10 SEPierceS-ta-geNet \T1/ptm/m/n/10 had strong per-for-mance in
+ []
+
+[7] (./PierceDiseasePaper.bbl
+Underfull \vbox (badness 1189) has occurred while \output is active []
+
+ [8 <./images/eb.png> <./images/resnet.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -720,7 +721,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8] (./PierceDiseasePaper.aux)
+[9
+
+] (./PierceDiseasePaper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -730,21 +733,21 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `PierceDiseasePaper.out' has not changed.
-(rerunfilecheck)             Checksum: 7357E697790397D0BAEC07EF5CDF2936;2437.
+(rerunfilecheck)             Checksum: 0194C3724EEB5FA1D9C0E7C58789685F;2473.
  ) 
 Here is how much of TeX's memory you used:
- 15935 strings out of 474222
- 247996 string characters out of 5748732
- 2016975 words of memory out of 5000000
+ 15937 strings out of 474222
+ 248010 string characters out of 5748732
+ 2051975 words of memory out of 5000000
  37838 multiletter control sequences out of 15000+600000
- 676248 words of font info for 170 fonts, out of 8000000 for 9000
+ 677344 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1693b,1117s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1702b,1117s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PierceDiseasePaper.pdf (8 pages, 6928866 bytes).
+Output written on PierceDiseasePaper.pdf (9 pages, 6147307 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
- 320 compressed objects within 4 object streams
- 133 named destinations out of 1000 (max. 500000)
+ 389 PDF objects out of 1000 (max. 8388607)
+ 323 compressed objects within 4 object streams
+ 134 named destinations out of 1000 (max. 500000)
  217 words of extra memory for PDF output out of 10000 (max. 10000000)
 

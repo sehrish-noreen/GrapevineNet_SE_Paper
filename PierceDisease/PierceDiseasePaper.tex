@@ -50,20 +50,49 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{SEGrapeStageNet: SE-Attention EfficientNet for Grapevine Pierce’s Disease Stage Classification}
+\title{SEPierceStageNet: EfficientNet with SE-Attention for Grapevine Pierce’s Disease Stage Classification}
 
-\author{
-\IEEEauthorblockN{1\textsuperscript{st} Sehrish Noreen}
-\IEEEauthorblockA{\textit{Department of Software Engineering} \\
-\textit{University of Sargodha}\\
-Sargodha, Pakistan \\
-sehrishnoreen31@gmail.com}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Sehrish Noreen}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
 }
 
 \maketitle
 
 \begin{abstract}
-Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{SEGrapeStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an EfficientNet-B0 backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline EfficientNet-B0 (73.07\%) and ResNet50 (65.34\%) architectures. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
+Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{SEPierceStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an \textit{EfficientNet-B0} backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline \textit{EfficientNet-B0} with 73.07\% and \textit{ResNet50} with 65.34\% test accuracy. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -72,27 +101,24 @@ Deep Learning, Computer Vision, Grapevine, Pierce Disease, EfficientNet, SE Atte
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=\textwidth]{images/methodology.png}}
-	\caption{Methodology}
+	\caption{Methodology of the proposed SEPierceStageNet: grapevine disease stage classification framework.}
 	\label{fig:methodology}
 \end{figure*}
 
 \section{Introduction}
-Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the Glassy-Winged Sharpshooter. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. 
+Pierce's Disease in grapevines is a fatal disease caused by the bacterium Xylella fastidiosa. This becterium hat lives in the xylem of grapevines. It blocks water flow and causes symptoms like leaf scorch, wilting, and eventual vine death. It spreads by insects like the \textit{Glassy Winged Sharpshooter}. Grapevine health and fruit quality are critical measures of vineyard productivity and quality. 
 Recent climate studies indicate an increasing global risk of grapevine Pierce’s disease. Analyses of over 100,000 vineyards show that the area at risk in Europe has increased from 22\% to over 41\%. While in South Africa it has increased from roughly 6\% to more than 47\% \cite{GimenezRomero2025}. Global warming may also cause the spread of Pierce’s disease  into major European wine growing regions \cite{GimenezRomero2024}.
 
 Making early disease detection and accurate assessment of leaf conditions is essential for precision viticulture Traditionally, plant leaf disease monitoring has been done through manual inspection. Manual inspection relies completely on human observation. Different inspectors may interpret the same symptoms in different ways that leads to inconsistent conclusions about leaf health. Traditional evaluation methods do not follow any uniform standard measure. These methods are also very time consuming. Only a small part of the vineyard can be examined manually due to resource constraints.
 
 Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies.  Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation. 
 
-To address these gaps, this paper proposes \textit{SEGrapeStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen EfficientNet-B0 \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the EfficientNet-B0 parameters, \textit{SEGrapeStageNet} achieves high accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices.
-
-The key contributions of this paper include:
+To address these gaps, this paper proposes \textit{SEPierceStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen \textit{EfficientNet-B0} \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the \textit{EfficientNet-B0} parameters, \textit{SEPierceStageNet} achieves accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices. The key contributions of this paper include:
 \begin{itemize}
     \item A multi-stage grapevine leaf Pierce's Disease classification model.
     \item Integration of a \ac{se} attention mechanism to enhance feature representation and improve stage wise disease classification accuracy.
     \item Robust performance on training, validation, and test splits, achieving a high accuracy on all splits that indicates generalizability to unseen data.
 \end{itemize}
-
 
 The rest of the paper is structured as follows. Section \ref{sec:rw} reviews most recent and relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation. Section \ref{sec:comparison} comparative analysis with baseline pretrained models. Seciton \ref{sec:limitations} provides limitations, and directions for future work. Finally, Section \ref{sec:con} concludes the paper with key findings.
 
@@ -100,7 +126,7 @@ The rest of the paper is structured as follows. Section \ref{sec:rw} reviews mos
 \label{sec:rw}
 Grapevine leaf disease detection has seen significant progress over the past decade. Advancements in \ac{dl}, \ac{ml}, and spectroscopic analysis. Among all, \ac{cnn}s have emerged as the most effective approach withh their capability of extracting spatial, textural, and morphological features from complex leaf images. For instance, \cite{Malagol2025} applied a ResNet based architecture to quantify hair structures on grape leaves with an accuracy of 95.41\%. Other than classification, segmentation of diseased regions has also been explored to focus on biologically relevant features only. Study \cite{Zhang2024GMamba} used a UNet state space model on PlantVillage dataset, achieving an \ac{iou} of 3.28. Object detection methods have also facilitated the on-field applications by enabling automated identification of diseased areas in leafs. \cite{Khan2025YOLOv7} reported a \ac{map} of 64.6\%, while a more recent YOLOv11 approach \cite{Zhou2025YOLOGrape} improved detection performance with a \ac{map} of 95.2\%.
 
-Classification tasks have also reached strong levels of performance. ResNet models have showed stable and consistent behavior, \cite{Sagar2025} achieved 95\% accuracy on grape leaf datasets. Methods that fuse several backbone networks have further improved accuracy by using feature information from different architectures. For example, \cite{Vo2026AFCNet} combined ResNet50, EfficientNetB0, and MobileNetV2, resulting in 99.83\% accuracy. Which shows that the use of different feature extractors together can enhance classification accuracy. Models that integrate transformer architectures with convolutional layers have also shown reliable results \cite{Zhang2025Transformer} gained 98.48\% accuracy. Similarly, cascaded \ac{cnn} models, as proposed by \cite{AlNasseri2025}; approached near perfect classification with 100\% accuracy. Efficient and compact models designed for faster inference have gained significant attention for edge devices. MobileNetV2 combined with\ac{vit} modules \cite{Tanvir2025} had strong outcomes with 99.2\% accuracy. While comparative evaluations \cite{Mathew2025} reported 99.5\% accuracy. \ac{dcnn} based on VGG16 \cite{Prasad2024} reached 99.18\% accuracy. Showing that classical architectures can still offer competitive performance. Modified \ac{cnn} models have further strengthened classification tasks, study \cite{Talaat2025} reported 99.7\% accuracy and \cite{Karim2024} reached 99.66\%. Even simpler refined \ac{cnn} approaches \cite{Naik2025} have stable and dependable performance across multiple grape leaf disease datasets.
+Classification tasks have also reached strong levels of performance. ResNet models have showed stable and consistent behavior, \cite{Sagar2025} achieved 95\% accuracy on grape leaf datasets. Methods that fuse several backbone networks have further improved accuracy by using feature information from different architectures. For example, \cite{Vo2026AFCNet} combined \textit{ResNet50}, EfficientNetB0, and MobileNetV2, resulting in 99.83\% accuracy. Which shows that the use of different feature extractors together can enhance classification accuracy. Models that integrate transformer architectures with convolutional layers have also shown reliable results \cite{Zhang2025Transformer} gained 98.48\% accuracy. Similarly, cascaded \ac{cnn} models, as proposed by \cite{AlNasseri2025}; approached near perfect classification with 100\% accuracy. Efficient and compact models designed for faster inference have gained significant attention for edge devices. MobileNetV2 combined with\ac{vit} modules \cite{Tanvir2025} had strong outcomes with 99.2\% accuracy. While comparative evaluations \cite{Mathew2025} reported 99.5\% accuracy. \ac{dcnn} based on VGG16 \cite{Prasad2024} reached 99.18\% accuracy. Showing that classical architectures can still offer competitive performance. Modified \ac{cnn} models have further strengthened classification tasks, study \cite{Talaat2025} reported 99.7\% accuracy and \cite{Karim2024} reached 99.66\%. Even simpler refined \ac{cnn} approaches \cite{Naik2025} have stable and dependable performance across multiple grape leaf disease datasets.
 
 Beyond \ac{dl} methods, classical \ac{ml} methods also provide complementary insights that are reliable for nutrient assessment and early pathogen detection. \ac{svm}s combined with feature optimization  were applied by \cite{Shi2025} to classify fungal spores. They report 97.5\% accuracy, highlighting the usefulness of traditional \ac{ml} techniques when paired with domain specific feature engineering. Chemometric regression models have been successfully used for predicting macro and micro-nutrient concentrations, \cite{Manzano2025} reported an R² of 0.90 for sodium content. Early detection of viral infections has been made possible through hyperspectral and multispectral sensing techniques. As presented in paper \cite{Lee2024} where strong infections were identified at CT values below 35.
 
@@ -114,7 +140,7 @@ This study implements a modified EfficientNetB0 \ac{dl} model for detecting and 
 The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure~\ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table~\ref{tab:data_distribution} shows the data distribution. As shown in Listing~\ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets. 
 
 \begin{table}[h!]
-    \caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages}
+    \caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages.}
     \centering
     \begin{tabular}{m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth} m{0.2\columnwidth}}
         \toprule
@@ -157,7 +183,7 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 		\caption{Stage 3}
 		\label{fig:stage3}
 	\end{subfigure}
-	\caption{Samples from Grapevine Pierce's Disease dataset}
+	\caption{Samples from Grapevine Pierce's Disease dataset.}
 	\label{fig:datasamples}
 \end{figure}
 
@@ -168,32 +194,31 @@ Class mapping: {'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
 Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
 \end{lstlisting}
 
-
 \subsection{Pre-processing}
-Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
+Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go.This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
-	\caption{Data preprocessing}
+	\caption{Examples of data augmentation techniques applied during the training.}
 	\label{fig:preprocessing}
 \end{figure}
 
-\subsection{Classification and Evaluation}
-The primary model, \textit{SEGrapeStageNet}, is based on EfficientNet-B0. It uses transfer learning. As shown in Algorithm~\ref{alg:segrapestagenet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard EfficientNet-B0 and ResNet50 architectures were implemented under identical conditions.
+\subsection{Model Training and Evaluation}
+The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B0}. It uses transfer learning. As shown in Algorithm~\ref{alg:SEPierceStageNet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard \textit{EfficientNet-B0} and \textit{ResNet50} architectures were implemented under identical conditions.
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
-	\caption{\textit{SEGrapeStageNet} Model architecture}
+	\caption{Architecture of \textit{SEPierceStageNet} with \textit{EfficientNet-B0} backbone and \ac{se} attention.}
 	\label{fig:model}
 \end{figure*}
 
 \begin{algorithm}
-\caption{SEGrapeStageNet Training, Validation, and Testing}
-\label{alg:segrapestagenet}
+\caption{SEPierceStageNet Training, Validation, and Testing.}
+\label{alg:SEPierceStageNet}
 \begin{algorithmic}[1]
 \STATE \textbf{Input:} Image batch $I$
 \STATE \textbf{Output:} Predicted disease class labels
 
-\STATE Load pretrained EfficientNet-B0 backbone
+\STATE Load pretrained \textit{EfficientNet-B0} backbone
 \STATE Freeze first six feature blocks
 \STATE Insert SE attention module
 \STATE Construct classifier head
@@ -208,15 +233,15 @@ The primary model, \textit{SEGrapeStageNet}, is based on EfficientNet-B0. It use
 
 \STATE Evaluate model on validation data
 \STATE Evaluate model on test data
-\STATE Return trained SEGrapeStageNet model and test predictions
+\STATE Return trained SEPierceStageNet model and test predictions
 \end{algorithmic}
 \end{algorithm}
 
 \subsubsection{Backbone}
-The backbone of model is based on EfficientNet-B0. EfficientNet-B0 provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. Given in Listing~\ref{lst:backbone}. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. 
+The backbone of model is based on \textit{EfficientNet-B0}. \textit{EfficientNet-B0} provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. Given in Listing~\ref{lst:backbone}. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. 
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Backbone Initialization of SEGrapeStageNet},
+caption={Backbone Initialization of SEPierceStageNet},
 label={lst:backbone}]
 Initialize EfficientNet-B0 with pretrained ImageNet weights
 Divide the backbone into ordered feature blocks
@@ -247,14 +272,12 @@ Output: Recalibrated feature map
 \subsubsection{Classification Head}
 The last part is classification head. It maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Given in Listing~\ref{{lst:classhead}}.
 
-\begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Classification Head},
-label={lst:classhead}]
+\begin{lstlisting}[style=ieeelisting, frame=none, basicstyle=\ttfamily, caption={Classification Head}, label={lst:classhead}]
 Input: Feature map F
 
 Apply global average pooling and flatten
-Fully connected layer: 1280 -> 512, apply ReLU and dropout
-Fully connected layer: 512 -> number of classes
+Fully connected layer with 512 units, ReLU activation, and dropout
+Fully connected layer to output class scores
 
 Output: Class scores
 \end{lstlisting}
@@ -263,7 +286,7 @@ Output: Class scores
 During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention and scales the features. Finally, the classification head processes those features and gives the class predictions. Shown in Listing~\ref{{lst:fpass}}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Forward Pass of SEGrapeStageNet},
+caption={Forward Pass of SEPierceStageNet},
 label={lst:fpass}]
 Input: Image batch X
 
@@ -308,13 +331,13 @@ In addition to this, onfusion matrix was also visualized to analyze misclassific
     \centering
 
     % row1
-    \begin{subfigure}[b]{0.44\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/accuracy_plot.png}
         \caption{Accuracy}
         \label{fig:accuracy}
     \end{subfigure}
-    \begin{subfigure}[b]{0.44\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/precision_plot.png}
         \caption{Precision}
@@ -324,31 +347,31 @@ In addition to this, onfusion matrix was also visualized to analyze misclassific
     \vspace{0.5em}
 
     % row2
-    \begin{subfigure}[b]{0.44\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/recall_plot.png}
         \caption{Recall}
         \label{fig:recall}
     \end{subfigure}
-    \begin{subfigure}[b]{0.44\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/f1_plot.png}
         \caption{F1-score}
         \label{fig:f1}
     \end{subfigure}
 
-    \caption{\textit{SEGrapeStageNet} performance metrics across training and validation subsets}
+    \caption{Training and validation curves for \textit{SEPierceStageNet}.}
     \label{fig:performance}
 \end{figure*}
 
 \section{Results}
 \label{sec:results}
-\textit{SEGrapeStageNet} demonstrated strong and consistent performance on training, validation, and test datasets. It outperforms baseline architectures EfficientNet-B0 and ResNet-50. The model was trained for up to 20 epochs. We used an ImageNet pretrained EfficientNet-B0 backbone combined with an \ac{se} module, custom classification head, optimized using AdamW. The pretrained backbone was fine-tuned with a learning rate of $1\times10^{-4}$. The classifier was trained at $1\times10^{-3}$.  Cross-entropy loss with label smoothing of 0.1 was applied. A one-cycle learning rate scheduler with a 40\% warm up period followed by cosine annealing was used. Mixed precision training accelerated computations and reduced the memory usage. We implemented Early stopping with a patience of 5 epochs to prevent overfitting. The best performing model based on validation accuracy was selected.
+\textit{SEPierceStageNet} demonstrated strong and consistent performance on training, validation, and test datasets. It outperforms baseline architectures \textit{EfficientNet-B0} and ResNet-50. The model was trained for up to 20 epochs. We used an ImageNet pretrained \textit{EfficientNet-B0} backbone combined with an \ac{se} module, custom classification head, optimized using AdamW. The pretrained backbone was fine-tuned with a learning rate of $1\times10^{-4}$. The classifier trained at $1\times10^{-3}$.  Cross-entropy loss with label smoothing of 0.1 was applied. A OneCycle learning rate scheduler with a 40\% warm up period and cosine annealing was used. Mixed precision training accelerated computations and reduced the memory usage. We implemented Early stopping with a patience of 5 epochs to prevent overfitting. The best performing model based on validation accuracy was selected.
 
-Training and validation metrics recorded for each epoch; including accuracy, precision, recall, and F1-score. The model showed steady improvements with an early training accuracy of 51.20\% and validation accuracy of 63.25\% after the first epoch. By epoch 10, training accuracy reached 84.86\% and validation accuracy 82.75\%, showing an effective learning. The final evaluation metrics are summarized in Table~\ref{tab:segrapestagenet_metrics}.
+Training and validation metrics recorded for each epoch; including accuracy, precision, recall, and F1-score. The model showed steady improvements with an early training accuracy of 51.20\% and validation accuracy of 63.25\% after the first epoch. By epoch 10, training accuracy reached 84.86\% and validation accuracy 82.75\%, showing an effective learning. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet_metrics}.
 
 \begin{table}[H]
-\caption{Training, Validation, and Test Metrics for \textit{SEGrapeStageNet}}
+\caption{Training, validation, and test metrics of \textit{SEPierceStageNet}.}
 \centering
 \begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
 \toprule
@@ -359,22 +382,22 @@ Validation Set & 0.9225 & 0.9224 & 0.9225 & 0.9222 \\
 Test Set & 0.9526 & 0.9526 & 0.9525 & 0.9524 \\
 \bottomrule
 \end{tabular}
-\label{tab:segrapestagenet_metrics}
+\label{tab:SEPierceStageNet_metrics}
 \end{table}
 
 The test results confirm that our model generalizes well on unseen data. It maintains high precision and recall on all disease stages. A total of 401 test samples were processed. It made 383 correct predictions and 18 misclassifications, resulting in an empirical test accuracy of 95.51\%. Correctly classified samples had high confidence ranging from 0.82 to 0.94. While misclassified samples had lower confidences. Random sample predictions are shown in Figure~\ref{fig:predictions}, showing the model's ability to diffirentiate between fresh, stage 1, stage 2, and stage 3 disease stages.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=\columnwidth]{images/test_samples_visualization.png}}
-\caption{\textit{SEGrapeStageNet} model prediction samples for test data. Correctly predicted samples shown in green text, misclassifications in red text}
+\caption{Prediction results of \textit{SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color.}
 \label{fig:predictions}
 \end{figure}
 
-Class-wise evaluation indicates high accuracy across all disease stages. Misclassifications primarily occurred between adjacent disease stages Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. Figure~\ref{fig:perclass} illustrates the accuracy of each class on training, validation, and test sets, showing a stable performance in all classes.
+Class-wise evaluation indicates high accuracy across all disease stages. Small number of misclassifications occurred between similar disease stages: Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. Figure~\ref{fig:perclass} illustrates the accuracy of each class on training, validation, and test sets, showing a stable performance in all classes.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=0.9\columnwidth]{images/per_class_accuracy_all_sets.png}}
-\caption{Class wise accuracies across training, validation, and test datasets}
+\centerline{\includegraphics[width=\columnwidth]{images/per_class_accuracy_all_sets.png}}
+\caption{Class-wise accuracy of proposed model on training, validation, and test datasets.}
 \label{fig:perclass}
 \end{figure}
 
@@ -382,19 +405,14 @@ The confusion matrix for the test set given in Figure~\ref{fig:cmatrix} provides
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_matrix_test.png}}
-\caption{Confusion matrix for test data}
+\caption{Confusion matrix for the test dataset with true and predicted class labels.}
 \label{fig:cmatrix}
 \end{figure}
 
-Overall, the model exhibits reliable, and generalizable performance for grapevine disease stage classification. Given a high accuracy, precision, recall, and F1-scores across all subsets.
-
-\section{Comparison and Analysis}
-\label{sec:comparison}
-
-To assess the effectiveness of \textit{SEGrapeStageNet}, we made a comprehensive comparison with two widely used baseline models: EfficientNet-B0 and ResNet50. Both baselines were trained under identical conditions as \textit{SEGrapeStageNet}. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets. Detailed comparison given in Table~\ref{tab:model_comparison}.
+Overall, the model has reliable performance for grapevine disease stage classification. Given a high accuracy, precision, recall, and F1-scores across all subsets.
 
 \begin{table*}[!t]
-\caption{Performance Comparison of \textit{SEGrapeStageNet} and Baseline Models Across Training, Validation, and Test Sets; Training accuracy corresponds to the epoch yielding the best validation performance}
+\caption{Performance Comparison of \textit{SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}
 \centering
 \begin{tabular}{
 m{0.30\textwidth}
@@ -411,19 +429,19 @@ m{0.15\textwidth}
 \textbf{Params (M)} \\
 \midrule
 
-\textbf{\textit{SEGrapeStageNet}} &
+\textbf{\textit{SEPierceStageNet}} &
 \textbf{0.9557} &
 \textbf{0.9225} &
 \textbf{0.9526} &
 \textbf{6.16 (2.19 Trainable)} \\
 
-EfficientNet-B0 &
+\textit{EfficientNet-B0} &
 0.6712 &
 0.7825 &
 0.7307 &
 5.30 \\
 
-ResNet50 &
+\textit{ResNet50} &
 0.6254 &
 0.7325 &
 0.6534 &
@@ -434,52 +452,56 @@ ResNet50 &
 \label{tab:model_comparison}
 \end{table*}
 
-The final test results indicate that \textit{SEGrapeStageNet} substantially outperforms both baselines. EfficientNet-B0 achieved a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261, whereas ResNet50 achieved 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{SEGrapeStageNet} achieved 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score, demonstrating both faster learning and superior generalization.
+\section{Model Comparison and Analysis}
+\label{sec:comparison}
+To assess the effectiveness of \textit{SEPierceStageNet}, we made a comparison with two widely used baseline models: \textit{EfficientNet-B0} and \textit{ResNet50}. Both baseline models were trained in same conditions as \textit{SEPierceStageNet}. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets. Detailed comparison given in Table~\ref{tab:model_comparison}.
 
-Figures~\ref{fig:eb0} and \ref{fig:resnet} present the validation accuracy and loss curves for EfficientNet-B0 and ResNet50, respectively. EfficientNet-B0 reached its peak validation accuracy of 78.25\% at epoch 14, while ResNet50 peaked at 73.25\% at epoch 11. These trends highlight the slower convergence and lower overall performance of the baselines compared to \textit{SEGrapeStageNet}, which achieved a best validation accuracy of 92.25\% at epoch 17.
+The final test results indicate that \textit{SEPierceStageNet} outperforms both baseline pretrained models. \textit{EfficientNet-B0} had a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261. \textit{ResNet50} had 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{SEPierceStageNet} had 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score. Outperforming both pretrained models in faster learning and superior generalization.
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=\columnwidth]{images/eb.png}}
-\caption{Validation accuracy and loss curves for EfficientNet-B0. Peak accuracy = 78.25\%.}
-\label{fig:eb0}
-\end{figure}
+Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{SEPierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=\columnwidth]{images/resnet.png}}
-\caption{Validation accuracy and loss curves for ResNet50. Peak accuracy = 73.25\%.}
-\label{fig:resnet}
-\end{figure}
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/eb.png}
+    \caption{Learning curves for \textit{EfficientNet-B0}.}
+    \label{fig:eb}
+\end{figure*}
 
-Per-class evaluation further emphasizes the robustness of \textit{SEGrapeStageNet}. Both EfficientNet-B0 and ResNet50 showed lower performance on intermediate disease stages, particularly Stage 1 and Stage 2. EfficientNet-B0 recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2, whereas ResNet50 underperformed with F1-scores of 0.57 and 0.51, respectively. Misclassifications primarily occurred between adjacent disease stages due to subtle visual similarities, a limitation mitigated in \textit{SEGrapeStageNet} through attention mechanisms and an optimized classifier.
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/resnet.png}
+    \caption{Learning curves for \textit{ResNet50}.}
+    \label{fig:resnet}
+\end{figure*}
+
+Calss-wise evaluation shows both \textit{EfficientNet-B0} and \textit{ResNet50} showed lower performance on intermediate disease stages; Stage 1 and Stage 2. \textit{EfficientNet-B0} recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2. The \textit{ResNet50} underperformed with F1-scores of 0.57 and 0.51, for Stage 1 and 2 disease. Misclassifications primarily occurred between adjacent disease stages. This limitation was largely mitigated in \textit{SEPierceStageNet} through attention mechanism.
 
 \begin{itemize}
-    \item \textbf{EfficientNet-B0:} High precision (0.85) for the Fresh class but lower performance for Stage-2 (F1 = 0.55). Overall test accuracy = 0.7307.  
-    \item \textbf{ResNet50:} Moderate precision for Fresh (0.88) but low recall (0.61), with Stage-1 and Stage-2 significantly underperforming. Overall test accuracy = 0.6534.
+    \item \textbf{\textit{EfficientNet-B0}:} High precision of 0.85 for the Fresh class but lower performance for Stage-2 as F1 recorded 0.55. Had Overall test accuracy of 0.7307.  
+    \item \textbf{\textit{ResNet50}:} Moderate precision 0.88 for Fresh but low recall of 0.61. Stage-1 and Stage-2 underperforming. Overall test accuracy was 0.6534.
 \end{itemize}
-The significant improvement of \textit{SEGrapeStageNet} over the baselines can be attributed to three key architectural enhancements: 
+The significant improvement of \textit{SEPierceStageNet} over the baselines: 
 \begin{enumerate}
-    \item Strategic partial layer freezing to leverage pretrained features without overfitting.
-    \item Incorporation of attention modules to focus on disease-specific regions.
-    \item An effective classification head tuned for multi-class disease stage differentiation.
+    \item Partial layer freezing to use pretrained features without overfitting dataset.
+    \item Integration of attention module to focus on disease specific area of leaf.
+    \item Effective classification head tuned for multi-class disease stage differentiation.
 \end{enumerate}
 
-These modifications demonstrate that carefully designed domain-specific architectures can substantially outperform general-purpose pretrained models in agricultural disease detection tasks.
+These modifications show that carefully designed domain specific models can outperform general-purpose pretrained models in agricultural disease detection tasks.
 
 \section{Limitations and Future Directions}
 \label{sec:limitations}
 
-While \textit{SEGrapeStageNet} demonstrates strong performance in grapevine disease stage classification, several limitations must be acknowledged, and opportunities for improvement exist. One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully capture the variability in grapevine leaves across different cultivars, climates, lighting conditions, and imaging devices. This could potentially limit the generalizability of the model in real-world vineyard scenarios. Additionally, the model exhibits challenges in distinguishing subtle differences between adjacent disease stages, such as Stage 2 versus Stage 3, reflecting the inherent difficulty of progressive symptom recognition and indicating a limitation in sensitivity to fine-grained visual features.
+While \textit{SEPierceStageNet} had strong performance in grapevine disease stage classification still several limitations must be acknowledged. And opportunities for improvement still exist. One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 4004 images which had 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully contain the variability in grapevine leaves in different climates, lighting conditions, and devices. This can limit the generalizability of the model to different conditions in real-world vineyard scenarios. Additionally, the model exhibits challenges in distinguishing differences between adjacent disease stages, like in Stage 2 and Stage 3. It reflects the difficulty of progressive symptom recognition. Environmental factors also pose a constraint. The current model was trained on images captured under a controlled environment. But on field deployment may bring varying lighting, occlusion by other leaves, dust, or may be overlapping plant structures. All of these can impact prediction accuracy. Although the dataset was balanced across disease stages during training; real world data is often skewed toward early or healthy stages. The performance of \textit{SEPierceStageNet} under such class imbalance conditions remains untested. Despite the inclusion of attention mechanisms that improve feature representation, the model remains a black box and limits interpretability and that hinders real life adoption.
 
-Environmental factors also pose a potential constraint. The current model was trained on images captured under relatively controlled conditions, whereas in-field deployment may introduce varying illumination, occlusion by other leaves, dust, or overlapping plant structures, all of which could impact predictive accuracy. While the dataset was balanced across disease stages during training, real-world distributions are often skewed toward early or healthy stages. The performance of \textit{SEGrapeStageNet} under such class-imbalanced conditions remains untested and could lead to bias toward majority classes. Finally, despite the inclusion of attention mechanisms that improve feature representation, the model remains largely a black box, limiting interpretability and potentially hindering adoption by viticulturists who require explainable diagnostics for decision-making.
+We can address the limitaions by expanding the datasets to include more diverse environmental conditions. Adding multi-modal data like hyperspectral imaging or infrared can improve sensitivity to disease progression and reduce misclassifications between adjacent stages. For practical deployment, developing mobile or edge versions of \textit{SEPierceStageNet} would enable real-time disease detection in-field. Techniques such as focal loss, data augmentation, or synthetic oversampling can help the model remain robust under imbalance data distributions. Integrating interpretability methods such as Grad-CAM, attention heatmaps, or feature attribution can provide visual explanations of predictions and improve trust and usability for agriculture experts. Implementing incremental learning or domain adaptation strategies would allow the model to adapt over time to new disease variants or environmental conditions without full retraining.
 
-Several directions can be pursued to address these limitations. Expanding the dataset to include more diverse environmental conditions, cultivars, and imaging devices would enhance model generalizability. Incorporating multi-modal data, such as hyperspectral imaging, infrared, or temporal sequences, could improve sensitivity to subtle disease progression and reduce misclassifications between adjacent stages. For practical deployment, developing mobile or edge-computing versions of \textit{SEGrapeStageNet} would enable real-time disease detection in-field, accounting for varying lighting, angles, and partial occlusion. Techniques such as focal loss, data augmentation, or synthetic oversampling could help the model remain robust under imbalanced disease distributions. Integrating interpretability methods, such as Grad-CAM, attention heatmaps, or feature attribution, could provide visual explanations of predictions, improving trust and usability for agricultural experts. Moreover, coupling the model with vineyard management systems could enable predictive disease monitoring, early warning alerts, and automated treatment recommendations, advancing precision agriculture practices. Implementing incremental learning or domain adaptation strategies would allow the model to adapt over time to new disease variants or environmental conditions without full retraining.
-
-In summary, while \textit{SEGrapeStageNet} achieves high accuracy under controlled experimental conditions, addressing these limitations through dataset expansion, multi-modal feature incorporation, in-field testing, interpretability, and continuous learning will be essential for practical deployment. These future directions have the potential to enhance model robustness, sensitivity, and usability, moving toward fully automated, real-time grapevine disease monitoring systems.
+In summary, while \textit{SEPierceStageNet} achieves high accuracy in experimental conditions, addressing these limitations will be essential for the practical deployment.
 
 
 \section{Conclusion}
 \label{sec:con}
-TIn this paper, we developed an efficient model for multi-stage classification of grapevine leaves affected by Pierce disease. The combination of a frozen EfficientNet-B0 backbone, \ac{se} attention module, and compact classification head enabled high accuracy while keeping computational costs low. Analysis of misclassifications showed that errors were primarily between adjacent stages, indicating the model captures disease progression effectively. Overall, the model provides a practical solution for real-time vineyard monitoring, supporting early disease detection and precision viticulture. Future work will focus on in-field deployment and extension to other grapevine diseases.
+In this paper, we developed an efficient model for multi-stage classification of grapevine leaves affected by Pierce's disease. The combination of a frozen \textit{EfficientNet-B0} backbone, \ac{se} attention module, and compact classification head gave a better accuracy while keeping computational costs low. Analysis of misclassifications showed that errors were primarily between adjacent stages and the model captures disease progression effectively. The model provides a practical solution for vineyard monitoring, supports early disease detection. Future work will focus on real-world deployment and extension to other grapevine diseases.
 
 \vspace{12pt}
 \color{black}
