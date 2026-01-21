@@ -45,7 +45,7 @@
 \newacro{iou}[IoU]{Intersection over Union}
 \newacro{gradcam}[Grad-CAM]{Gradient-weighted Class Activation Mapping}
 
-\usepackage[colorlinks=true, allcolors=red]{hyperref} 
+\usepackage[colorlinks=true, allcolors=blue]{hyperref} 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -238,7 +238,7 @@ The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B
 \end{algorithm}
 
 \subsubsection{Backbone}
-The backbone of model is based on \textit{EfficientNet-B0}. \textit{EfficientNet-B0} provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapts to the target dataset. Approximately 75\% of the early layers were frozen. Given in Listing~\ref{lst:backbone}. It allows only the later layers to be fine-tuned, which balances transfer learning with task specific adaptation. 
+The backbone of the model is based on \textit{EfficientNet-B0}, which provides hierarchical feature extraction from input images. The model uses pretrained weights to retain generic visual features while also adapting to the target dataset. Approximately 75\% of the early layers were frozen (see Listing~\ref{lst:backbone}), allowing only the later layers to be fine-tuned. This strategy preserves robust low-level features learned from large-scale data while focusing computational resources on adapting higher-level representations to the specific characteristics of our dataset, improving convergence and reducing the risk of overfitting.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Backbone Initialization of SEPierceStageNet},
@@ -254,8 +254,31 @@ For each feature block with index i do
 End for
 \end{lstlisting}
 
-\subsubsection{\ac{se} Attention Module}
-Next part is an \ac{se} attention module that is applied to the final feature maps. It performs global average pooling. Than there is a small bottleneck with ReLU and sigmoid activations to the compute channel-wise attention. The attention weights scale the feature maps. It emphasizes the most informative channels to improve classification. Listing~\ref{lst:semodule} shows \ac{se} module details.
+\subsection{\ac{se} Module}
+
+The \ac{se} module is designed to improve the representational power of a network by explicitly modeling channel-wise interdependencies. It consists of two main operations:
+
+\begin{enumerate}
+    \item \textbf{Squeeze:} Global average pooling is applied to each feature map to generate a channel-wise descriptor:
+    \begin{equation}
+        z_c = \frac{1}{H \times W} \sum_{i=1}^{H} \sum_{j=1}^{W} X_c(i,j)
+    \end{equation}
+    where \(X_c \in \mathbb{R}^{H \times W}\) is the \(c\)-th channel of the feature map, and \(z_c\) is its global descriptor.
+
+    \item \textbf{Excitation:} The channel descriptors are passed through a small two-layer fully connected network with a non-linear activation and a sigmoid to generate channel-wise weights:
+    \begin{equation}
+        s = \sigma(W_2 \delta(W_1 z))
+    \end{equation}
+    where \(W_1\) and \(W_2\) are learnable weight matrices, \(\delta\) is the ReLU activation, and \(\sigma\) is the sigmoid function.
+    
+    \item \textbf{Recalibration:} Finally, the original feature maps are rescaled using these learned weights:
+    \begin{equation}
+        \tilde{X}_c = s_c \cdot X_c
+    \end{equation}
+\end{enumerate}
+
+Although \textit{EfficientNet-B0} contains built-in \ac{se} blocks, we introduce an additional trainable \ac{se} module at the feature head to better adapt to our dataset. This module performs task-specific channel recalibration on the final convolutional features, enhancing validation accuracy while maintaining a small train–validation gap. Adding this lightweight module avoids unfreezing more backbone layers, which could increase overfitting, yet provides effective channel-level feature refinement with minimal parameter overhead (see Section~\ref{sec:results}).
+
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={\ac{se} Module},
@@ -459,6 +482,8 @@ To assess the effectiveness of \textit{SEPierceStageNet}, we made a comparison w
 The final test results indicate that \textit{SEPierceStageNet} outperforms both baseline pretrained models. \textit{EfficientNet-B0} had a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261. \textit{ResNet50} had 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{SEPierceStageNet} had 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score. Outperforming both pretrained models in faster learning and superior generalization.
 
 Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{SEPierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
+
+The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The proposed \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
 
 \begin{figure*}[!t]
     \centering
