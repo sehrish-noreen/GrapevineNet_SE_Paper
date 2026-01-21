@@ -88,4 +88,7 @@ L.~Lee, A.~Reynolds, Y.~Lan, and B.~Meng, ``Identification of unique electromagn
 M.~Islam, ``Piercedisease: Xylella fastidiosa affected grape leaves comprehensive image dataset,'' 2025. [Online]. Available: \url{https://doi.org/10.17632/p4rsrrmyg8.1}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Selvaraju_2017_ICCV}
+R.~R. Selvaraju, M.~Cogswell, A.~Das, R.~Vedantam, D.~Parikh, and D.~Batra, ``Grad-cam: Visual explanations from deep networks via gradient-based localization,'' in \emph{Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, Oct 2017.
+
 \end{thebibliography}

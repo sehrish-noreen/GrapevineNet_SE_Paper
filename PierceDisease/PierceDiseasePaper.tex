@@ -277,7 +277,7 @@ The \ac{se} module is designed to improve the representational power of a networ
     \end{equation}
 \end{enumerate}
 
-Although \textit{EfficientNet-B0} contains built-in \ac{se} blocks, we introduce an additional trainable \ac{se} module at the feature head to better adapt to our dataset. This module performs task-specific channel recalibration on the final convolutional features, enhancing validation accuracy while maintaining a small train–validation gap. Adding this lightweight module avoids unfreezing more backbone layers, which could increase overfitting, yet provides effective channel-level feature refinement with minimal parameter overhead (see Section~\ref{sec:results}).
+Although \textit{EfficientNet-B0} contains built-in \ac{se} blocks, we introduce an additional trainable \ac{se} module at the feature head to better adapt to our dataset. This module performs task-specific channel recalibration on the final convolutional features, enhancing validation accuracy while maintaining a small train–validation gap. Adding this lightweight module avoids unfreezing more backbone layers, which could increase overfitting, yet provides effective channel-level feature refinement with minimal parameter overhead. As given in Section~\ref{sec:results}.
 
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
@@ -410,29 +410,40 @@ Test Set & 0.9526 & 0.9526 & 0.9525 & 0.9524 \\
 
 The test results confirm that our model generalizes well on unseen data. It maintains high precision and recall on all disease stages. A total of 401 test samples were processed. It made 383 correct predictions and 18 misclassifications, resulting in an empirical test accuracy of 95.51\%. Correctly classified samples had high confidence ranging from 0.82 to 0.94. While misclassified samples had lower confidences. Random sample predictions are shown in Figure~\ref{fig:predictions}, showing the model's ability to diffirentiate between fresh, stage 1, stage 2, and stage 3 disease stages.
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=\columnwidth]{images/test_samples_visualization.png}}
+\begin{figure*}
+\centerline{\includegraphics[width=0.7\textwidth]{images/test_samples_visualization.png}}
 \caption{Prediction results of \textit{SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color.}
 \label{fig:predictions}
-\end{figure}
+\end{figure*}
 
+\begin{figure*}
+\centerline{\includegraphics[width=\textwidth]{images/gradcam.png}}
+\caption{\ac{gradcam} based explainability of \textit{SEPierceStageNet} on representative test images. For each sample, the original image is shown with the \ac{gradcam} heatmap overlay, highlighting the regions most influential for the model's prediction. Correct predictions are indicated with a checkmark, while incorrect predictions are marked with a cross.}
+\label{fig:gradcam_explainability}
+\end{figure*}
+
+\subsubsection{Class-wise Evaluation}
 Class-wise evaluation indicates high accuracy across all disease stages. Small number of misclassifications occurred between similar disease stages: Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. Figure~\ref{fig:perclass} illustrates the accuracy of each class on training, validation, and test sets, showing a stable performance in all classes.
 
-\begin{figure}[H]
+\begin{figure}
 \centerline{\includegraphics[width=\columnwidth]{images/per_class_accuracy_all_sets.png}}
 \caption{Class-wise accuracy of proposed model on training, validation, and test datasets.}
 \label{fig:perclass}
 \end{figure}
 
+\subsubsection{Confusion Matrix}
 The confusion matrix for the test set given in Figure~\ref{fig:cmatrix} provides insights into misclassifications between adjacent disease stages. Supporting the claim that errors are primarily due to visual resemblance rather than random noise. This reveals the model's logical performance in disease stage classification.
 
-\begin{figure}[H]
+\begin{figure}
 \centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_matrix_test.png}}
 \caption{Confusion matrix for the test dataset with true and predicted class labels.}
 \label{fig:cmatrix}
 \end{figure}
 
 Overall, the model has reliable performance for grapevine disease stage classification. Given a high accuracy, precision, recall, and F1-scores across all subsets.
+
+\subsubsection{Model Explainability with \ac{gradcam}}
+To interpret the decision-making process of our trained \ac{dl} model, we employed \ac{gradcam} \cite{Selvaraju_2017_ICCV}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that contribute most to the predicted class. For our analysis, we selected one representative test image per predicted class and generated \ac{gradcam} overlays on the original images. The overlays reveal that the model consistently focuses on the leaf regions relevant to the grape development stage, confirming that the network relies on meaningful visual cues rather than background artifacts. Displaying the original and Grad-CAM heatmaps side by side provides a clear visual understanding of the spatial attention of the model, thereby improving interpretability and trustworthiness of the predictions. Given in Figure~\ref{fig:gradcam_explainability}
 
 \begin{table*}[!t]
 \caption{Performance Comparison of \textit{SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}
@@ -483,9 +494,9 @@ The final test results indicate that \textit{SEPierceStageNet} outperforms both 
 
 Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{SEPierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
 
-The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The proposed \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
+The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
 
-\begin{figure*}[!t]
+\begin{figure*}
     \centering
     \includegraphics[width=0.8\textwidth]{images/eb.png}
     \caption{Learning curves for \textit{EfficientNet-B0}.}

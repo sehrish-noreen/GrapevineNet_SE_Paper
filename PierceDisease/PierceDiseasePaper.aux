@@ -121,7 +121,7 @@
 \newlabel{lst:semodule}{{3}{4}{\ac {se} Module}{lstlisting.3}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces \ac {se} Module}}{4}{lstlisting.3}\protected@file@percent }
 \acronymused{se}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Classification Head}{4}{subsubsection.3.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Classification Head}{5}{subsubsection.3.4.1}\protected@file@percent }
 \newlabel{lst:classhead}{{4}{5}{Classification Head}{lstlisting.4}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Classification Head}}{5}{lstlisting.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}2}Forward Pass}{5}{subsubsection.3.4.2}\protected@file@percent }
@@ -135,6 +135,8 @@
 \acronymused{se}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Training, validation, and test metrics of \textit  {SEPierceStageNet}.}}{5}{table.caption.18}\protected@file@percent }
 \newlabel{tab:SEPierceStageNet_metrics}{{II}{5}{Training, validation, and test metrics of \textit {SEPierceStageNet}}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-}1}Class-wise Evaluation}{5}{subsubsection.4.0.1}\protected@file@percent }
+\citation{Selvaraju_2017_ICCV}
 \newlabel{fig:accuracy}{{5a}{6}{Accuracy}{figure.caption.17}{}}
 \newlabel{sub@fig:accuracy}{{a}{6}{Accuracy}{figure.caption.17}{}}
 \newlabel{fig:precision}{{5b}{6}{Precision}{figure.caption.17}{}}
@@ -145,28 +147,36 @@
 \newlabel{sub@fig:f1}{{d}{6}{F1-score}{figure.caption.17}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Training and validation curves for \textit  {SEPierceStageNet}.}}{6}{figure.caption.17}\protected@file@percent }
 \newlabel{fig:performance}{{5}{6}{Training and validation curves for \textit {SEPierceStageNet}}{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Prediction results of \textit  {SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color.}}{6}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:predictions}{{6}{6}{Prediction results of \textit {SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color}{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Class-wise accuracy of proposed model on training, validation, and test datasets.}}{6}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:perclass}{{7}{6}{Class-wise accuracy of proposed model on training, validation, and test datasets}{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix for the test dataset with true and predicted class labels.}}{7}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:cmatrix}{{8}{7}{Confusion matrix for the test dataset with true and predicted class labels}{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Model Comparison and Analysis}{7}{section.5}\protected@file@percent }
-\newlabel{sec:comparison}{{V}{7}{Model Comparison and Analysis}{section.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-}2}Confusion Matrix}{6}{subsubsection.4.0.2}\protected@file@percent }
+\acronymused{gradcam}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-}3}Model Explainability with \ac {gradcam}}{6}{subsubsection.4.0.3}\protected@file@percent }
+\acronymused{dl}
+\acronymused{gradcam}
+\acronymused{gradcam}
+\acronymused{gradcam}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Model Comparison and Analysis}{6}{section.5}\protected@file@percent }
+\newlabel{sec:comparison}{{V}{6}{Model Comparison and Analysis}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Prediction results of \textit  {SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color.}}{7}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:predictions}{{6}{7}{Prediction results of \textit {SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color}{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Performance Comparison of \textit  {SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}}{7}{table.caption.23}\protected@file@percent }
+\newlabel{tab:model_comparison}{{III}{7}{Performance Comparison of \textit {SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch}{table.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \ac {gradcam} based explainability of \textit  {SEPierceStageNet} on representative test images. For each sample, the original image is shown with the \ac {gradcam} heatmap overlay, highlighting the regions most influential for the model's prediction. Correct predictions are indicated with a checkmark, while incorrect predictions are marked with a cross.}}{8}{figure.caption.20}\protected@file@percent }
+\acronymused{gradcam}
+\acronymused{gradcam}
+\newlabel{fig:gradcam_explainability}{{7}{8}{\ac {gradcam} based explainability of \textit {SEPierceStageNet} on representative test images. For each sample, the original image is shown with the \ac {gradcam} heatmap overlay, highlighting the regions most influential for the model's prediction. Correct predictions are indicated with a checkmark, while incorrect predictions are marked with a cross}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Class-wise accuracy of proposed model on training, validation, and test datasets.}}{8}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:perclass}{{8}{8}{Class-wise accuracy of proposed model on training, validation, and test datasets}{figure.caption.21}{}}
 \acronymused{se}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations and Future Directions}{7}{section.6}\protected@file@percent }
-\newlabel{sec:limitations}{{VI}{7}{Limitations and Future Directions}{section.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Confusion matrix for the test dataset with true and predicted class labels.}}{8}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:cmatrix}{{9}{8}{Confusion matrix for the test dataset with true and predicted class labels}{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Learning curves for \textit  {EfficientNet-B0}.}}{9}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:eb}{{10}{9}{Learning curves for \textit {EfficientNet-B0}}{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Learning curves for \textit  {ResNet50}.}}{9}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:resnet}{{11}{9}{Learning curves for \textit {ResNet50}}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations and Future Directions}{9}{section.6}\protected@file@percent }
+\newlabel{sec:limitations}{{VI}{9}{Limitations and Future Directions}{section.6}{}}
 \bibstyle{IEEEtran}
 \bibdata{references.bib}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Performance Comparison of \textit  {SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}}{8}{table.caption.22}\protected@file@percent }
-\newlabel{tab:model_comparison}{{III}{8}{Performance Comparison of \textit {SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch}{table.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Learning curves for \textit  {EfficientNet-B0}.}}{8}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:eb}{{9}{8}{Learning curves for \textit {EfficientNet-B0}}{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Learning curves for \textit  {ResNet50}.}}{8}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:resnet}{{10}{8}{Learning curves for \textit {ResNet50}}{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{8}{section.7}\protected@file@percent }
-\newlabel{sec:con}{{VII}{8}{Conclusion}{section.7}{}}
-\acronymused{se}
 \bibcite{GimenezRomero2025}{1}
 \bibcite{GimenezRomero2024}{2}
 \bibcite{pmlr-v97-tan19a}{3}
@@ -189,5 +199,9 @@
 \bibcite{Manzano2025}{20}
 \bibcite{Lee2024}{21}
 \bibcite{Islam2025PierceDisease}{22}
-\@writefile{toc}{\contentsline {section}{References}{9}{section*.25}\protected@file@percent }
-\gdef \@abspage@last{9}
+\bibcite{Selvaraju_2017_ICCV}{23}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{10}{section.7}\protected@file@percent }
+\newlabel{sec:con}{{VII}{10}{Conclusion}{section.7}{}}
+\acronymused{se}
+\@writefile{toc}{\contentsline {section}{References}{10}{section*.26}\protected@file@percent }
+\gdef \@abspage@last{10}
