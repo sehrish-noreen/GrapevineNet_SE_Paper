@@ -139,7 +139,7 @@ These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone 
 	\label{fig:model}
 \end{figure*}
 
-\section{Material and Methods}
+\section{Material and Methods}
 \label{sec:methodology}
 This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease stages in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment as shown in Figure~\ref{fig:methodology}. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
 
@@ -208,14 +208,14 @@ Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
 
 \begin{figure*}[htbp]
 	\centerline{\includegraphics[width=0.9\textwidth]{images/efficientnetb0.png}}
-	\caption{{EfficientNet-B0} backbone for our \textit{SEPierceStageNet}.}
+	\caption{{EfficientNet-B0} backbone for \textit{SEPierceStageNet}.}
 	\label{fig:efficientnetb0}
 \end{figure*}
 
 \subsection{Pre-processing}
-Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go.This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
+Two different preprocessing pipelines were implemented. One for training data for augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go. This strategy enhances model generalization and also maintains evaluation consistency. The augmented images  given by the dataset providers were not used as they had extensive and diverse transformations; 40,000 images in total generated from 4,004 raw images. This could lead to overfiting on synthetic data rather than learning features from the real data. Instead we did minimal augmentation on the fly while training the model to keep model near to real-world deployment. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
 
-\begin{algorithm}[h!]
+\begin{algorithm}
 	\caption{SEPierceStageNet Training, Validation, and Testing.}
 	\label{alg:SEPierceStageNet}
 	\begin{algorithmic}[1]
@@ -247,7 +247,7 @@ The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B
 \subsubsection{Backbone}
 The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset. Early blocks were frozen in 3 different experiments. First experiment with first 3 blocks frozen, second with 4 frozen blocks and third with 5 blocks frozen. Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}. Only the later layers were fine-tuned Figure~\ref{fig:efficientnetb03}, Figure~\ref{fig:efficientnetb04} and Figure~\ref{fig:efficientnetb05}.
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.7\columnwidth]{images/eb3.png}}
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb3.png}}
 	\caption{{EfficientNet-B0} backbone with first 3 blocks frozen.}
 	\label{fig:efficientnetb03}
 \end{figure}
@@ -304,23 +304,42 @@ Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed t
 	\label{fig:semodule}
 \end{figure}
 
-Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block, we add an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. This module performs task-specific channel recalibration on the final convolutional features. Resulting in enhanced validation accuracy. Maintains a small training–validation gap. Adding this lightweight module eliminates need of unfreezing more backbone layers. More backbone layer could increase overfitting risk. \ac{se} provides feature refinement with minimal parameter overhead. As given in Section~\ref{sec:results}.
+Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which performs local channel recalibration, we added an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. \ac{se} module configuration is given in Tabel~\ref{tab:se_configuration}. This module performs task-specific channel recalibration on the final convolutional feature map. The internal \ac{se} works within blocks for recalibrating intermediate feature maps. External \ac{se} operates on the final backbone output and provides a global perspective over all channels. \ac{se} provides feature refinement with minimal parameter overhead and increases model accuracy. Adding an external \ac{se} module improved model accuracy by ~5–6\%, global channel recalibration complements internal \ac{se}. As given in Section~\ref{sec:results}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={\ac{se} Module},
 label={lst:semodule}]
-Input: Feature map F (1280 channels)
+Input: Feature map F with C channels
 
 Global average pool F
-Reduce channels to 1280/16, apply ReLU, restore to 1280
+Reduce channels to C/r, apply ReLU, restore to C
 Apply sigmoid and scale F by attention weights
 
 Output: Recalibrated feature map
 \end{lstlisting}
 
+\begin{table}[h!]
+    \caption{SE attention configuration.}
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        Channels           & 1280 \\
+        Reduction ratio    & 16 \\
+        Pooling            & 1 × 1 \\
+        Reduce channels    & 80 \\
+        Activation         & ReLU \\
+        Restore channels   & 1280 \\
+        Gating             & Sigmoid \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:se_configuration}
+\end{table}
+
 
 \subsubsection{Classification Head}
-The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Given in Listing~\ref{lst:classhead}.
+The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Classification Head},
@@ -328,14 +347,14 @@ label={lst:classhead}]
 Input: Feature map F
 
 Apply global average pooling and flatten
-Fully connected layer with 512 units, ReLU activation, and dropout
-Fully connected layer to output class scores
+Fully connected layer with D units, ReLU activation, and dropout
+Fully connected layer to output class logits (K classes)
 
 Output: Class scores
 \end{lstlisting}
 
 \subsubsection{Forward Pass}
-During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention. Finally, the classification head processes those features and gives the class predictions. Shown in Listing~\ref{lst:fpass}.
+During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention. Finally, the classification head processes those features and gives logits for the class predictions. Shown in Listing~\ref{lst:fpass}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Forward Pass of SEPierceStageNet},
@@ -348,9 +367,6 @@ Pass features through classification head
 
 Output: Class predictions
 \end{lstlisting}
-
-\subsubsection{Device Setup and Model Summary}
-The model is initialized and moved to the available GPU device. We used google colab. A summary of the network is generated to visualize layer dimensions and parameters.
 
 \subsection{Evaluation Metrics}
 Model performance was assessed using standard classification metrics accuracy, precision, recall and f1-score. The macro-averaging approach was used to give equal weight to all classes.
@@ -377,92 +393,202 @@ Model performance was assessed using standard classification metrics accuracy, p
 	      \end{equation}
 \end{itemize}
 
-In addition to this, confusion matrix was also visualized to analyze classification patterns. Per-class classification reports generated to provide detailed performance across all disease stages. These statistics are given in Section~\ref{sec:results}.
+In addition to this, confusion matrix was also visualized to analyze classification patterns. These statistics are given in Section~\ref{sec:results}.
 
-\begin{figure*}[!t]
-	\centering
-
-	% row1
-	\begin{subfigure}[b]{0.40\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/accuracy_plot.png}
-		\caption{Accuracy}
-		\label{fig:accuracy}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.40\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/precision_plot.png}
-		\caption{Precision}
-		\label{fig:precision}
-	\end{subfigure}
-
-	\vspace{0.5em}
-
-	% row2
-	\begin{subfigure}[b]{0.40\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/recall_plot.png}
-		\caption{Recall}
-		\label{fig:recall}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.40\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/f1_plot.png}
-		\caption{F1-score}
-		\label{fig:f1}
-	\end{subfigure}
-
-	\caption{Training and validation curves for \textit{SEPierceStageNet}.}
-	\label{fig:performance}
-\end{figure*}
-
-\section{Results}
+\section{Experiment Results}
 \label{sec:results}
-\textit{SEPierceStageNet} provides strong and consistent results on training, validation, and test datasets. It outperforms baseline architectures \textit{EfficientNet-B0} and \textit{ResNet-50}. The model was trained for up to 20 epochs. We used an ImageNet pretrained \textit{EfficientNet-B0} backbone combined with an \ac{se} module, custom classification head, optimized using AdamW. The pretrained backbone was fine-tuned with a learning rate of $1\times10^{-4}$. The classifier trained at $1\times10^{-3}$.  Cross-entropy loss applied with label smoothing of 0.1. We used OneCycle learning rate scheduler with a 40\% warm up period and cosine annealing. Mixed precision training accelerated computations and reduced the memory usage. Early stopping implemented with a patience of 5 epochs to prevent overfitting. The best performing model was selected based on higher validation accuracy.
-Training and validation metrics recorded for each epoch; including accuracy, precision, recall, and F1-score. The model showed steady improvements with an early training accuracy of 51.20\% and validation accuracy of 63.25\% after the first epoch. By epoch 10, training accuracy reached 84.86\% and validation accuracy 82.75\%, showing an effective learning. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet_metrics}.
+\textit{SEPierceStageNet} provides strong and consistent results on training, validation, and test datasets. It outperforms baseline architectures \textit{EfficientNet-B0}, \textit{MobileNetV3Small} and \textit{ResNet-50} on our dataset.
+
+\subsection{Experiment Setting}
+The model is initialized and moved to the available GPU device. We used google colab. The model was trained for up to 20 epochs. We used an ImageNet pretrained \textit{EfficientNet-B0} backbone combined with an \ac{se} module, custom classification head, optimized using AdamW. The pretrained backbone was fine-tuned with a learning rate of $1\times10^{-4}$. The classifier trained at $1\times10^{-3}$.  Cross-entropy loss applied with label smoothing of 0.1. We used OneCycle learning rate scheduler with a 40\% warm up period and cosine annealing. Mixed precision training accelerated computations and reduced the memory usage. Early stopping implemented with a patience of 5 epochs to prevent overfitting. The best performing epoch model was selected based on higher validation accuracy.
+
+Training and validation metrics recorded for each epoch; including accuracy, precision, recall, and F1-score.
+
+\subsection{\textit{SEPierceStageNet} With First Three Backbone Blocks Frozen}
+The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet3_metrics} and Figure~\ref{fig:performance3}.
 
 \begin{table}[H]
-	\caption{Training, validation, and test metrics of \textit{SEPierceStageNet}.}
+	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 3 blocks frozen.}
 	\centering
 	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
 		\toprule
 		\textbf{Dataset} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
 		\midrule
-		Training Set     & 0.9557            & 0.9556             & 0.9557          & 0.9556            \\
-		Validation Set   & 0.9225            & 0.9224             & 0.9225          & 0.9222            \\
-		Test Set         & 0.9526            & 0.9526             & 0.9525          & 0.9524            \\
+		Training Set     & 0.9691            & 0.9691             & 0.9691          & 0.9691            \\
+		Validation Set   & 0.9475            & 0.9485             & 0.9475          & 0.9476            \\
+		Test Set         & 0.9451            & 0.9451             & 0.9451          & 0.9449            \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:SEPierceStageNet_metrics}
+	\label{tab:SEPierceStageNet3_metrics}
 \end{table}
 
-The test results confirm that our model generalizes well on unseen data. It maintains better precision and recall on all disease stages. A total of 401 test samples were processed. It made 383 correct predictions and 18 misclassifications. Resulting in an empirical test accuracy of 95.51\%. Correctly classified samples had high confidence ranging from 0.82 to 0.94. While misclassified samples had lower confidences. Random sample predictions are shown in Figure~\ref{fig:predictions}, showing the model's ability to diffirentiate between fresh, stage 1, stage 2, and stage 3 disease stages.
+\begin{figure}[h!]
+	\centering
 
-\begin{figure}[H]
-	\centerline{\includegraphics[width=\columnwidth]{images/test_samples_visualization.png}}
-	\caption{Prediction sample of \textit{SEPierceStageNet} on the test subset. Correct classifications are indicated with green, misclassified samples are highlighted with red color.}
-	\label{fig:predictions}
+	% row1
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/accuracy_plot_se50.png}
+		\caption{Accuracy}
+		\label{fig:accuracy3}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/precision_plot_se50.png}
+		\caption{Precision}
+		\label{fig:precision3}
+	\end{subfigure}
+	\vspace{0.5em}
+	% row2
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/recall_plot_se50.png}
+		\caption{Recall}
+		\label{fig:recall3}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/f1_plot_se50.png}
+		\caption{F1-score}
+		\label{fig:f13}
+	\end{subfigure}
+
+	\caption{Training and validation curves for \textit{SEPierceStageNet} 3 backbone blocks frozen.}
+	\label{fig:performance3}
 \end{figure}
 
-\subsubsection{Class-wise Evaluation}
-Class-wise evaluation indicates strong results across all disease stages. Small number of misclassifications occurred between similar disease stages: Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. Figure~\ref{fig:perclass} illustrates the accuracy of each class on training, validation, and test sets, showing a stable performance in all classes.
-
-\begin{figure}[H]
-	\centerline{\includegraphics[width=\columnwidth]{images/per_class_accuracy_all_sets.png}}
-	\caption{Class-wise accuracy of proposed model on training, validation, and test datasets.}
-	\label{fig:perclass}
-\end{figure}
-
-\subsubsection{Confusion Matrix}
-The confusion matrix for the test set given in Figure~\ref{fig:cmatrix} provides insights into misclassifications between adjacent disease stages. Supporting the claim that errors are primarily due to visual resemblance rather than random noise. This reveals the model's logical performance in disease stage classification.
+Class-wise evaluation indicates strong results across all disease stages. Small number of misclassifications occurred between similar disease stages: Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. The confusion matrix for the test set given in Figure~\ref{fig:cmatrix3} provides insights into misclassifications between adjacent disease stages. Supporting the claim that errors are primarily due to visual resemblance rather than random noise. This reveals the model's logical performance in disease stage classification.
 
 \begin{figure}
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_matrix_test.png}}
-	\caption{Confusion matrix for the test dataset with true and predicted class labels.}
-	\label{fig:cmatrix}
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_se50.png}}
+	\caption{Confusion matrix for \textit{SEPierceStageNet} With first three backbone blocks frozen on test dataset with true and predicted class labels.}
+	\label{fig:cmatrix3}
 \end{figure}
 
 Overall, the model has reliable performance for grapevine disease stage classification. Given a high accuracy, precision, recall, and F1-scores across all subsets.
+
+\subsection{\textit{SEPierceStageNet} With First Four Backbone Blocks Frozen}
+For the model configuration with four layers frozen trained for 20 epochs. Precision, recall, and F1-score followed a similar trend, with the model achieving a validation F1-score of 0.9297 at the conclusion of training. These results suggest that freezing four layers allowed the model to effectively use pre-trained representations while also adapt to the target task. Results metrics of best epoch (17 epoch) were slightly lower than previous with 3 blocks of backbone frozen. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet4_metrics} and Figure~\ref{fig:performance4}.
+
+\begin{table}[H]
+	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 4 blocks frozen.}
+	\centering
+	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
+		\toprule
+		\textbf{Dataset} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+		\midrule
+		Training Set     & 0.9541            & 0.9541             & 0.9541          & 0.9540            \\
+		Validation Set   & 0.9350            & 0.9353             & 0.9350          & 0.9351            \\
+		Test Set         & 0.9302            & 0.9313             & 0.9301          & 0.9297            \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:SEPierceStageNet4_metrics}
+\end{table}
+
+\begin{figure}[h!]
+	\centering
+	% row1
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/accuracy_plot_se60.png}
+		\caption{Accuracy}
+		\label{fig:accuracy4}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/precision_plot_se60.png}
+		\caption{Precision}
+		\label{fig:precision4}
+	\end{subfigure}
+	\vspace{0.5em}
+	% row2
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/recall_plot_se60.png}
+		\caption{Recall}
+		\label{fig:recall4}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.40\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/f1_plot_se60.png}
+		\caption{F1-score}
+		\label{fig:f14}
+	\end{subfigure}
+
+	\caption{Training and validation curves for \textit{SEPierceStageNet} 4 backbone blocks frozen.}
+	\label{fig:performance4}
+\end{figure}
+
+Class-wise evaluation indicates almost same results as the model with 3 blocks frozen. Misclassifications occurred between Stage 2 and Stage 3.The confusion matrix for the test set given in Figure~\ref{fig:cmatrix4} provides insights into results.
+
+\begin{figure}
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_se60.png}}
+	\caption{Confusion matrix for \textit{SEPierceStageNet} With first four backbone blocks frozen on test dataset with true and predicted class labels.}
+	\label{fig:cmatrix4}
+\end{figure}
+
+% \subsection{\textit{SEPierceStageNet} With First Five Backbone Blocks Frozen}
+% The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet_metrics}.
+
+% \begin{table}[H]
+% 	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 3 blocks frozen.}
+% 	\centering
+% 	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
+% 		\toprule
+% 		\textbf{Dataset} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+% 		\midrule
+% 		Training Set     & 0.9691            & 0.9691             & 0.9691          & 0.9691            \\
+% 		Validation Set   & 0.9475            & 0.9485             & 0.9475          & 0.9476            \\
+% 		Test Set         & 0.9451            & 0.9451             & 0.9451          & 0.9449            \\
+% 		\bottomrule
+% 	\end{tabular}
+% 	\label{tab:SEPierceStageNet_metrics}
+% \end{table}
+
+% \begin{figure}[h!]
+% 	\centering
+
+% 	% row1
+% 	\begin{subfigure}[b]{0.40\columnwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{images/accuracy_plot.png}
+% 		\caption{Accuracy}
+% 		\label{fig:accuracy}
+% 	\end{subfigure}
+% 	\begin{subfigure}[b]{0.40\columnwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{images/precision_plot.png}
+% 		\caption{Precision}
+% 		\label{fig:precision}
+% 	\end{subfigure}
+
+% 	\vspace{0.5em}
+
+% 	% row2
+% 	\begin{subfigure}[b]{0.40\columnwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{images/recall_plot.png}
+% 		\caption{Recall}
+% 		\label{fig:recall}
+% 	\end{subfigure}
+% 	\begin{subfigure}[b]{0.40\columnwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{images/f1_plot.png}
+% 		\caption{F1-score}
+% 		\label{fig:f1}
+% 	\end{subfigure}
+
+% 	\caption{Training and validation curves for \textit{SEPierceStageNet}.}
+% 	\label{fig:performance}
+% \end{figure}
+
+% Class-wise evaluation indicates strong results across all disease stages. Small number of misclassifications occurred between similar disease stages: Stage 2 and Stage 3. So errors are systematic and are linked to visual similarities in these two stages not random predictions. The confusion matrix for the test set given in Figure~\ref{fig:cmatrix} provides insights into misclassifications between adjacent disease stages in test set. Supporting the claim that errors are primarily due to visual resemblance rather than random noise. This reveals the model's logical performance in disease stage classification.
+
+% \begin{figure}
+% 	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_se50.png}}
+% 	\caption{Confusion matrix for the test dataset with true and predicted class labels.}
+% 	\label{fig:cmatrix}
+% \end{figure}
 
 \subsubsection{Model Explainability with \ac{gradcam}}
 We used \ac{gradcam} \cite{Selvaraju_2017_ICCV} to interpret the predictions of \textit{SEPierceStageNet}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that are most influential in prediction. For our analysis, we selected one representative test image from each class predictions and generated \ac{gradcam} overlays on the top of original images. The overlays show that the model consistently focuses on the leaf regions relevant to the disease stages. It confirms that the network relies on meaningful visual features not random guessing. Figure~\ref{fig:gradcam_explainability} provides the original and Grad-CAM heatmaps side by side for a clear visual understanding of the attention of the model. Thereby improves explainability and trustworthiness on model predictions.
