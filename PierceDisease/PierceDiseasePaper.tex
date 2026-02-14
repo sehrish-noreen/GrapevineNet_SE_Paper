@@ -113,7 +113,7 @@ Making early disease detection and accurate assessment of leaf conditions is ess
 
 Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies.  Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation.
 
-To address these gaps, this paper proposes \textit{SEPierceStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen \textit{EfficientNet-B0} \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the \textit{EfficientNet-B0} parameters, \textit{SEPierceStageNet} achieves accuracy of approximately 95\%. While  also maintained a low computational cost, making it suitable for real-time vineyard applications on edge devices. We also add model explainability with \ac{gradcam}. The key contributions of this paper include:
+To address these gaps, this paper proposes \textit{SEPierceStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen \textit{EfficientNet-B0} \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the \textit{EfficientNet-B0} blocks, \textit{SEPierceStageNet} achieves accuracy of approximately 97\%. While  also maintained a low computational cost that makes it suitable for real-time vineyard applications on edge devices. We also add model explainability with \ac{gradcam}. The key contributions of this paper include:
 \begin{itemize}
 	\item A multi-stage grapevine leaf Pierce's Disease classification model.
 	\item Integration of a \ac{se} attention mechanism to enhance feature representation and improve stage wise disease classification accuracy.
@@ -133,12 +133,53 @@ Beyond \ac{dl} methods, classical \ac{ml} methods also provide complementary ins
 
 These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone fusion, and feature based \ac{ml} provides accurate solutions for grape leaf disease detection, nutrient assessment, and pathogen monitoring. Edge deployable models with explainable AI techniques like \ac{gradcam} enable practical precision viticulture. They support the rapid disease assessment and optimized vineyard management. Spectroscopic and chemometric methods complement imaging for non destructive plant health monitoring.
 
+\begin{figure*}[htbp]
+	\centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
+	\caption{Proposed Architecture of \textit{SEPierceStageNet} with \textit{EfficientNet-B0} backbone and \ac{se} attention.}
+	\label{fig:model}
+\end{figure*}
+
 \section{Material and Methods}
 \label{sec:methodology}
 This study implements a modified EfficientNetB0 \ac{dl} model for detecting and classifying Pierce's Disease stages in grapevine leaves. The methodology follows five steps: Data acquisition, Preprocessing, Classification and evaluation, Results analysis, and Comparative assessment as shown in Figure~\ref{fig:methodology}. The complete pipeline was implemented in Python. We used PyTorch and executed model on Google Colab with GPU acceleration.
 
 \subsection{Data Description}
 The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure~\ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table~\ref{tab:data_distribution} shows the data distribution. As shown in Listing~\ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets.
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[b]{0.22\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/fresh.png}
+		\caption{Fresh Leaf}
+		\label{fig:fresh}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.22\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/stage1.png}
+		\caption{Stage 1}
+		\label{fig:stage1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.22\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/stage2.png}
+		\caption{Stage 2}
+		\label{fig:stage2}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.22\columnwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/stage3.png}
+		\caption{Stage 3}
+		\label{fig:stage3}
+	\end{subfigure}
+	\caption{Samples from Grapevine Pierce's Disease dataset.}
+	\label{fig:datasamples}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
+	\caption{Examples of data augmentation techniques applied during the training.}
+	\label{fig:preprocessing}
+\end{figure}
 
 \begin{table}[h!]
 	\caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages.}
@@ -158,36 +199,6 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 	\label{tab:data_distribution}
 \end{table}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}[b]{0.24\columnwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/fresh.png}
-		\caption{Fresh Leaf}
-		\label{fig:fresh}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.24\columnwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/stage1.png}
-		\caption{Stage 1}
-		\label{fig:stage1}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.24\columnwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/stage2.png}
-		\caption{Stage 2}
-		\label{fig:stage2}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.24\columnwidth}
-		\centering
-		\includegraphics[width=\linewidth]{images/stage3.png}
-		\caption{Stage 3}
-		\label{fig:stage3}
-	\end{subfigure}
-	\caption{Samples from Grapevine Pierce's Disease dataset.}
-	\label{fig:datasamples}
-\end{figure}
-
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Class mapping in code},
 label={lst:classmapping}]
@@ -195,24 +206,16 @@ Class mapping: {'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
 Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
 \end{lstlisting}
 
-\subsection{Pre-processing}
-Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go.This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
-	\caption{Examples of data augmentation techniques applied during the training.}
-	\label{fig:preprocessing}
-\end{figure}
-
-\subsection{Model Training and Evaluation}
-The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B0}. It uses transfer learning. As shown in Algorithm~\ref{alg:SEPierceStageNet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard \textit{EfficientNet-B0} and \textit{ResNet50} architectures were implemented under identical conditions.
-
 \begin{figure*}[htbp]
-	\centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
-	\caption{Proposed Architecture of \textit{SEPierceStageNet} with \textit{EfficientNet-B0} backbone and \ac{se} attention.}
-	\label{fig:model}
+	\centerline{\includegraphics[width=0.9\textwidth]{images/efficientnetb0.png}}
+	\caption{{EfficientNet-B0} backbone for our \textit{SEPierceStageNet}.}
+	\label{fig:efficientnetb0}
 \end{figure*}
 
-\begin{algorithm}
+\subsection{Pre-processing}
+Two different preprocessing pipelines were implemented. One for training with extensive data augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go.This strategy enhances model generalization and also maitains evaluation consistency. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
+
+\begin{algorithm}[h!]
 	\caption{SEPierceStageNet Training, Validation, and Testing.}
 	\label{alg:SEPierceStageNet}
 	\begin{algorithmic}[1]
@@ -220,7 +223,7 @@ The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B
 		\STATE \textbf{Output:} Predicted disease class labels
 
 		\STATE Load pretrained \textit{EfficientNet-B0} backbone
-		\STATE Freeze first six feature blocks
+		\STATE Freeze first few feature blocks
 		\STATE Insert SE attention module
 		\STATE Construct classifier head
 
@@ -238,8 +241,27 @@ The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B
 	\end{algorithmic}
 \end{algorithm}
 
+\subsection{Model Training and Evaluation}
+The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B0}. It uses transfer learning. As shown in Algorithm~\ref{alg:SEPierceStageNet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination for disease classification. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard \textit{EfficientNet-B0} architecture was implemented under identical conditions as our proposed model.
+
 \subsubsection{Backbone}
-The backbone of the model is based on \textit{EfficientNet-B0}. It provides hierarchical feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset. Approximately 75\% of the early layers were frozen shown in Listing~\ref{lst:backbone}. Only the later layers were fine-tuned. This strategy preserves low-level features learned from large ImageNet dataset and also focuses on adapting to the specific characteristics of our grapevine dataset. Improves convergence and reduces the risk of model overfitting.
+The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset. Early blocks were frozen in 3 different experiments. First experiment with first 3 blocks frozen, second with 4 frozen blocks and third with 5 blocks frozen. Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}. Only the later layers were fine-tuned Figure~\ref{fig:efficientnetb03}, Figure~\ref{fig:efficientnetb04} and Figure~\ref{fig:efficientnetb05}.
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.7\columnwidth]{images/eb3.png}}
+	\caption{{EfficientNet-B0} backbone with first 3 blocks frozen.}
+	\label{fig:efficientnetb03}
+\end{figure}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb4.png}}
+	\caption{{EfficientNet-B0} backbone with first 4 blocks frozen.}
+	\label{fig:efficientnetb04}
+\end{figure}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb5.png}}
+	\caption{{EfficientNet-B0} backbone with first 5 blocks frozen.}
+	\label{fig:efficientnetb05}
+\end{figure}
+This strategy preserves low-level features learned from large ImageNet dataset and also focuses on adapting to the specific characteristics of our grapevine dataset. Improves convergence and reduces the risk of model overfitting.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Backbone Initialization of SEPierceStageNet},
@@ -247,7 +269,7 @@ label={lst:backbone}]
 Initialize EfficientNet-B0 with pretrained ImageNet weights
 Divide the backbone into ordered feature blocks
 For each feature block with index i do
-    If i < 6 then
+    If i < n then
         Freeze all parameters of the block
     Else
         Allow parameters to be updated during training
@@ -256,8 +278,7 @@ End for
 \end{lstlisting}
 
 \subsubsection{\ac{se} Module}
-
-Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. It consists of two main operations:
+Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. \ac{se} module structure is given in Listing~\ref{lst:semodule} and Figure~\ref{fig:semodule}. It consists of two main operations:
 
 \begin{itemize}
 	\item \textbf{Squeeze:} Global average pooling is applied to each feature map to generate the channel-wise descriptor:
@@ -277,6 +298,11 @@ Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed t
 		      \tilde{X}_c = s_c \cdot X_c
 	      \end{equation}
 \end{itemize}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\columnwidth]{images/se_attention.png}}
+	\caption{\ac{se} module structure.}
+	\label{fig:semodule}
+\end{figure}
 
 Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block, we add an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. This module performs task-specific channel recalibration on the final convolutional features. Resulting in enhanced validation accuracy. Maintains a small training–validation gap. Adding this lightweight module eliminates need of unfreezing more backbone layers. More backbone layer could increase overfitting risk. \ac{se} provides feature refinement with minimal parameter overhead. As given in Section~\ref{sec:results}.
 
@@ -291,6 +317,7 @@ Apply sigmoid and scale F by attention weights
 
 Output: Recalibrated feature map
 \end{lstlisting}
+
 
 \subsubsection{Classification Head}
 The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the outputs corresponding to the target classes. Given in Listing~\ref{lst:classhead}.
