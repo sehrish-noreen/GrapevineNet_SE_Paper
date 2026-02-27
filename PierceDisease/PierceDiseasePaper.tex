@@ -179,25 +179,25 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 \begin{figure*}[htbp]
     \centering
     % Original Images (Top Row)
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/fresh_original.png}
         \caption{Fresh Leaf}
         \label{fig:fresh_orig}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s1_original.png}
         \caption{Stage 1}
         \label{fig:stage1_orig}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s2_original.png}
         \caption{Stage 2}
         \label{fig:stage2_orig}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s3_original.png}
         \caption{Stage 3}
@@ -208,25 +208,25 @@ The dataset consists of labeled images of grapevine leaves organized into four c
     \vspace{0.5em}
 
     % Augmented Images (Bottom Row)
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/fresh_aug.png}
-        \caption{Fresh Leaf Augmented}
+        \caption{Fresh Augmented}
         \label{fig:fresh_aug}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s1_aug.png}
         \caption{Stage 1 Augmented}
         \label{fig:stage1_aug}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s2_aug.png}
         \caption{Stage 2 Augmented}
         \label{fig:stage2_aug}
     \end{subfigure}%
-    \begin{subfigure}[b]{0.22\textwidth}
+    \begin{subfigure}[b]{0.18\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/s3_aug.png}
         \caption{Stage 3 Augmented}
@@ -308,8 +308,7 @@ The primary model, \textit{PierceStageNet}, is based on \textit{EfficientNet-B0}
 \end{algorithm}
 
 \subsubsection{Backbone}
-The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset.  Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}.
-This strategy preserves low-level features learned from large ImageNet dataset and also focuses on adapting to the specific characteristics of our grapevine dataset. Improves convergence and reduces the risk of model overfitting.
+The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset.  Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}. This strategy preserves low-level features learned from large ImageNet dataset and also focuses on adapting to the specific characteristics of our grapevine dataset. Improves convergence and reduces the risk of model overfitting.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Backbone Initialization of PierceStageNet},
@@ -343,7 +342,7 @@ Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed t
 		      \tilde{X}_c = s_c \cdot X_c
 	      \end{equation}
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[h!]
 	\centerline{\includegraphics[width=\columnwidth]{images/se_attention.png}}
 	\caption{\ac{se} module structure.}
 	\label{fig:semodule}
@@ -363,7 +362,7 @@ Apply sigmoid and scale F by attention weights
 Output: Recalibrated feature map
 \end{lstlisting}
 
-\begin{table}
+\begin{table}[h!]
     \caption{SE attention module configuration for \textit{PierceStageNet}}.
     \centering
     \begin{tabular}{lc}

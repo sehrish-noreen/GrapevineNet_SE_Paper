@@ -1005,12 +1005,12 @@ INPUT images/se_attention.png
 INPUT ./images/se_attention.png
 INPUT ./images/se_attention.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
 INPUT ./images/classification_head.png
 INPUT ./images/classification_head.png
 INPUT images/classification_head.png
 INPUT ./images/classification_head.png
 INPUT ./images/classification_head.png
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT ./images/accuracy_plot_se50.png
