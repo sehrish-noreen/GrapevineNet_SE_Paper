@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.2.9)  14 FEB 2026 13:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.2.9)  27 FEB 2026 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -557,7 +557,11 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 \l__pdf_internal_box=\box61
 )
-(./PierceDiseasePaper.aux)
+(./PierceDiseasePaper.aux
+
+LaTeX Warning: Label `fig:semodule' multiply defined.
+
+)
 \openout1 = `PierceDiseasePaper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
@@ -670,11 +674,11 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<images/model.png, id=131, 1053.9375pt x 542.025pt>
+<images/model.png, id=131, 1073.51062pt x 750.55406pt>
 File: images/model.png Graphic file (type png)
 <use images/model.png>
 Package pdftex.def Info: images/model.png  used on input line 137.
-(pdftex.def)             Requested size: 464.39685pt x 238.8391pt.
+(pdftex.def)             Requested size: 516.0pt x 360.76576pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -683,229 +687,232 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/fresh.png Graphic file (type png)
 <use images/fresh.png>
 Package pdftex.def Info: images/fresh.png  used on input line 152.
-(pdftex.def)             Requested size: 55.4403pt x 55.44075pt.
+(pdftex.def)             Requested size: 113.52063pt x 113.52121pt.
 <images/stage1.png, id=168, 225.84375pt x 225.84375pt>
 File: images/stage1.png Graphic file (type png)
 <use images/stage1.png>
 Package pdftex.def Info: images/stage1.png  used on input line 158.
-(pdftex.def)             Requested size: 55.4403pt x 55.44075pt.
+(pdftex.def)             Requested size: 113.52063pt x 113.52121pt.
 <images/stage2.png, id=169, 225.84375pt x 225.84375pt>
 File: images/stage2.png Graphic file (type png)
 <use images/stage2.png>
 Package pdftex.def Info: images/stage2.png  used on input line 164.
-(pdftex.def)             Requested size: 55.4403pt x 55.44075pt.
+(pdftex.def)             Requested size: 113.52063pt x 113.52121pt.
 <images/stage3.png, id=170, 225.84375pt x 225.84375pt>
 File: images/stage3.png Graphic file (type png)
 <use images/stage3.png>
 Package pdftex.def Info: images/stage3.png  used on input line 170.
-(pdftex.def)             Requested size: 55.4403pt x 55.44075pt.
-<images/preprocessing.png, id=171, 1148.3703pt x 683.6742pt>
+(pdftex.def)             Requested size: 113.52063pt x 113.52121pt.
+<images/preprocessing.png, id=171, 1110.0672pt x 685.8423pt>
 File: images/preprocessing.png Graphic file (type png)
 <use images/preprocessing.png>
 Package pdftex.def Info: images/preprocessing.png  used on input line 179.
-(pdftex.def)             Requested size: 226.79846pt x 135.02156pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+(pdftex.def)             Requested size: 464.39685pt x 286.92157pt.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 204.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 20
 4.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<images/efficientnetb0.png, id=172, 1053.9375pt x 313.17pt>
-File: images/efficientnetb0.png Graphic file (type png)
-<use images/efficientnetb0.png>
-Package pdftex.def Info: images/efficientnetb0.png  used on input line 210.
-(pdftex.def)             Requested size: 464.39685pt x 137.99591pt.
- [3 <./images/model.png> <./images/fresh.png> <./images/stage1.png> <./images/s
-tage2.png> <./images/stage3.png> <./images/preprocessing.png>]
+[3 <./images/model.png>]
+<images/backbone.png, id=190, 1053.9375pt x 313.17pt>
+File: images/backbone.png Graphic file (type png)
+<use images/backbone.png>
+Package pdftex.def Info: images/backbone.png  used on input line 216.
+(pdftex.def)             Requested size: 516.0pt x 153.33038pt.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 219.
+put line 224.
 
-Underfull \hbox (badness 4316) in paragraph at lines 245--246
-[]\T1/ptm/m/n/10 The pri-mary model, \T1/ptm/m/it/10 SEPierceS-ta-geNet\T1/ptm/
-m/n/10 , is based on
+Underfull \hbox (badness 10000) in paragraph at lines 222--247
+[]\T1/ptm/m/n/10 The pri-mary model, \T1/ptm/m/it/10 PierceS-ta-geNet\T1/ptm/m/
+n/10 , is based on
  []
 
-<images/eb3.png, id=201, 1050.17343pt x 319.1925pt>
-File: images/eb3.png Graphic file (type png)
-<use images/eb3.png>
-Package pdftex.def Info: images/eb3.png  used on input line 250.
-(pdftex.def)             Requested size: 226.79846pt x 68.93188pt.
-<images/eb4.png, id=202, 1050.17343pt x 319.1925pt>
-File: images/eb4.png Graphic file (type png)
-<use images/eb4.png>
-Package pdftex.def Info: images/eb4.png  used on input line 255.
-(pdftex.def)             Requested size: 226.79846pt x 68.93188pt.
-<images/eb5.png, id=203, 1050.92625pt x 332.74312pt>
-File: images/eb5.png Graphic file (type png)
-<use images/eb5.png>
-Package pdftex.def Info: images/eb5.png  used on input line 260.
-(pdftex.def)             Requested size: 226.79846pt x 71.80746pt.
-[4 <./images/efficientnetb0.png> <./images/eb3.png> <./images/eb4.png>]
+
+Underfull \hbox (badness 2245) in paragraph at lines 222--247
+\T1/ptm/m/it/10 EfficientNet-B0\T1/ptm/m/n/10 . It uses trans-fer learn-ing. As
+ shown in
+ []
+
+
+Underfull \hbox (badness 5231) in paragraph at lines 222--247
+\T1/ptm/m/n/10 Al-go-rithm [][]1[][], the ar-chi-tec-ture in-te-grates a lightw
+eight
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--247
+\T1/ptm/m/n/10 struc-ture. For bench-mark-ing, stan-dard \T1/ptm/m/it/10 Effici
+entNet-B0
+ []
+
+[4 <./images/fresh.png> <./images/stage1.png> <./images/stage2.png> <./images/s
+tage3.png> <./images/preprocessing.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ac' on input line 281.
+(hyperref)                removing `\@ac' on input line 264.
 
-<images/se_attention.png, id=239, 679.03688pt x 231.86626pt>
+<images/se_attention.png, id=209, 1072.005pt x 318.43968pt>
 File: images/se_attention.png Graphic file (type png)
 <use images/se_attention.png>
-Package pdftex.def Info: images/se_attention.png  used on input line 302.
-(pdftex.def)             Requested size: 226.79846pt x 77.44304pt.
-[5 <./images/eb5.png> <./images/se_attention.png>]
-Underfull \hbox (badness 2608) in paragraph at lines 407--407
- \T1/ptm/m/it/10 B. SEPierceS-ta-geNet With First Three Back-bone Blocks
- []
+Package pdftex.def Info: images/se_attention.png  used on input line 285.
+(pdftex.def)             Requested size: 252.0pt x 74.85277pt.
+[5 <./images/backbone.png> <./images/se_attention.png>]
+<images/classification_head.png, id=257, 1084.80281pt x 335.75438pt>
+File: images/classification_head.png Graphic file (type png)
+<use images/classification_head.png>
+Package pdftex.def Info: images/classification_head.png  used on input line 327
+.
+(pdftex.def)             Requested size: 252.0pt x 77.99548pt.
 
 
-Overfull \hbox (7.23021pt too wide) in paragraph at lines 415--415
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./images/classification_head.png>]
+Overfull \hbox (7.23021pt too wide) in paragraph at lines 424--424
 []|\T1/ptm/b/n/8 Accuracy| 
  []
 
 
-Overfull \hbox (6.20609pt too wide) in paragraph at lines 415--415
+Overfull \hbox (6.20609pt too wide) in paragraph at lines 424--424
 []|\T1/ptm/b/n/8 Precision| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 []|\T1/ptm/b/n/8 F1
  []
 
-<images/accuracy_plot_se50.png, id=287, 578.16pt x 433.62pt>
+<images/accuracy_plot_se50.png, id=296, 578.16pt x 433.62pt>
 File: images/accuracy_plot_se50.png Graphic file (type png)
 <use images/accuracy_plot_se50.png>
-Package pdftex.def Info: images/accuracy_plot_se50.png  used on input line 431.
+Package pdftex.def Info: images/accuracy_plot_se50.png  used on input line 440.
 
 (pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/precision_plot_se50.png, id=288, 578.16pt x 433.62pt>
+<images/precision_plot_se50.png, id=297, 578.16pt x 433.62pt>
 File: images/precision_plot_se50.png Graphic file (type png)
 <use images/precision_plot_se50.png>
-Package pdftex.def Info: images/precision_plot_se50.png  used on input line 437
+Package pdftex.def Info: images/precision_plot_se50.png  used on input line 446
 .
 (pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/recall_plot_se50.png, id=289, 578.16pt x 433.62pt>
+<images/recall_plot_se50.png, id=298, 578.16pt x 433.62pt>
 File: images/recall_plot_se50.png Graphic file (type png)
 <use images/recall_plot_se50.png>
-Package pdftex.def Info: images/recall_plot_se50.png  used on input line 445.
+Package pdftex.def Info: images/recall_plot_se50.png  used on input line 454.
 (pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/f1_plot_se50.png, id=290, 578.16pt x 433.62pt>
+<images/f1_plot_se50.png, id=299, 578.16pt x 433.62pt>
 File: images/f1_plot_se50.png Graphic file (type png)
 <use images/f1_plot_se50.png>
-Package pdftex.def Info: images/f1_plot_se50.png  used on input line 451.
-(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-[6 <./images/accuracy_plot_se50.png> <./images/precision_plot_se50.png> <./imag
-es/recall_plot_se50.png> <./images/f1_plot_se50.png>]
-<images/confusion_se50.png, id=315, 538.4115pt x 491.436pt>
-File: images/confusion_se50.png Graphic file (type png)
-<use images/confusion_se50.png>
-Package pdftex.def Info: images/confusion_se50.png  used on input line 463.
-(pdftex.def)             Requested size: 226.79846pt x 207.00911pt.
-
-Overfull \hbox (7.23021pt too wide) in paragraph at lines 478--478
-[]|\T1/ptm/b/n/8 Accuracy| 
- []
-
-
-Overfull \hbox (6.20609pt too wide) in paragraph at lines 478--478
-[]|\T1/ptm/b/n/8 Precision| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 478--479
-[]|\T1/ptm/b/n/8 F1
- []
-
-<images/accuracy_plot_se60.png, id=318, 578.16pt x 433.62pt>
-File: images/accuracy_plot_se60.png Graphic file (type png)
-<use images/accuracy_plot_se60.png>
-Package pdftex.def Info: images/accuracy_plot_se60.png  used on input line 493.
-
-(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/precision_plot_se60.png, id=319, 578.16pt x 433.62pt>
-File: images/precision_plot_se60.png Graphic file (type png)
-<use images/precision_plot_se60.png>
-Package pdftex.def Info: images/precision_plot_se60.png  used on input line 499
-.
-(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/recall_plot_se60.png, id=320, 578.16pt x 433.62pt>
-File: images/recall_plot_se60.png Graphic file (type png)
-<use images/recall_plot_se60.png>
-Package pdftex.def Info: images/recall_plot_se60.png  used on input line 507.
-(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
-<images/f1_plot_se60.png, id=321, 578.16pt x 433.62pt>
-File: images/f1_plot_se60.png Graphic file (type png)
-<use images/f1_plot_se60.png>
-Package pdftex.def Info: images/f1_plot_se60.png  used on input line 513.
+Package pdftex.def Info: images/f1_plot_se50.png  used on input line 460.
 (pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/confusion_se60.png, id=323, 538.4115pt x 491.436pt>
-File: images/confusion_se60.png Graphic file (type png)
-<use images/confusion_se60.png>
-Package pdftex.def Info: images/confusion_se60.png  used on input line 525.
+<images/confusion_se50.png, id=301, 538.4115pt x 491.436pt>
+File: images/confusion_se50.png Graphic file (type png)
+<use images/confusion_se50.png>
+Package pdftex.def Info: images/confusion_se50.png  used on input line 472.
 (pdftex.def)             Requested size: 226.79846pt x 207.00911pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ac' on input line 594.
+Overfull \hbox (7.23021pt too wide) in paragraph at lines 487--487
+[]|\T1/ptm/b/n/8 Accuracy| 
+ []
 
-<images/gradcam.png, id=326, 1208.3544pt x 570.933pt>
+
+Overfull \hbox (6.20609pt too wide) in paragraph at lines 487--487
+[]|\T1/ptm/b/n/8 Precision| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+[]|\T1/ptm/b/n/8 F1
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./images/accuracy_plot_se50.png> <./images/precision_plot_se50.png> <./ima
+ges/recall_plot_se50.png> <./images/f1_plot_se50.png> <./images/confusion_se50.
+png>]
+<images/accuracy_plot_se60.png, id=320, 578.16pt x 433.62pt>
+File: images/accuracy_plot_se60.png Graphic file (type png)
+<use images/accuracy_plot_se60.png>
+Package pdftex.def Info: images/accuracy_plot_se60.png  used on input line 502.
+
+(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
+<images/precision_plot_se60.png, id=321, 578.16pt x 433.62pt>
+File: images/precision_plot_se60.png Graphic file (type png)
+<use images/precision_plot_se60.png>
+Package pdftex.def Info: images/precision_plot_se60.png  used on input line 508
+.
+(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
+<images/recall_plot_se60.png, id=322, 578.16pt x 433.62pt>
+File: images/recall_plot_se60.png Graphic file (type png)
+<use images/recall_plot_se60.png>
+Package pdftex.def Info: images/recall_plot_se60.png  used on input line 516.
+(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
+<images/f1_plot_se60.png, id=323, 578.16pt x 433.62pt>
+File: images/f1_plot_se60.png Graphic file (type png)
+<use images/f1_plot_se60.png>
+Package pdftex.def Info: images/f1_plot_se60.png  used on input line 522.
+(pdftex.def)             Requested size: 100.79846pt x 75.5935pt.
+<images/confusion_se60.png, id=325, 538.4115pt x 491.436pt>
+File: images/confusion_se60.png Graphic file (type png)
+<use images/confusion_se60.png>
+Package pdftex.def Info: images/confusion_se60.png  used on input line 534.
+(pdftex.def)             Requested size: 226.79846pt x 207.00911pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ac' on input line 603.
+
+<images/gradcam.png, id=328, 1208.3544pt x 570.933pt>
 File: images/gradcam.png Graphic file (type png)
 <use images/gradcam.png>
-Package pdftex.def Info: images/gradcam.png  used on input line 596.
+Package pdftex.def Info: images/gradcam.png  used on input line 605.
 (pdftex.def)             Requested size: 464.39685pt x 219.42221pt.
 
-Underfull \hbox (badness 6332) in paragraph at lines 594--600
+Underfull \hbox (badness 6332) in paragraph at lines 603--609
  \T1/ptm/m/it/10 1) Model Ex-plain-abil-ity with [][]: [][][] \T1/ptm/m/n/10 We
  used
  []
 
-[7 <./images/confusion_se50.png> <./images/accuracy_plot_se60.png> <./images/pr
-ecision_plot_se60.png> <./images/recall_plot_se60.png> <./images/f1_plot_se60.p
-ng> <./images/confusion_se60.png>]
-Underfull \hbox (badness 2772) in paragraph at lines 603--604
-[]\T1/ptm/m/n/10 To as-sess the ef-fec-tive-ness of \T1/ptm/m/it/10 SEPierceS-t
-a-geNet\T1/ptm/m/n/10 , we
+
+Underfull \hbox (badness 3312) in paragraph at lines 612--613
+\T1/ptm/m/n/10 a com-par-i-son with two widely used base-line mod-els:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--617
+Underfull \hbox (badness 10000) in paragraph at lines 626--626
 []|\T1/ptm/b/n/8 Train
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 619--619
+Underfull \hbox (badness 10000) in paragraph at lines 628--628
 []|\T1/ptm/b/n/8 Test
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
+Underfull \hbox (badness 10000) in paragraph at lines 629--630
 []|\T1/ptm/b/n/8 Params
  []
 
-<images/efficientnet_training.png, id=347, 997.8078pt x 345.6915pt>
+<images/efficientnet_training.png, id=332, 997.8078pt x 345.6915pt>
 File: images/efficientnet_training.png Graphic file (type png)
 <use images/efficientnet_training.png>
 Package pdftex.def Info: images/efficientnet_training.png  used on input line 6
-53.
+62.
 (pdftex.def)             Requested size: 412.80157pt x 143.0162pt.
-<images/resnet_training.png, id=348, 997.8078pt x 345.6915pt>
+<images/resnet_training.png, id=333, 997.8078pt x 345.6915pt>
 File: images/resnet_training.png Graphic file (type png)
 <use images/resnet_training.png>
-Package pdftex.def Info: images/resnet_training.png  used on input line 660.
+Package pdftex.def Info: images/resnet_training.png  used on input line 669.
 (pdftex.def)             Requested size: 412.80157pt x 143.0162pt.
-
-Underfull \hbox (badness 6001) in paragraph at lines 683--685
-[]\T1/ptm/m/n/10 While \T1/ptm/m/it/10 SEPierceS-ta-geNet \T1/ptm/m/n/10 had st
-rong per-for-mance in
- []
-
-[8] [9 <./images/gradcam.png> <./images/efficientnet_training.png> <./images/re
-snet_training.png>] (./PierceDiseasePaper.bbl)
+[8 <./images/accuracy_plot_se60.png> <./images/precision_plot_se60.png> <./imag
+es/recall_plot_se60.png> <./images/f1_plot_se60.png> <./images/confusion_se60.p
+ng>] [9 <./images/gradcam.png> <./images/efficientnet_training.png> <./images/r
+esnet_training.png>] (./PierceDiseasePaper.bbl [10])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -917,18 +924,23 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[10] (./PierceDiseasePaper.aux)
+[11
+
+] (./PierceDiseasePaper.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `PierceDiseasePaper.out' has not changed.
-(rerunfilecheck)             Checksum: E6EE1C6D7625D740468862934F95B52A;3348.
+(rerunfilecheck)             Checksum: F80927A80A2C25E88777FF5B2212BA38;3244.
  ) 
 Here is how much of TeX's memory you used:
- 15859 strings out of 476041
- 250861 string characters out of 5793175
- 1966388 words of memory out of 6000000
- 35911 multiletter control sequences out of 15000+600000
+ 15842 strings out of 476041
+ 250633 string characters out of 5793175
+ 1958388 words of memory out of 6000000
+ 35897 multiletter control sequences out of 15000+600000
  631876 words of font info for 168 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 75i,11n,77p,1639b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,77p,1639b,1590s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
@@ -936,15 +948,16 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PierceDiseasePaper.pdf (10 pages, 6489323 bytes).
+blic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
+r/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmri8a.pfb>
+Output written on PierceDiseasePaper.pdf (11 pages, 5756243 bytes).
 PDF statistics:
- 462 PDF objects out of 1000 (max. 8388607)
- 370 compressed objects within 4 object streams
- 150 named destinations out of 1000 (max. 500000)
- 286 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 463 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 276 words of extra memory for PDF output out of 10000 (max. 10000000)
 

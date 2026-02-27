@@ -50,7 +50,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{SEPierceStageNet: Explainable EfficientNet for Grapevine Pierce’s Disease Stage Classification}
+\title{PierceStageNet: Explainable EfficientNet for Grapevine Pierce’s Disease Stage Classification}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Sehrish Noreen}
 	\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
@@ -92,7 +92,7 @@
 \maketitle
 
 \begin{abstract}
-	Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{SEPierceStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an \textit{EfficientNet-B0} backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline \textit{EfficientNet-B0} with 73.07\% and \textit{ResNet50} with 65.34\% test accuracy. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
+	Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{PierceStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an \textit{EfficientNet-B0} backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline \textit{EfficientNet-B0} with 73.07\% and \textit{ResNet50} with 65.34\% test accuracy. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -101,7 +101,7 @@
 
 \begin{figure*}[htbp]
 	\centerline{\includegraphics[width=\textwidth]{images/methodology.png}}
-	\caption{Methodology of the proposed SEPierceStageNet: grapevine disease stage classification framework.}
+	\caption{Methodology of the proposed PierceStageNet: grapevine disease stage classification framework.}
 	\label{fig:methodology}
 \end{figure*}
 
@@ -113,7 +113,7 @@ Making early disease detection and accurate assessment of leaf conditions is ess
 
 Recent advances in \ac{cv} and \ac{dl} have transformed this domain by enabling automated analysis of grapevine leaves through high resolution images. In particular, \ac{dl} models like \ac{cnn}s, have showed rreliable performance in detecting and classifying morphological and spectral patterns associated with leaf health and disease/ripeness stages. Existing studies highlight the efficiency of \ac{cv} approaches. \ac{cnn} classification models have achieved high accuracies.  Despite these advancements, many challenges remain. Most existing models are either computationally intensive or rely on large datasets. This limits their applicability in small vineyards. Many studies focus only on binary disease detection or single-stage ripening classification. Neglecting the nuanced multi-stage progression of grapevine leaves disease. Real-time deployability and lightweight architectures suitable for edge devices are rarely addressed, leaving a gap between research and practical vineyard implementation.
 
-To address these gaps, this paper proposes \textit{SEPierceStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen \textit{EfficientNet-B0} \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the \textit{EfficientNet-B0} blocks, \textit{SEPierceStageNet} achieves accuracy of approximately 97\%. While  also maintained a low computational cost that makes it suitable for real-time vineyard applications on edge devices. We also add model explainability with \ac{gradcam}. The key contributions of this paper include:
+To address these gaps, this paper proposes \textit{PierceStageNet}, a transfer learning model optimized for multi-stage grapevine leaf Pierce's Disease classification on a relatively small dataset. The model uses a frozen \textit{EfficientNet-B0} \cite{pmlr-v97-tan19a} backbone with selective feature extraction. It is enhanced by a lightweight \ac{se} attention \cite{Hu_2018_CVPR} module, and a compact classification head. By fine-tuning only a subset of the \textit{EfficientNet-B0} blocks, \textit{PierceStageNet} achieves accuracy of approximately 97\%. While  also maintained a low computational cost that makes it suitable for real-time vineyard applications on edge devices. We also add model explainability with \ac{gradcam}. The key contributions of this paper include:
 \begin{itemize}
 	\item A multi-stage grapevine leaf Pierce's Disease classification model.
 	\item Integration of a \ac{se} attention mechanism to enhance feature representation and improve stage wise disease classification accuracy.
@@ -134,8 +134,8 @@ Beyond \ac{dl} methods, classical \ac{ml} methods also provide complementary ins
 These studies show that combining \ac{cnn}, hybrid transformers, multi-backbone fusion, and feature based \ac{ml} provides accurate solutions for grape leaf disease detection, nutrient assessment, and pathogen monitoring. Edge deployable models with explainable AI techniques like \ac{gradcam} enable practical precision viticulture. They support the rapid disease assessment and optimized vineyard management. Spectroscopic and chemometric methods complement imaging for non destructive plant health monitoring.
 
 \begin{figure*}[htbp]
-	\centerline{\includegraphics[width=0.9\textwidth]{images/model.png}}
-	\caption{Proposed Architecture of \textit{SEPierceStageNet} with \textit{EfficientNet-B0} backbone and \ac{se} attention.}
+	\centerline{\includegraphics[width=\textwidth]{images/model.png}}
+	\caption{Proposed Architecture of \textit{PierceStageNet} with \textit{EfficientNet-B0} backbone and \ac{se} attention.}
 	\label{fig:model}
 \end{figure*}
 
@@ -145,27 +145,27 @@ This study implements a modified EfficientNetB0 \ac{dl} model for detecting and 
 
 \subsection{Data Description}
 The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure~\ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table~\ref{tab:data_distribution} shows the data distribution. As shown in Listing~\ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets.
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.22\columnwidth}
+	\begin{subfigure}[b]{0.22\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/fresh.png}
 		\caption{Fresh Leaf}
 		\label{fig:fresh}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\columnwidth}
+	\begin{subfigure}[b]{0.22\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage1.png}
 		\caption{Stage 1}
 		\label{fig:stage1}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\columnwidth}
+	\begin{subfigure}[b]{0.22\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage2.png}
 		\caption{Stage 2}
 		\label{fig:stage2}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\columnwidth}
+	\begin{subfigure}[b]{0.22\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage3.png}
 		\caption{Stage 3}
@@ -173,13 +173,13 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 	\end{subfigure}
 	\caption{Samples from Grapevine Pierce's Disease dataset.}
 	\label{fig:datasamples}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/preprocessing.png}}
+\begin{figure*}[htbp]
+	\centerline{\includegraphics[width=0.9\textwidth]{images/preprocessing.png}}
 	\caption{Examples of data augmentation techniques applied during the training.}
 	\label{fig:preprocessing}
-\end{figure}
+\end{figure*}
 
 \begin{table}[h!]
 	\caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages.}
@@ -200,30 +200,34 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 \end{table}
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Class mapping in code},
+caption={Dataset Classes mapping},
 label={lst:classmapping}]
-Class mapping: {'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
-Classes: ['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
-\end{lstlisting}
+Classes:
+['Fresh', 'Stage1', 'Stage-2', 'Stage-3']
 
-\begin{figure*}[htbp]
-	\centerline{\includegraphics[width=0.9\textwidth]{images/efficientnetb0.png}}
-	\caption{{EfficientNet-B0} backbone for \textit{SEPierceStageNet}.}
-	\label{fig:efficientnetb0}
-\end{figure*}
+Class mapping:
+{'Fresh': 0, 'Stage1': 1, 'Stage-2': 2, 'Stage-3': 3}
+\end{lstlisting}
 
 \subsection{Pre-processing}
 Two different preprocessing pipelines were implemented. One for training data for augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go. This strategy enhances model generalization and also maintains evaluation consistency. The augmented images  given by the dataset providers were not used as they had extensive and diverse transformations; 40,000 images in total generated from 4,004 raw images. This could lead to overfiting on synthetic data rather than learning features from the real data. Instead we did minimal augmentation on the fly while training the model to keep model near to real-world deployment. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
 
+\begin{figure*}[htbp]
+	\centerline{\includegraphics[width=\textwidth]{images/backbone.png}}
+	\caption{{EfficientNet-B0} backbone for \textit{PierceStageNet}.}
+	\label{fig:efficientnetb0}
+\end{figure*}
+
+\subsection{Model Training and Evaluation}
+The primary model, \textit{PierceStageNet}, is based on \textit{EfficientNet-B0}. It uses transfer learning. As shown in Algorithm~\ref{alg:PierceStageNet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination for disease classification. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard \textit{EfficientNet-B0} architecture was implemented under identical conditions as our proposed model.
 \begin{algorithm}
-	\caption{SEPierceStageNet Training, Validation, and Testing.}
-	\label{alg:SEPierceStageNet}
+	\caption{PierceStageNet Training, Validation, and Testing.}
+	\label{alg:PierceStageNet}
 	\begin{algorithmic}[1]
 		\STATE \textbf{Input:} Image batch $I$
 		\STATE \textbf{Output:} Predicted disease class labels
 
 		\STATE Load pretrained \textit{EfficientNet-B0} backbone
-		\STATE Freeze first few feature blocks
 		\STATE Insert SE attention module
 		\STATE Construct classifier head
 
@@ -237,51 +241,30 @@ Two different preprocessing pipelines were implemented. One for training data fo
 
 		\STATE Evaluate model on validation dataset
 		\STATE Evaluate model on test dataset
-		\STATE Return trained SEPierceStageNet model and test predictions
+		\STATE Return trained PierceStageNet model and test predictions
 	\end{algorithmic}
 \end{algorithm}
 
-\subsection{Model Training and Evaluation}
-The primary model, \textit{SEPierceStageNet}, is based on \textit{EfficientNet-B0}. It uses transfer learning. As shown in Algorithm~\ref{alg:SEPierceStageNet}, the architecture integrates a lightweight \ac{se} module to enhance feature discrimination for disease classification. At the end is a custom classification head for final predictions. Figure~\ref{fig:model} illustrates the overall model structure. For benchmarking, standard \textit{EfficientNet-B0} architecture was implemented under identical conditions as our proposed model.
-
 \subsubsection{Backbone}
-The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset. Early blocks were frozen in 3 different experiments. First experiment with first 3 blocks frozen, second with 4 frozen blocks and third with 5 blocks frozen. Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}. Only the later layers were fine-tuned Figure~\ref{fig:efficientnetb03}, Figure~\ref{fig:efficientnetb04} and Figure~\ref{fig:efficientnetb05}.
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb3.png}}
-	\caption{{EfficientNet-B0} backbone with first 3 blocks frozen.}
-	\label{fig:efficientnetb03}
-\end{figure}
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb4.png}}
-	\caption{{EfficientNet-B0} backbone with first 4 blocks frozen.}
-	\label{fig:efficientnetb04}
-\end{figure}
-\begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/eb5.png}}
-	\caption{{EfficientNet-B0} backbone with first 5 blocks frozen.}
-	\label{fig:efficientnetb05}
-\end{figure}
+The backbone of the model is based on \textit{EfficientNet-B0}. It provides feature extraction from input images. The model uses pretrained ImageNet weights to retain generic visual features while also adapting to the target dataset.  Backbone shown in Figure~\ref{fig:efficientnetb0} and Listing~\ref{lst:backbone}.
 This strategy preserves low-level features learned from large ImageNet dataset and also focuses on adapting to the specific characteristics of our grapevine dataset. Improves convergence and reduces the risk of model overfitting.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Backbone Initialization of SEPierceStageNet},
+caption={Backbone Initialization of PierceStageNet},
 label={lst:backbone}]
-Initialize EfficientNet-B0 with pretrained ImageNet weights
+Input: Images batch X
+
+Initialize EfficientNet-B0
 Divide the backbone into ordered feature blocks
-For each feature block with index i do
-    If i < n then
-        Freeze all parameters of the block
-    Else
-        Allow parameters to be updated during training
-    End if
-End for
+
+Output: Feature map F with C channels
 \end{lstlisting}
 
 \subsubsection{\ac{se} Module}
 Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. \ac{se} module structure is given in Listing~\ref{lst:semodule} and Figure~\ref{fig:semodule}. It consists of two main operations:
 
 \begin{itemize}
-	\item \textbf{Squeeze:} Global average pooling is applied to each feature map to generate the channel-wise descriptor:
+	\item \textbf{Squeeze:} Adaptive average pooling is applied to each feature map to generate the channel-wise descriptor:
 	      \begin{equation}
 		      z_c = \frac{1}{H \times W} \sum_{i=1}^{H} \sum_{j=1}^{W} X_c(i,j)
 	      \end{equation}
@@ -299,27 +282,27 @@ Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed t
 	      \end{equation}
 \end{itemize}
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=0.9\columnwidth]{images/se_attention.png}}
+	\centerline{\includegraphics[width=\columnwidth]{images/se_attention.png}}
 	\caption{\ac{se} module structure.}
 	\label{fig:semodule}
 \end{figure}
 
-Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which performs local channel recalibration, we added an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. \ac{se} module configuration is given in Tabel~\ref{tab:se_configuration}. This module performs task-specific channel recalibration on the final convolutional feature map. The internal \ac{se} works within blocks for recalibrating intermediate feature maps. External \ac{se} operates on the final backbone output and provides a global perspective over all channels. \ac{se} provides feature refinement with minimal parameter overhead and increases model accuracy. Adding an external \ac{se} module improved model accuracy by ~5–6\%, global channel recalibration complements internal \ac{se}. As given in Section~\ref{sec:results}.
+Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which performs local channel recalibration, we added an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. \ac{se} module configuration is given in Tabel~\ref{tab:se_configuration}. This module performs task-specific channel recalibration on the final convolutional feature map. The internal \ac{se} works within blocks for recalibrating intermediate feature maps. External \ac{se} operates on the backbone output feature map and provides a global perspective over all channels. \ac{se} provides feature refinement with minimal parameter overhead and increases model accuracy. Adding an external \ac{se} module improved model accuracy by ~2-4\%, global channel recalibration complements internal \ac{se}. As given in Section~\ref{sec:results}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={\ac{se} Module},
 label={lst:semodule}]
 Input: Feature map F with C channels
 
-Global average pool F
+Apply adoptive average pooling
 Reduce channels to C/r, apply ReLU, restore to C
 Apply sigmoid and scale F by attention weights
 
 Output: Recalibrated feature map
 \end{lstlisting}
 
-\begin{table}[h!]
-    \caption{SE attention configuration.}
+\begin{table}
+    \caption{SE attention module configuration for \textit{PierceStageNet}}.
     \centering
     \begin{tabular}{lc}
         \toprule
@@ -337,27 +320,53 @@ Output: Recalibrated feature map
     \label{tab:se_configuration}
 \end{table}
 
-
 \subsubsection{Classification Head}
-The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}.
+The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}. Classification head configuration is given in Table~\ref{tab:classification_head_configuration}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=\columnwidth]{images/classification_head.png}}
+	\caption{Classification head structure.}
+	\label{fig:semodule}
+\end{figure}
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Classification Head},
 label={lst:classhead}]
-Input: Feature map F
+Input: Recalibrated feature map
 
-Apply global average pooling and flatten
+Apply adoptive average pooling and flatten
 Fully connected layer with D units, ReLU activation, and dropout
 Fully connected layer to output class logits (K classes)
 
-Output: Class scores
+Output: Class logit scores
 \end{lstlisting}
+
+\begin{table}[h!]
+    \caption{Classification head configuration for \textit{PierceStageNet}.}
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Layer / Parameter} & \textbf{Value} \\
+        \midrule
+        Pooling Type        & Adaptive Average Pooling \\
+        Pooling Output Size & 1 $\times$ 1 \\
+        Flatten             & Yes \\
+        Input Features      & 1280 \\
+        Hidden Layer Units  & 512 \\
+        Activation          & ReLU \\
+        Dropout             & \textit{dropout} \\
+        Output Layer        & Fully Connected \\
+        Output Features     & \textit{num\_classes} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:classification_head_configuration}
+\end{table}
 
 \subsubsection{Forward Pass}
 During the forward pass, the input images first pass through the backbone to extract feature maps. Then \ac{se} module computes channel-wise attention. Finally, the classification head processes those features and gives logits for the class predictions. Shown in Listing~\ref{lst:fpass}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
-caption={Forward Pass of SEPierceStageNet},
+caption={Forward Pass of PierceStageNet},
 label={lst:fpass}]
 Input: Image batch X
 
@@ -365,7 +374,7 @@ Extract features using EfficientNet-B0 backbone
 Apply SE module and reweight features with attention
 Pass features through classification head
 
-Output: Class predictions
+Output: Class logit scores
 \end{lstlisting}
 
 \subsection{Evaluation Metrics}
@@ -397,18 +406,18 @@ In addition to this, confusion matrix was also visualized to analyze classificat
 
 \section{Experiment Results}
 \label{sec:results}
-\textit{SEPierceStageNet} provides strong and consistent results on training, validation, and test datasets. It outperforms baseline architectures \textit{EfficientNet-B0}, \textit{MobileNetV3Small} and \textit{ResNet-50} on our dataset.
+\textit{PierceStageNet} provides strong and consistent results on training, validation, and test datasets. It outperforms baseline architectures \textit{EfficientNet-B0}, \textit{MobileNetV3Small} and \textit{ResNet-50} on our dataset.
 
 \subsection{Experiment Setting}
 The model is initialized and moved to the available GPU device. We used google colab. The model was trained for up to 20 epochs. We used an ImageNet pretrained \textit{EfficientNet-B0} backbone combined with an \ac{se} module, custom classification head, optimized using AdamW. The pretrained backbone was fine-tuned with a learning rate of $1\times10^{-4}$. The classifier trained at $1\times10^{-3}$.  Cross-entropy loss applied with label smoothing of 0.1. We used OneCycle learning rate scheduler with a 40\% warm up period and cosine annealing. Mixed precision training accelerated computations and reduced the memory usage. Early stopping implemented with a patience of 5 epochs to prevent overfitting. The best performing epoch model was selected based on higher validation accuracy.
 
 Training and validation metrics recorded for each epoch; including accuracy, precision, recall, and F1-score.
 
-\subsection{\textit{SEPierceStageNet} With First Three Backbone Blocks Frozen}
-The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet3_metrics} and Figure~\ref{fig:performance3}.
+\subsection{\textit{PierceStageNet} With Pretrained Backbone}
+The proposed PierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:PierceStageNet3_metrics} and Figure~\ref{fig:performance3}.
 
 \begin{table}[H]
-	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 3 blocks frozen.}
+	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{PierceStageNet} with 3 blocks frozen.}
 	\centering
 	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
 		\toprule
@@ -419,7 +428,7 @@ The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. Th
 		Test Set         & 0.9451            & 0.9451             & 0.9451          & 0.9449            \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:SEPierceStageNet3_metrics}
+	\label{tab:PierceStageNet3_metrics}
 \end{table}
 
 \begin{figure}[h!]
@@ -453,7 +462,7 @@ The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. Th
 		\label{fig:f13}
 	\end{subfigure}
 
-	\caption{Training and validation curves for \textit{SEPierceStageNet} 3 backbone blocks frozen.}
+	\caption{Training and validation curves for \textit{PierceStageNet} 3 backbone blocks frozen.}
 	\label{fig:performance3}
 \end{figure}
 
@@ -461,17 +470,17 @@ Class-wise evaluation indicates strong results across all disease stages. Small 
 
 \begin{figure}
 	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_se50.png}}
-	\caption{Confusion matrix for \textit{SEPierceStageNet} With first three backbone blocks frozen on test dataset with true and predicted class labels.}
+	\caption{Confusion matrix for \textit{PierceStageNet} With first three backbone blocks frozen on test dataset with true and predicted class labels.}
 	\label{fig:cmatrix3}
 \end{figure}
 
 Overall, the model has reliable performance for grapevine disease stage classification. Given a high accuracy, precision, recall, and F1-scores across all subsets.
 
-\subsection{\textit{SEPierceStageNet} With First Four Backbone Blocks Frozen}
-For the model configuration with four layers frozen trained for 20 epochs. Precision, recall, and F1-score followed a similar trend, with the model achieving a validation F1-score of 0.9297 at the conclusion of training. These results suggest that freezing four layers allowed the model to effectively use pre-trained representations while also adapt to the target task. Results metrics of best epoch (17 epoch) were slightly lower than previous with 3 blocks of backbone frozen. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet4_metrics} and Figure~\ref{fig:performance4}.
+\subsection{\textit{PierceStageNet} With First Four Backbone Blocks Frozen}
+For the model configuration with four layers frozen trained for 20 epochs. Precision, recall, and F1-score followed a similar trend, with the model achieving a validation F1-score of 0.9297 at the conclusion of training. These results suggest that freezing four layers allowed the model to effectively use pre-trained representations while also adapt to the target task. Results metrics of best epoch (17 epoch) were slightly lower than previous with 3 blocks of backbone frozen. The final evaluation metrics are summarized in Table~\ref{tab:PierceStageNet4_metrics} and Figure~\ref{fig:performance4}.
 
 \begin{table}[H]
-	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 4 blocks frozen.}
+	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{PierceStageNet} with 4 blocks frozen.}
 	\centering
 	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
 		\toprule
@@ -482,7 +491,7 @@ For the model configuration with four layers frozen trained for 20 epochs. Preci
 		Test Set         & 0.9302            & 0.9313             & 0.9301          & 0.9297            \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:SEPierceStageNet4_metrics}
+	\label{tab:PierceStageNet4_metrics}
 \end{table}
 
 \begin{figure}[h!]
@@ -515,7 +524,7 @@ For the model configuration with four layers frozen trained for 20 epochs. Preci
 		\label{fig:f14}
 	\end{subfigure}
 
-	\caption{Training and validation curves for \textit{SEPierceStageNet} 4 backbone blocks frozen.}
+	\caption{Training and validation curves for \textit{PierceStageNet} 4 backbone blocks frozen.}
 	\label{fig:performance4}
 \end{figure}
 
@@ -523,15 +532,15 @@ Class-wise evaluation indicates almost same results as the model with 3 blocks f
 
 \begin{figure}
 	\centerline{\includegraphics[width=0.9\columnwidth]{images/confusion_se60.png}}
-	\caption{Confusion matrix for \textit{SEPierceStageNet} With first four backbone blocks frozen on test dataset with true and predicted class labels.}
+	\caption{Confusion matrix for \textit{PierceStageNet} With first four backbone blocks frozen on test dataset with true and predicted class labels.}
 	\label{fig:cmatrix4}
 \end{figure}
 
-% \subsection{\textit{SEPierceStageNet} With First Five Backbone Blocks Frozen}
-% The proposed SEPierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:SEPierceStageNet_metrics}.
+% \subsection{\textit{PierceStageNet} With First Five Backbone Blocks Frozen}
+% The proposed PierceStageNet trained for 20 epochs with three blocks frozen. The model continuously improved in both training and validation performance. The epoch with the highest validation accuracy (Epoch 18) is used to report the final results. At this epoch the model gained training accuracy, precision, recall, and F1 score of 0.9691. On the validation set it achieved 0.9475 accuracy, 0.9485 precision, 0.9475 recall and F1 score of 0.9476. Evaluation on the separate test set gave comparable results. Test accuracy of 0.9451, precision of 0.9451, recall of 0.9451, and F1 score .The model had strong generalization performance. The final evaluation metrics are summarized in Table~\ref{tab:PierceStageNet_metrics}.
 
 % \begin{table}[H]
-% 	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{SEPierceStageNet} with 3 blocks frozen.}
+% 	\caption{Best Validation Epoch results: Training, validation, and test metrics of \textit{PierceStageNet} with 3 blocks frozen.}
 % 	\centering
 % 	\begin{tabular}{m{0.3\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth} m{0.1\columnwidth}}
 % 		\toprule
@@ -542,7 +551,7 @@ Class-wise evaluation indicates almost same results as the model with 3 blocks f
 % 		Test Set         & 0.9451            & 0.9451             & 0.9451          & 0.9449            \\
 % 		\bottomrule
 % 	\end{tabular}
-% 	\label{tab:SEPierceStageNet_metrics}
+% 	\label{tab:PierceStageNet_metrics}
 % \end{table}
 
 % \begin{figure}[h!]
@@ -578,7 +587,7 @@ Class-wise evaluation indicates almost same results as the model with 3 blocks f
 % 		\label{fig:f1}
 % 	\end{subfigure}
 
-% 	\caption{Training and validation curves for \textit{SEPierceStageNet}.}
+% 	\caption{Training and validation curves for \textit{PierceStageNet}.}
 % 	\label{fig:performance}
 % \end{figure}
 
@@ -591,19 +600,19 @@ Class-wise evaluation indicates almost same results as the model with 3 blocks f
 % \end{figure}
 
 \subsubsection{Model Explainability with \ac{gradcam}}
-We used \ac{gradcam} \cite{Selvaraju_2017_ICCV} to interpret the predictions of \textit{SEPierceStageNet}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that are most influential in prediction. For our analysis, we selected one representative test image from each class predictions and generated \ac{gradcam} overlays on the top of original images. The overlays show that the model consistently focuses on the leaf regions relevant to the disease stages. It confirms that the network relies on meaningful visual features not random guessing. Figure~\ref{fig:gradcam_explainability} provides the original and Grad-CAM heatmaps side by side for a clear visual understanding of the attention of the model. Thereby improves explainability and trustworthiness on model predictions.
+We used \ac{gradcam} \cite{Selvaraju_2017_ICCV} to interpret the predictions of \textit{PierceStageNet}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that are most influential in prediction. For our analysis, we selected one representative test image from each class predictions and generated \ac{gradcam} overlays on the top of original images. The overlays show that the model consistently focuses on the leaf regions relevant to the disease stages. It confirms that the network relies on meaningful visual features not random guessing. Figure~\ref{fig:gradcam_explainability} provides the original and Grad-CAM heatmaps side by side for a clear visual understanding of the attention of the model. Thereby improves explainability and trustworthiness on model predictions.
 \begin{figure*}
 	\centerline{\includegraphics[width=0.9\textwidth]{images/gradcam.png}}
-	\caption{\ac{gradcam} explainability for \textit{SEPierceStageNet} on representative test images. Original image is shown with the \ac{gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.}
+	\caption{\ac{gradcam} explainability for \textit{PierceStageNet} on representative test images. Original image is shown with the \ac{gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.}
 	\label{fig:gradcam_explainability}
 \end{figure*}
 
 \section{Model Comparison and Analysis}
 \label{sec:comparison}
-To assess the effectiveness of \textit{SEPierceStageNet}, we made a comparison with two widely used baseline models: \textit{EfficientNet-B0} and \textit{ResNet50}. Both baseline models were trained in same conditions as \textit{SEPierceStageNet}. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets. Detailed comparison given in Table~\ref{tab:model_comparison}.
+To assess the effectiveness of \textit{PierceStageNet}, we made a comparison with two widely used baseline models: \textit{EfficientNet-B0} and \textit{ResNet50}. Both baseline models were trained in same conditions as \textit{PierceStageNet}. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets. Detailed comparison given in Table~\ref{tab:model_comparison}.
 
 \begin{table}
-	\caption{Performance Comparison of \textit{SEPierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}
+	\caption{Performance Comparison of \textit{PierceStageNet} and pretrained Baseline Models on Training, Validation, and Test Sets; Training accuracy is of the best validation epoch.}
 	\centering
 	\begin{tabular}{
 			m{0.26\columnwidth}
@@ -620,7 +629,7 @@ To assess the effectiveness of \textit{SEPierceStageNet}, we made a comparison w
 		\textbf{Params (M)}                  \\
 		\midrule
 
-		\textbf{\textit{SEPierceStageNet}} &
+		\textbf{\textit{PierceStageNet}} &
 		\textbf{0.9557}                    &
 		\textbf{0.9225}                    &
 		\textbf{0.9526}                    &
@@ -643,9 +652,9 @@ To assess the effectiveness of \textit{SEPierceStageNet}, we made a comparison w
 \end{table}
 
 
-The final test results indicate that \textit{SEPierceStageNet} outperforms both baseline pretrained models. \textit{EfficientNet-B0} had a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261. \textit{ResNet50} had 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{SEPierceStageNet} had 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score. Outperforming both pretrained models in faster learning and superior generalization.
+The final test results indicate that \textit{PierceStageNet} outperforms both baseline pretrained models. \textit{EfficientNet-B0} had a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261. \textit{ResNet50} had 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{PierceStageNet} had 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score. Outperforming both pretrained models in faster learning and superior generalization.
 
-Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{SEPierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
+Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{PierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
 The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
 
 \begin{figure*}
@@ -662,13 +671,13 @@ The baseline EfficientNet-B0 exhibits limited generalization, with validation ac
 	\label{fig:resnet}
 \end{figure*}
 
-Both \textit{EfficientNet-B0} and \textit{ResNet50} showed lower performance on intermediate disease stages; Stage 1 and Stage 2. \textit{EfficientNet-B0} recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2. The \textit{ResNet50} underperformed with F1-scores of 0.57 and 0.51, for Stage 1 and 2 disease. Misclassifications primarily occurred between adjacent disease stages. This limitation was largely mitigated in \textit{SEPierceStageNet} through attention mechanism.
+Both \textit{EfficientNet-B0} and \textit{ResNet50} showed lower performance on intermediate disease stages; Stage 1 and Stage 2. \textit{EfficientNet-B0} recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2. The \textit{ResNet50} underperformed with F1-scores of 0.57 and 0.51, for Stage 1 and 2 disease. Misclassifications primarily occurred between adjacent disease stages. This limitation was largely mitigated in \textit{PierceStageNet} through attention mechanism.
 
 \begin{itemize}
 	\item \textbf{\textit{EfficientNet-B0}:} High precision of 0.85 for the Fresh class but lower performance for Stage-2 as F1 recorded 0.55. Had Overall test accuracy of 0.7307.
 	\item \textbf{\textit{ResNet50}:} Moderate precision 0.88 for Fresh but low recall of 0.61. Stage-1 and Stage-2 underperforming. Overall test accuracy was 0.6534.
 \end{itemize}
-The significant improvement of \textit{SEPierceStageNet} over the baselines:
+The significant improvement of \textit{PierceStageNet} over the baselines:
 \begin{enumerate}
 	\item Partial layer freezing to use pretrained features without overfitting dataset.
 	\item Integration of attention module to focus on disease specific area of leaf.
@@ -680,10 +689,10 @@ These modifications show that carefully designed domain specific models can outp
 \section{Limitations and Future Directions}
 \label{sec:limitations}
 
-While \textit{SEPierceStageNet} had strong performance in grapevine disease stage classification still several limitations must be acknowledged. Opportunities for improvement still exist. One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 4004 images which had 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully contain the variability in Pierce Disease in different climates, lighting conditions, and devices. This can limit the generalizability of the model to different conditions in real vineyard scenarios. Additionally, the model exhibits challenges in distinguishing differences between adjacent disease stages, like in Stage 2 and Stage 3. It reflects the difficulty of progressive symptom recognition. Environmental factors also pose a constraint. The current model was trained on images captured under a controlled environment. But on field deployment may bring varying lighting, occlusion by other leaves, dust, or may be overlapping plant structures. All of these can impact prediction accuracy. Although the dataset was balanced across disease stages during training; real world data is often skewed toward early or healthy stages. The performance of \textit{SEPierceStageNet} under such class imbalance conditions remains untested.
-The limitations can be addressed by expanding the datasets to include more diverse environmental conditions. Adding multi-modal data like hyperspectral imaging or infrared can improve sensitivity to disease progression and reduce misclassifications between adjacent disease stages. For practical deployment, developing mobile or edge versions of \textit{SEPierceStageNet} would enable real-time disease detection in-field. Techniques such as focal loss, data augmentation or synthetic oversampling can help the model remain robust on imbalance datasets. Implementing incremental learning or domain adaptation strategies would allow the model to adapt over time to new disease variants or environmental conditions without full retraining.
+While \textit{PierceStageNet} had strong performance in grapevine disease stage classification still several limitations must be acknowledged. Opportunities for improvement still exist. One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 4004 images which had 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully contain the variability in Pierce Disease in different climates, lighting conditions, and devices. This can limit the generalizability of the model to different conditions in real vineyard scenarios. Additionally, the model exhibits challenges in distinguishing differences between adjacent disease stages, like in Stage 2 and Stage 3. It reflects the difficulty of progressive symptom recognition. Environmental factors also pose a constraint. The current model was trained on images captured under a controlled environment. But on field deployment may bring varying lighting, occlusion by other leaves, dust, or may be overlapping plant structures. All of these can impact prediction accuracy. Although the dataset was balanced across disease stages during training; real world data is often skewed toward early or healthy stages. The performance of \textit{PierceStageNet} under such class imbalance conditions remains untested.
+The limitations can be addressed by expanding the datasets to include more diverse environmental conditions. Adding multi-modal data like hyperspectral imaging or infrared can improve sensitivity to disease progression and reduce misclassifications between adjacent disease stages. For practical deployment, developing mobile or edge versions of \textit{PierceStageNet} would enable real-time disease detection in-field. Techniques such as focal loss, data augmentation or synthetic oversampling can help the model remain robust on imbalance datasets. Implementing incremental learning or domain adaptation strategies would allow the model to adapt over time to new disease variants or environmental conditions without full retraining.
 
-In summary, while \textit{SEPierceStageNet} achieves high accuracy in experimental conditions, addressing these limitations will be essential for the practical deployment.
+In summary, while \textit{PierceStageNet} achieves high accuracy in experimental conditions, addressing these limitations will be essential for the practical deployment.
 
 
 \section{Conclusion}
