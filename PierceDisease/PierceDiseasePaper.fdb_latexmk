@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex PierceDiseasePaper"] 1772178742.04649 "PierceDiseasePaper.aux" "PierceDiseasePaper.bbl" "PierceDiseasePaper" 1772178748.90842 0
+["bibtex PierceDiseasePaper"] 1772179652.82406 "PierceDiseasePaper.aux" "PierceDiseasePaper.bbl" "PierceDiseasePaper" 1772194655.97486 0
   "./references.bib" 1768968539 10493 f1c6b0e957b0cb52a888bfefa7ed29f7 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "PierceDiseasePaper.aux" 1772178748.50965 18855 4a78f5ab3b6ad2e62b3e598ee546fdd2 "pdflatex"
+  "PierceDiseasePaper.aux" 1772194655.58429 18855 4a78f5ab3b6ad2e62b3e598ee546fdd2 "pdflatex"
   (generated)
   "PierceDiseasePaper.bbl"
   "PierceDiseasePaper.blg"
   (rewritten before read)
-["pdflatex"] 1772178742.16226 "PierceDiseasePaper.tex" "PierceDiseasePaper.pdf" "PierceDiseasePaper" 1772178748.9088 0
+["pdflatex"] 1772194648.72947 "PierceDiseasePaper.tex" "PierceDiseasePaper.pdf" "PierceDiseasePaper" 1772194655.97545 0
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1764115200 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -147,14 +147,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1770607673.76182 4602002 62dba5fc29055c16380d7393a2adb07a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1770607410 7753796 ea3280737d21747a08c726bcbf327fa7 ""
   "IEEEtran.cls" 1766701500 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "PierceDiseasePaper.aux" 1772178748.50965 18855 4a78f5ab3b6ad2e62b3e598ee546fdd2 "pdflatex"
-  "PierceDiseasePaper.bbl" 1772178742.15365 7594 23bceaa602ce534b15bb9c11e8001082 "bibtex PierceDiseasePaper"
-  "PierceDiseasePaper.out" 1772178748.51265 3244 f80927a80a2c25e88777ff5b2212ba38 "pdflatex"
-  "PierceDiseasePaper.tex" 1772178731.82665 49939 ca567beb75fa21b7a4cca37fd30e0462 ""
+  "PierceDiseasePaper.aux" 1772194655.58429 18855 4a78f5ab3b6ad2e62b3e598ee546fdd2 "pdflatex"
+  "PierceDiseasePaper.bbl" 1772179652.91064 7594 23bceaa602ce534b15bb9c11e8001082 "bibtex PierceDiseasePaper"
+  "PierceDiseasePaper.out" 1772194655.58629 3244 f80927a80a2c25e88777ff5b2212ba38 "pdflatex"
+  "PierceDiseasePaper.tex" 1772194647.01829 49899 8dfda79412abb8fa70d2635c9be1869f ""
   "images/accuracy_plot_se50.png" 1771058764.94104 179130 7fca69ca552d4e868251f274459d8c1e ""
   "images/accuracy_plot_se60.png" 1771058713.92404 171182 fc950159aaadbd1e9f8aec1d57d03e92 ""
-  "images/backbone.png" 1772175010.06271 123926 bed6827b3d456f8d6d6b75a1953b3e8e ""
-  "images/classification_head.png" 1772174723.08472 52810 442573aff8283e7f95437e6781ed1424 ""
+  "images/backbone.png" 1772179396.28564 123931 505f2073ea9c80355beaaf32febef165 ""
+  "images/classification_head.png" 1772194365.99831 54525 877f79162e27b55f14c13be78a08c22a ""
   "images/confusion_se50.png" 1771056448.93402 35199 814a157d307757c3de9b36c7f4854cb7 ""
   "images/confusion_se60.png" 1771058168.26704 35335 896df0ad64b10eee0a48f56b2b12b8ab ""
   "images/efficientnet_training.png" 1768992664 324755 7cad7e5f39bfe2fb0ebae5f652a04bac ""
@@ -165,7 +165,7 @@
   "images/fresh_original.png" 1772177888.34467 245927 7b0fb1a382b2b0f81e80c58dd9afe582 ""
   "images/gradcam.png" 1768969076 1084129 b4bda82b38402b6daf39ceb93cf73a95 ""
   "images/methodology.png" 1767954487 322529 892353d61ed40e82597b7c8358d36974 ""
-  "images/model.png" 1772173882.37073 158687 72c50b9f6e4c0623e5c02381840c7ccf ""
+  "images/model.png" 1772194354.73431 156863 dfe4f930f98fcdd60686da7cda83b5fe ""
   "images/precision_plot_se50.png" 1771056194.62202 192074 8a4596612cab2c8bca5d2d9248802736 ""
   "images/precision_plot_se60.png" 1771058899.08704 163679 e46f620b03b920c264bbae8786880f96 ""
   "images/recall_plot_se50.png" 1771058677.01004 169545 28766ed4b024cf245ad8595fc47f5020 ""
@@ -177,7 +177,7 @@
   "images/s2_original.png" 1772177928.68867 201238 39895d60c1a8a72d348af68a4015c99e ""
   "images/s3_aug.png" 1772177950.45566 239754 af1cf7c03a31425f3950791beb0bc03b ""
   "images/s3_original.png" 1772177943.77666 245895 f7fdcb5ebd95a8bf1d2ec90e50c88a64 ""
-  "images/se_attention.png" 1772174705.54272 68381 3f27bfeb985560ec126122057901510f ""
+  "images/se_attention.png" 1772194362.45231 68916 cbb93b4b8ec2b1ab292123d150b923fb ""
   "images/stage1.png" 1767697894 92014 51899392fd201e3eadd2eb0d4594eadf ""
   "images/stage2.png" 1767697903 93100 f31e5a544dc6d24ab020bd32c858eb2b ""
   "images/stage3.png" 1767697908 116227 4818dd797c3636898b68c7d416b06114 ""

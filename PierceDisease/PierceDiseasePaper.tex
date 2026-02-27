@@ -325,7 +325,7 @@ Output: Feature map F with C channels
 Next part is \ac{se} module \cite{Hu_2018_CVPR}.The \ac{se} module is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. \ac{se} module structure is given in Listing~\ref{lst:semodule} and Figure~\ref{fig:semodule}. It consists of two main operations:
 
 \begin{itemize}
-	\item \textbf{Squeeze:} Adaptive average pooling is applied to each feature map to generate the channel-wise descriptor:
+	\item \textbf{Squeeze:} Global average pooling is applied to each feature map to generate the channel-wise descriptor:
 	      \begin{equation}
 		      z_c = \frac{1}{H \times W} \sum_{i=1}^{H} \sum_{j=1}^{W} X_c(i,j)
 	      \end{equation}
@@ -355,7 +355,7 @@ caption={\ac{se} Module},
 label={lst:semodule}]
 Input: Feature map F with C channels
 
-Apply adoptive average pooling
+Apply global average pooling
 Reduce channels to C/r, apply ReLU, restore to C
 Apply sigmoid and scale F by attention weights
 
@@ -382,7 +382,7 @@ Output: Recalibrated feature map
 \end{table}
 
 \subsubsection{Classification Head}
-The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}. Classification head configuration is given in Table~\ref{tab:classification_head_configuration}
+The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}. Classification head configuration is given in Table~\ref{tab:classification_head_configuration}.
 
 \begin{figure}[h!]
 	\centerline{\includegraphics[width=\columnwidth]{images/classification_head.png}}
@@ -395,7 +395,7 @@ caption={Classification Head},
 label={lst:classhead}]
 Input: Recalibrated feature map
 
-Apply adoptive average pooling and flatten
+Apply global average pooling and flatten
 Fully connected layer with D units, ReLU activation, and dropout
 Fully connected layer to output class logits (K classes)
 
@@ -409,15 +409,15 @@ Output: Class logit scores
         \toprule
         \textbf{Layer / Parameter} & \textbf{Value} \\
         \midrule
-        Pooling Type        & Adaptive Average Pooling \\
+        Pooling Type        & Global Average Pooling \\
         Pooling Output Size & 1 $\times$ 1 \\
         Flatten             & Yes \\
         Input Features      & 1280 \\
         Hidden Layer Units  & 512 \\
         Activation          & ReLU \\
-        Dropout             & \textit{dropout} \\
+        Dropout             & 0.3 \\
         Output Layer        & Fully Connected \\
-        Output Features     & \textit{num\_classes} \\
+        Output Features     & 4 \\
         \bottomrule
     \end{tabular}
     \label{tab:classification_head_configuration}
