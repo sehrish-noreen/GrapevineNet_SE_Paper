@@ -312,7 +312,7 @@ The backbone of the model is based on \textit{EfficientNet-B0}. It provides feat
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Backbone Initialization of PierceStageNet},
-label={lst:backbone}]
+label={lst:backbone}, basicstyle=\ttfamily\footnotesize]
 Input: Images batch X
 
 Initialize EfficientNet-B0
@@ -352,7 +352,7 @@ Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which 
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={\ac{se} Module},
-label={lst:semodule}]
+label={lst:semodule}, basicstyle=\ttfamily\footnotesize]
 Input: Feature map F with C channels
 
 Apply global average pooling
@@ -392,7 +392,7 @@ The last part is classification head. Classification head maps the attended feat
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Classification Head},
-label={lst:classhead}]
+label={lst:classhead}, basicstyle=\ttfamily\footnotesize]
 Input: Recalibrated feature map
 
 Apply global average pooling and flatten
@@ -428,7 +428,7 @@ During the forward pass, the input images first pass through the backbone to ext
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={Forward Pass of PierceStageNet},
-label={lst:fpass}]
+label={lst:fpass}, basicstyle=\ttfamily\footnotesize]
 Input: Image batch X
 
 Extract features using EfficientNet-B0 backbone
