@@ -145,27 +145,27 @@ This study implements a modified EfficientNetB0 \ac{dl} model for detecting and 
 
 \subsection{Data Description}
 The dataset consists of labeled images of grapevine leaves organized into four classes. Each class representing progressive stage of Pierce's Disease. The classification includes Fresh leaves, Stage 1 having early infection, Stage 2 with moderate progression, and Stage 3 is advanced infection in leaves. Figure~\ref{fig:datasamples} shows data samples from training subset. Images were sourced from the ``PierceDisease: Xylella fastidiosa affected Grape Leaves comprehensive image dataset'' \cite{Islam2025PierceDisease} dataset, which provides four progression stages of Pierce's Disease. We split dataset into Train, Test and Validaton subsets. The dataset contains 4,004 images in total. These images were distributed as: 3,203 training images, 400 validation images, and 401 test images. Table~\ref{tab:data_distribution} shows the data distribution. As shown in Listing~\ref{lst:classmapping}, a consistent integer mapping was established for standard label encoding across all subsets.
-\begin{figure*}[htbp]
+\begin{figure}[htbp]
 	\centering
-	\begin{subfigure}[b]{0.22\textwidth}
+	\begin{subfigure}[b]{0.22\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/fresh.png}
 		\caption{Fresh Leaf}
 		\label{fig:fresh}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\textwidth}
+	\begin{subfigure}[b]{0.22\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage1.png}
 		\caption{Stage 1}
 		\label{fig:stage1}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\textwidth}
+	\begin{subfigure}[b]{0.22\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage2.png}
 		\caption{Stage 2}
 		\label{fig:stage2}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.22\textwidth}
+	\begin{subfigure}[b]{0.22\columnwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/stage3.png}
 		\caption{Stage 3}
@@ -173,13 +173,75 @@ The dataset consists of labeled images of grapevine leaves organized into four c
 	\end{subfigure}
 	\caption{Samples from Grapevine Pierce's Disease dataset.}
 	\label{fig:datasamples}
-\end{figure*}
+\end{figure}
+
 
 \begin{figure*}[htbp]
-	\centerline{\includegraphics[width=0.9\textwidth]{images/preprocessing.png}}
-	\caption{Examples of data augmentation techniques applied during the training.}
-	\label{fig:preprocessing}
+    \centering
+    % Original Images (Top Row)
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/fresh_original.png}
+        \caption{Fresh Leaf}
+        \label{fig:fresh_orig}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s1_original.png}
+        \caption{Stage 1}
+        \label{fig:stage1_orig}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s2_original.png}
+        \caption{Stage 2}
+        \label{fig:stage2_orig}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s3_original.png}
+        \caption{Stage 3}
+        \label{fig:stage3_orig}
+    \end{subfigure}
+
+    % Space between rows
+    \vspace{0.5em}
+
+    % Augmented Images (Bottom Row)
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/fresh_aug.png}
+        \caption{Fresh Leaf Augmented}
+        \label{fig:fresh_aug}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s1_aug.png}
+        \caption{Stage 1 Augmented}
+        \label{fig:stage1_aug}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s2_aug.png}
+        \caption{Stage 2 Augmented}
+        \label{fig:stage2_aug}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/s3_aug.png}
+        \caption{Stage 3 Augmented}
+        \label{fig:stage3_aug}
+    \end{subfigure}
+
+    \caption{Examples of original (top row) and augmented (bottom row) training images.}
+    \label{fig:datasamples_combined}
 \end{figure*}
+
+% \begin{figure*}[htbp]
+% 	\centerline{\includegraphics[width=0.9\textwidth]{images/preprocessing.png}}
+% 	\caption{Examples of data augmentation techniques applied during the training.}
+% 	\label{fig:preprocessing}
+% \end{figure*}
 
 \begin{table}[h!]
 	\caption{Distribution of images across dataset splits for grapevine Pierce's Disease stages.}
@@ -210,7 +272,7 @@ Class mapping:
 \end{lstlisting}
 
 \subsection{Pre-processing}
-Two different preprocessing pipelines were implemented. One for training data for augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go. This strategy enhances model generalization and also maintains evaluation consistency. The augmented images  given by the dataset providers were not used as they had extensive and diverse transformations; 40,000 images in total generated from 4,004 raw images. This could lead to overfiting on synthetic data rather than learning features from the real data. Instead we did minimal augmentation on the fly while training the model to keep model near to real-world deployment. Figure~\ref{fig:preprocessing} shows some of preprocessing transformations.
+Two different preprocessing pipelines were implemented. One for training data for augmentation. Other for validation and testing with minimal transformations. Training subset transformations include resizing images to 224×224 px, random horizontal and vertical flipping, ±20-degree rotation, color jittering, random affine transformations, and ImageNet normalization. Validation and test subset transformations consisted only of resizing, tensor conversion, and normalization. All the transformations are applied during training, on the go. This strategy enhances model generalization and also maintains evaluation consistency. The augmented images  given by the dataset providers were not used as they had extensive and diverse transformations; 40,000 images in total generated from 4,004 raw images. This could lead to overfiting on synthetic data rather than learning features from the real data. Instead we did minimal augmentation on the fly while training the model to keep model near to real-world deployment. Figure~\ref{fig:datasamples_combined} shows some of preprocessing transformations.
 
 \begin{figure*}[htbp]
 	\centerline{\includegraphics[width=\textwidth]{images/backbone.png}}
@@ -323,7 +385,7 @@ Output: Recalibrated feature map
 \subsubsection{Classification Head}
 The last part is classification head. Classification head maps the attended feature maps to final predictions. It includes a fully connected layer, ReLU activation, dropout for regularization. At last, a final linear layer for the output logits corresponding to the target classes. Given in Listing~\ref{lst:classhead}. Classification head configuration is given in Table~\ref{tab:classification_head_configuration}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 	\centerline{\includegraphics[width=\columnwidth]{images/classification_head.png}}
 	\caption{Classification head structure.}
 	\label{fig:semodule}
