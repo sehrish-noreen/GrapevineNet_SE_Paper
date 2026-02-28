@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex PierceDiseasePaper"] 1772272238.51183 "PierceDiseasePaper.aux" "PierceDiseasePaper.bbl" "PierceDiseasePaper" 1772272578.53136 0
+["bibtex PierceDiseasePaper"] 1772272888.82725 "PierceDiseasePaper.aux" "PierceDiseasePaper.bbl" "PierceDiseasePaper" 1772272893.29908 0
   "./references.bib" 1768968539 10493 f1c6b0e957b0cb52a888bfefa7ed29f7 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "PierceDiseasePaper.aux" 1772272578.1356 21328 cdd538cfb262430c6ecf917b2b5660d3 "pdflatex"
+  "PierceDiseasePaper.aux" 1772272893.08759 20761 3ef86b1ecec29058081381b0af668497 "pdflatex"
   (generated)
   "PierceDiseasePaper.bbl"
   "PierceDiseasePaper.blg"
   (rewritten before read)
-["pdflatex"] 1772272568.79938 "PierceDiseasePaper.tex" "PierceDiseasePaper.pdf" "PierceDiseasePaper" 1772272578.53192 2
+["pdflatex"] 1772272888.94858 "PierceDiseasePaper.tex" "PierceDiseasePaper.pdf" "PierceDiseasePaper" 1772272893.29933 0
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1764115200 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -147,15 +147,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1770607673.76182 4602002 62dba5fc29055c16380d7393a2adb07a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1770607410 7753796 ea3280737d21747a08c726bcbf327fa7 ""
   "IEEEtran.cls" 1766701500 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "PierceDiseasePaper.aux" 1772272578.1356 21328 cdd538cfb262430c6ecf917b2b5660d3 "pdflatex"
-  "PierceDiseasePaper.bbl" 1772272238.6156 7594 23bceaa602ce534b15bb9c11e8001082 "bibtex PierceDiseasePaper"
-  "PierceDiseasePaper.out" 1772272578.1386 3175 3d63e28b3b02297da6f50d8461a30b9d "pdflatex"
-  "PierceDiseasePaper.tex" 1772272567.7416 48158 f19064e7aadb7c6191482604f8c65a29 ""
+  "PierceDiseasePaper.aux" 1772272893.08759 20761 3ef86b1ecec29058081381b0af668497 "pdflatex"
+  "PierceDiseasePaper.bbl" 1772272888.9386 7594 23bceaa602ce534b15bb9c11e8001082 "bibtex PierceDiseasePaper"
+  "PierceDiseasePaper.out" 1772272893.08859 3175 e13818b9bc889554787e5b3b1676323a "pdflatex"
+  "PierceDiseasePaper.tex" 1772272880.4996 48198 e5d308331c1e68a241e3a39ef647ba1f ""
   "images/accuracy_plot_se0.png" 1772270157.11163 159191 ed5bda7cc837ec849faff5a2191f55db ""
   "images/accuracy_plot_se_no_pretrained_wieghts.png" 1772270166.64663 199616 3426865970aa3744a94642cd72fc188d ""
   "images/backbone.png" 1772179396.28564 123931 505f2073ea9c80355beaaf32febef165 ""
   "images/classification_head.png" 1772194365.99831 54525 877f79162e27b55f14c13be78a08c22a ""
-  "images/efficientnet_training.png" 1768992664 324755 7cad7e5f39bfe2fb0ebae5f652a04bac ""
   "images/f1_plot_se0.png" 1772270135.67663 158509 525d443a07382b52642a20cb76ce8996 ""
   "images/f1_plot_se_no_pretrained_wieghts.png" 1772270139.79463 192932 00a76fcea03aed12131341091042179e ""
   "images/fresh.png" 1767697885 99443 a10f19d3f5182dd670bd15c898c23819 ""
@@ -175,7 +174,6 @@
   "images/pretrained_PSNet_samples.png" 1772266075.62769 1410708 11d6d41ca5d3b8ffc2300ad25f50f111 ""
   "images/recall_plot_se0.png" 1772270004.67164 150320 afeb7c0ddc272dab98596ff5a8ec0e52 ""
   "images/recall_plot_se_no_pretrained_wieghts.png" 1772270033.12063 187456 f7fb9cc1e7b2d4f10a4298d503e5aed0 ""
-  "images/resnet_training.png" 0 -1 0 ""
   "images/s1_aug.png" 1772177917.34067 206043 0f12f86963c61ca291e33a748113cc0f ""
   "images/s1_original.png" 1772177910.19867 235289 68c891427b3cf41c0c8cfabe78906d15 ""
   "images/s2_aug.png" 1772177936.04767 169259 4e23585cbacef00dc876621d69a467b2 ""

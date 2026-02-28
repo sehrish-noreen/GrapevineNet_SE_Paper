@@ -1093,11 +1093,6 @@ INPUT ./images/gradcam_wrong_nopretrainedPSNet.png
 INPUT ./images/gradcam_wrong_nopretrainedPSNet.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT ./images/efficientnet_training.png
-INPUT ./images/efficientnet_training.png
-INPUT images/efficientnet_training.png
-INPUT ./images/efficientnet_training.png
-INPUT ./images/efficientnet_training.png
 INPUT ./PierceDiseasePaper.bbl
 INPUT PierceDiseasePaper.bbl
 INPUT ./PierceDiseasePaper.bbl

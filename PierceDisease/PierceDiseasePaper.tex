@@ -314,7 +314,7 @@ Output: Feature map F with C channels
 \end{lstlisting}
 
 \subsubsection{\ac{se} Block}
-Next part is \ac{se} block \cite{Hu_2018_CVPR}.The \ac{se} block is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. \ac{se} block structure is given in Listing~\ref{lst:semodule} and Figure~\ref{fig:semodule}. It consists of two main operations:
+Next part is Sequeeze-and-Excitation block \cite{Hu_2018_CVPR}.The \ac{se} block is designed to improve the representational power of our model by explicitly modeling channel-wise interdependencies. It is applied to final feature map and emphasizes the most important channels for and improved classification. \ac{se} attention allows model to suppress the pretrained ImageNet channels and focus on our dataset. \ac{se} block structure is given in Listing~\ref{lst:semodule} and Figure~\ref{fig:semodule}. It consists of two main operations:
 
 \begin{itemize}
 	\item \textbf{Squeeze:} Global average pooling is applied to each feature map to generate the channel-wise descriptor:
@@ -664,19 +664,19 @@ The final test results indicate that \textit{PierceStageNet} outperforms baselin
 Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{PierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
 The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/efficientnet_training.png}
-	\caption{Learning curves for \textit{EfficientNet-B0}.}
-	\label{fig:eb}
-\end{figure*}
+% \begin{figure*}
+% 	\centering
+% 	\includegraphics[width=0.8\textwidth]{images/efficientnet_training.png}
+% 	\caption{Learning curves for \textit{EfficientNet-B0}.}
+% 	\label{fig:eb}
+% \end{figure*}
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/resnet_training.png}
-	\caption{Learning curves for \textit{ResNet50}.}
-	\label{fig:resnet}
-\end{figure*}
+% \begin{figure*}
+% 	\centering
+% 	\includegraphics[width=0.8\textwidth]{images/resnet_training.png}
+% 	\caption{Learning curves for \textit{ResNet50}.}
+% 	\label{fig:resnet}
+% \end{figure*}
 
 Both \textit{EfficientNet-B0} and \textit{ResNet50} showed lower performance on intermediate disease stages; Stage 1 and Stage 2. \textit{EfficientNet-B0} recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2. The \textit{ResNet50} underperformed with F1-scores of 0.57 and 0.51, for Stage 1 and 2 disease. Misclassifications primarily occurred between adjacent disease stages. This limitation was largely mitigated in \textit{PierceStageNet} through attention mechanism.
 
