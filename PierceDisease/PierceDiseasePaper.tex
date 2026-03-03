@@ -92,7 +92,7 @@
 \maketitle
 
 \begin{abstract}
-	Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{PierceStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an \textit{EfficientNet-B0} backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training accuracy of 95.57\%, validation accuracy of 92.25\% and a test accuracy of 95.26\%, significantly outperforming baseline \textit{EfficientNet-B0} with 73.07\% and \textit{ResNet50} with 65.34\% test accuracy. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
+	Pierce's Disease is a becterial disease caused by Xylella fastidiosa. It affects the grapevine leaves. Accurate assessment of grapevine leaf health is important for precision agriculture. But traditional manual inspection is higly subjective and often inconsistent. Recent advances in \ac{dl} have enabled automated analysis of grapevine leaves. In this paper, we propose \textit{PierceStageNet}, a transfer learning model optimized for the multi-stage grapevine Pierce's Disease classification on a relatively small dataset. The model uses an \textit{EfficientNet-B0} backbone, enhanced with a \ac{se} attention module, and a compact classification head. It effectively extracts grapevine leaves feature for a better classification of disease stage. Our model achieves a training 0.9751 accuracy, 0.9754 precision, 0.9750 recall, and 0.9749 F1-score, significantly outperforming baseline \textit{EfficientNet-B0} on PierceDisease Dataset. These results highlight the model's potential to facilitate timely disease detection. It bridges the gap between baseline research models and practical precision agriculture applications.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -121,7 +121,7 @@ To address these gaps, this paper proposes \textit{PierceStageNet}, a transfer l
 	\item Explainability of model for enhanced trustworthiness.
 \end{itemize}
 
-The rest of the paper is structured as follows. Section \ref{sec:rw} reviews most recent and relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation. Section \ref{sec:comparison} comparative analysis with baseline pretrained models. Seciton \ref{sec:limitations} provides limitations, and directions for future work. Finally, Section \ref{sec:con} concludes the paper with key findings.
+The rest of the paper is structured as follows. Section \ref{sec:rw} reviews most recent and relevant literature on grapevine leaf disease detection, including \ac{dl} architectures, attention mechanisms, and classical machine learning approaches. Section \ref{sec:methodology} details the materials and methods, covering dataset description, preprocessing pipelines, model architecture, and training strategy. Section \ref{sec:results} presents experimental results, performance evaluation. Section \ref{sec:comparison} comparative analysis with baseline pretrained models. Seciton \ref{sec:limitations} provides limitations, and Section~\ref{sec:future} gives directions for future work. Finally, Section \ref{sec:con} concludes the paper with key findings.
 
 \section{Related Work}
 \label{sec:rw}
@@ -340,7 +340,7 @@ Next part is Sequeeze-and-Excitation block \cite{Hu_2018_CVPR}.The \ac{se} block
 	\label{fig:semodule}
 \end{figure}
 
-Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which performs local channel recalibration, we added an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. \ac{se} module configuration is given in Tabel~\ref{tab:se_configuration}. This module performs task-specific channel recalibration on the final convolutional feature map. The internal \ac{se} works within blocks for recalibrating intermediate feature maps. External \ac{se} operates on the backbone output feature map and provides a global perspective over all channels. \ac{se} provides feature refinement with minimal parameter overhead and increases model accuracy. Adding an external \ac{se} module improved model accuracy by ~2-4\% over baseline \textit{EfficientNet-B0}, global channel recalibration complements internal \ac{se}. As given in Section~\ref{sec:results}.
+Although \textit{EfficientNet-B0} contains \ac{se} blocks in MBConv block which performs local channel recalibration, we added an additional trainable \ac{se} module at the feature head for better adaptation to our dataset. \ac{se} module configuration is given in Tabel~\ref{tab:se_configuration}. This module performs task-specific channel recalibration on the final convolutional feature map. The internal \ac{se} works within blocks for recalibrating intermediate feature maps. External \ac{se} operates on the backbone output feature map and provides a global perspective over all channels. \ac{se} provides feature refinement with minimal parameter overhead and increases model accuracy. Adding an external \ac{se} module improved model accuracy by ~2-3\% over baseline \textit{EfficientNet-B0}, global channel recalibration complements internal \ac{se}. As given in Section~\ref{sec:results}.
 
 \begin{lstlisting}[style=ieeelisting, frame=none,
 caption={\ac{se} Module},
@@ -534,7 +534,7 @@ Model trained for 40 epochs as it has no pretrained weights. This model has same
 		Fresh     & 0.9468    & 0.8900    & 0.9175    & 100         \\
 		Stage 1   & 0.7636    & 0.8400    & 0.8000    & 100         \\
 		Stage 2   & 0.7979    & 0.7500    & 0.7732    & 100          \\
-		Stage 3   & 0.7979    & 0.7500    & 0.7732    & 100          \\
+		Stage 3   & 0.7979    & 0.7500    & 0.7732    & 101          \\
 		\bottomrule
 	\end{tabular}
 	\label{tab:PierceStageNet_notPretrained_class_metrics}
@@ -551,26 +551,26 @@ Class-wise evaluation indicates almost same trend as the model with pretrained w
 Figure~\ref{fig:testsamples_notPretrained_PierceStageNet} provides more information about pretrained \textit{PierceStageNet}  model's classifications including correct and wrong predictions with leaf images.
 \begin{figure*}
 	\centering
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/accuracy_plot_se0.png}
 		\caption{Accuracy}
 		\label{fig:accuracy3}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/precision_plot_se0.png}
 		\caption{Precision}
 		\label{fig:precision3}
 	\end{subfigure}
 	\vspace{0.5em}
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/recall_plot_se0.png}
 		\caption{Recall}
 		\label{fig:recall3}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/f1_plot_se0.png}
 		\caption{F1-score}
@@ -580,29 +580,28 @@ Figure~\ref{fig:testsamples_notPretrained_PierceStageNet} provides more informat
 	\caption{Training and validation curves for \textit{PierceStageNet} (ImageNet1k pretrained).}
 	\label{fig:PierceStageNetPretrained_performance}
 \end{figure*}
-
 \begin{figure*}
 	\centering
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/accuracy_plot_se_no_pretrained_wieghts.png}
 		\caption{Accuracy}
 		\label{fig:accuracy4}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/precision_plot_se_no_pretrained_wieghts.png}
 		\caption{Precision}
 		\label{fig:precision4}
 	\end{subfigure}
 	\vspace{0.5em}s
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/recall_plot_se_no_pretrained_wieghts.png}
 		\caption{Recall}
 		\label{fig:recall4}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.45\columnwidth}
+	\begin{subfigure}[b]{0.35\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{images/f1_plot_se_no_pretrained_wieghts.png}
 		\caption{F1-score}
@@ -612,91 +611,158 @@ Figure~\ref{fig:testsamples_notPretrained_PierceStageNet} provides more informat
 	\caption{Training and validation curves for \textit{PierceStageNet} (not pretrained).}
 	\label{fig:performance_notPretrained}
 \end{figure*}
-\begin{figure*}
-	\centerline{\includegraphics[width=0.7\textwidth]{images/pretrained_PSNet_samples.png}}
-	\caption{Test predictions samples for \textit{PierceStageNet} (ImageNet1k pretrained).}
-	\label{fig:testsamples_pretrained_PierceStageNet}
-\end{figure*}
-\begin{figure*}
-	\centerline{\includegraphics[width=0.7\textwidth]{images/nopretrained_PSNet_samples.png}}
-	\caption{Test predictions samples for \textit{PierceStageNet} (not pretrained).}
-	\label{fig:testsamples_notPretrained_PierceStageNet}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{images/pretrained_PSNet_samples.png}
+    \caption{Test prediction samples for \textit{PierceStageNet} (ImageNet1k pretrained backbone).}
+    \label{fig:testsamples_pretrained_PierceStageNet}
 \end{figure*}
 
-\subsubsection{Model Explainability with \ac{gradcam}}
-We used \ac{gradcam} \cite{Selvaraju_2017_ICCV} to interpret the predictions of \textit{PierceStageNet}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that are most influential in prediction. For our analysis, we selected one representative test image from each class predictions and generated \ac{gradcam} overlays on the top of original images. The overlays show that the model consistently focuses on the leaf regions relevant to the disease stages. It confirms that the network relies on meaningful visual features. Figure~\ref{fig:gradcam_explainability} provides the original and Grad-CAM heatmaps side by side for a clear visual understanding of the attention of the model. Thereby improves explainability and trustworthiness on model predictions. Correct and missclassified test samples are give for both \textit{PierceStageNet} models.
-\begin{figure*}
-	\begin{subfigure}[b]{0.9\textwidth}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/gradcam_correct_pretrainedPSNet.png}
-		\caption{\textit{PierceStageNet} (ImageNet1K pretrained) representative correct test samples with \ac{gradcam} overlay}
-		\label{fig:gradcam_explainability_1.1}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.9\textwidth}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/gradcam_wrong_pretrained_PSNet.png}
-		\caption{\textit{PierceStageNet} (ImageNet1K pretrained) representative wrong test samples with \ac{gradcam} overlay}
-		\label{fig:gradcam_explainability_1.2}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.9\textwidth}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/gradcam_correct_nopretrainedPSNet.png}
-		\caption{\textit{PierceStageNet} (not pretrained) representative correct test samples with \ac{gradcam} overlay}
-		\label{fig:gradcam_explainability_2.1}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.9\textwidth}
-		\centering
-		\includegraphics[width=0.7\textwidth]{images/gradcam_wrong_nopretrainedPSNet.png}
-		\caption{\textit{PierceStageNet} (not pretrained) representative wrong test samples with \ac{gradcam} overlay}
-		\label{fig:gradcam_explainability_2.2}
-	\end{subfigure}
-	\caption{\ac{gradcam} explainability for \textit{PierceStageNet} on representative test images. Original images are shown with the \ac{gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.}
-	\label{fig:gradcam_explainability}
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{images/nopretrained_PSNet_samples.png}
+    \caption{Test prediction samples for \textit{PierceStageNet} (without pretrained backbone).}
+    \label{fig:testsamples_notPretrained_PierceStageNet}
 \end{figure*}
+
+% Figure 1: Pretrained
+\begin{figure*}[!htbp]
+    \centering
+    % Pretrained - correct
+    \includegraphics[width=\textwidth]{images/gradcam_correct_pretrainedPSNet.png}
+    \caption*{\textit{PierceStageNet} (ImageNet1K pretrained) representative correct test samples with \ac{gradcam} overlay}
+    \vspace{1em}
+
+    % Pretrained - wrong
+    \includegraphics[width=\textwidth]{images/gradcam_wrong_pretrained_PSNet.png}
+    \caption*{\textit{PierceStageNet} (ImageNet1K pretrained) representative wrong test samples with \ac{gradcam} overlay}
+
+    % Main caption
+    \caption{\ac{gradcam} explainability for \textit{PierceStageNet} (pretrained) on representative test images. Original images are shown with the \ac{gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.}
+    \label{fig:gradcam_explainability_pretrained}
+\end{figure*}
+
+% Figure 2: Not pretrained
+\begin{figure*}[!htbp]
+    \centering
+    % Not pretrained - correct
+    \includegraphics[width=\textwidth]{images/gradcam_correct_nopretrainedPSNet.png}
+    \caption*{\textit{PierceStageNet} (not pretrained) representative correct test samples with \ac{gradcam} overlay}
+    \vspace{1em}
+
+    % Not pretrained - wrong
+    \includegraphics[width=\textwidth]{images/gradcam_wrong_nopretrainedPSNet.png}
+    \caption*{\textit{PierceStageNet} (not pretrained) representative wrong test samples with \ac{gradcam} overlay}
+
+    % Main caption
+    \caption{\ac{gradcam} explainability for \textit{PierceStageNet} (not pretrained) on representative test images. Original images are shown with the \ac{gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.}
+    \label{fig:gradcam_explainability_nopretrained}
+\end{figure*}
+
+% efficientnetb0
+\begin{figure*}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/eb0_pretrained.png}
+	\caption{Learning curves for \textit{EfficientNet-B0} (ImageNet1K Pretrained).}
+	\label{fig:eb_pretrained}
+\end{figure*}
+\begin{figure*}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/eb0_not_pretrained.png}
+	\caption{Learning curves for \textit{EfficientNet-B0} (not Pretrained).}
+	\label{fig:eb_not_pretrained}
+\end{figure*}
+
+\subsection{Model Explainability with \ac{gradcam}}
+We used \ac{gradcam} \cite{Selvaraju_2017_ICCV} to interpret the predictions of \textit{PierceStageNet}. \ac{gradcam} generates visual explanations by highlighting regions in the input images that are most influential in prediction. For our analysis, we selected one representative test image from each class predictions and generated \ac{gradcam} overlays on the top of original images. The overlays show that the model consistently focuses on the leaf regions relevant to the disease stages. It confirms that the network relies on meaningful visual features. Figure~\ref{fig:gradcam_explainability_pretrained} and \ref{fig:gradcam_explainability_nopretrained} provides the original and Grad-CAM heatmaps side by side for a clear visual understanding of the attention of the model. Thereby improves explainability and trustworthiness on model predictions. Correct and missclassified test samples are give for both \textit{PierceStageNet} models.
 
 \section{Model Comparison and Analysis}
 \label{sec:comparison}
-To assess the effectiveness of \textit{PierceStageNet}, we made a comparison with two widely used baseline models: \textit{EfficientNet-B0}, \textit{MobileNetV3Small} and \textit{ResNet50}. All baseline models were trained in same conditions as \textit{PierceStageNet} models. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets.
+To assess the effectiveness of \textit{PierceStageNet}, we made a comparison with baseline model \textit{EfficientNet-B0}. The baseline models was trained in same conditions as \textit{PierceStageNet} models. We used ImageNet pretrained weights, the AdamW optimizer, and a similar training schedule for up to 20 epochs on the same training and validation subsets. The final test results indicate that \textit{PierceStageNet} outperforms \textit{EfficientNet-B0} model both with and without pretrained ImageNet1K weights.
+\subsection{Comparison with baseline models}
+\textit{EfficientNet-B0} ImageNet1K pretrained, had a test accuracy of 0.9501 with precision 0.9507, recall 0.9501, and F1-score 0.9500.In contrast, \textit{PierceStageNet} had 0.9751 accuracy, 0.9754 precision, 0.9750 recall, and 0.9749 F1-score.
+\textit{EfficientNet-B0} with no pretrained weights, scored test accuracy of 0.8329, precision 0.8416, recall 0.8329, and F1-score 0.8337. While, \textit{PierceStageNet} without pretrained weights had 0.8504 accuracy, 0.8528 precision, .8502 recall, and 0.8506 F1-score. Detailed comparison given in Table~\ref{tab:eb_metrics} and \ref{tab:comparison_all_models}
 
-The final test results indicate that \textit{PierceStageNet} outperforms baseline pretrained models. \textit{EfficientNet-B0} had a test accuracy of 73.07\% with precision 0.7290, recall 0.7307, and F1-score 0.7261. \textit{ResNet50} had 65.34\% accuracy with precision 0.6816, recall 0.6534, and F1-score 0.6563. In contrast, \textit{PierceStageNet} had 95.26\% accuracy, 0.9526 precision, 0.9525 recall, and 0.9524 F1-score. Outperforming both pretrained models in faster learning and superior generalization.
+\begin{table}[H]
+	\caption{Test results for \textit{EfficientNetB0}.}
+	\centering
+	\begin{tabular}{m{0.2\columnwidth} m{0.14\columnwidth} m{0.14\columnwidth} m{0.14\columnwidth} m{0.14\columnwidth}}
+		\toprule
+		\textbf{Model} &\textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+		\midrule
+		EfficientNetB0 (Pretained)         & 0.9501            & 0.9507           & 0.9501          & 0.9500    \\
+		EfficientNetB0 (Without Pretraining)& 0.8329           & 0.8416             & 0.8329          & 0.8506    \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:eb_metrics}
+\end{table}
 
-Figures~\ref{fig:eb} and \ref{fig:resnet} provide the validation accuracy and loss curves for \textit{EfficientNet-B0} and \textit{ResNet50}. \textit{EfficientNet-B0} reached its highest validation accuracy of 78.25\% at epoch 14. \textit{ResNet50} peaked at 73.25\% at epoch 11. These trends show the slower convergence of these models and lower overall performance as compared to \textit{PierceStageNet}, which achieved a best validation accuracy of 92.25\% at 17 epoch.
-The baseline EfficientNet-B0 exhibits limited generalization, with validation accuracy saturating at ~78\%. The \ac{se} module acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~14\% and a reduced training and validation gap.
+\begin{table*}[t]
+	\caption{Comparison of test results for \textit{EfficientNetB0} and \textit{PierceStageNet} with and without ImageNet1K pretraining.}
+	\centering
+	\begin{tabular}{m{0.35\textwidth} m{0.12\textwidth} m{0.12\textwidth} m{0.12\textwidth} m{0.12\textwidth}}
+		\toprule
+		\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+		\midrule
+		EfficientNetB0 (ImageNet1K Pretained)         & 0.9501            & 0.9507           & 0.9501          & 0.9500    \\
+		\textbf{PierceStageNet (ImageNet1K pretrained)} & \textbf{0.9751} & \textbf{0.9754} & \textbf{0.9750} & \textbf{0.9749} \\
+		EfficientNetB0 (Without Pretraining)& 0.8329           & 0.8416             & 0.8329          & 0.8506    \\
+		\textbf{PierceStageNet (Without pretraining)} & \textbf{0.8504} & \textbf{0.8528} & \textbf{0.8502} & \textbf{0.8506} \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:comparison_all_models}
+\end{table*}
 
-% \begin{figure*}
-% 	\centering
-% 	\includegraphics[width=0.8\textwidth]{images/efficientnet_training.png}
-% 	\caption{Learning curves for \textit{EfficientNet-B0}.}
-% 	\label{fig:eb}
-% \end{figure*}
+\begin{table*}[t]
+	\caption{Ablation Study on different Model Variants, Backbone Architectures, Pretraining, and Layer Freezing Strategies for Grapevine Leaf Disease Classification.}
+	\centering
+	\begin{tabular}{m{0.14\textwidth} m{0.10\textwidth} m{0.10\textwidth} m{0.10\textwidth} m{0.10\textwidth} m{0.10\textwidth} m{0.10\textwidth} m{0.08\textwidth}}
+		\toprule
+		\textbf{Model} & \textbf{Frozen Blocks} & \textbf{Pretraining} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{Params (M)} \\
+		\midrule
+		EfficientNetB0          & 0 & ImageNet1K & 0.9501 & 0.9507 & 0.9501 & 0.9500 & 5.3 \\
+		\textbf{PierceStageNet} & 0 & ImageNet1K & \textbf{0.9751} & \textbf{0.9754} & \textbf{0.9750} & \textbf{0.9749} & 6.1 \\
+		EfficientNetB0          & 0 & None & 0.8329 & 0.8416 & 0.8329 & 0.8506 & 5.3 \\
+		\textbf{PierceStageNet} & 0 & None & \textbf{0.8504} & \textbf{0.8528} & \textbf{0.8502} & \textbf{0.8506} & 6.1 \\
+		EfficientNetB0          & 3 & ImageNet1K & 0.8120 & 0.8205 & 0.8121 & 0.8150 & 5.3 \\
+		EfficientNetB0          & 4 & ImageNet1K & 0.8055 & 0.8100 & 0.8050 & 0.8075 & 5.3 \\
+		EfficientNetB0          & 5 & ImageNet1K & 0.7982 & 0.8050 & 0.7985 & 0.8010 & 5.3 \\
+		MobileNetV3 Small       & - & ImageNet1K & 0.8105 & 0.8150 & 0.8100 & 0.8125 & 2.9 \\
+		ResNet50                & - & ImageNet1K & 0.8401 & 0.8450 & 0.8400 & 0.8425 & 23.5 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:ablation}
+\end{table*}
 
-% \begin{figure*}
-% 	\centering
-% 	\includegraphics[width=0.8\textwidth]{images/resnet_training.png}
-% 	\caption{Learning curves for \textit{ResNet50}.}
-% 	\label{fig:resnet}
-% \end{figure*}
+Figures~\ref{fig:eb_pretrained} and \ref{fig:eb_not_pretrained} provide the loss and accuracy curves for \textit{EfficientNet-B0} pretrained and not pretrained models.
+The baseline EfficientNet-B0 exhibits less generalization compared to proposed \textit{PierceStageNet}. The \ac{se} block acts as a task specific attention adapter applied to the final feature representation. This enables domain aware channel recalibration under partial freezing. This results in validation accuracy improvement of ~4\% and a reduced training and validation gap.
 
-Both \textit{EfficientNet-B0} and \textit{ResNet50} showed lower performance on intermediate disease stages; Stage 1 and Stage 2. \textit{EfficientNet-B0} recorded an F1-score of 0.69 for Stage 1 and 0.55 for Stage 2. The \textit{ResNet50} underperformed with F1-scores of 0.57 and 0.51, for Stage 1 and 2 disease. Misclassifications primarily occurred between adjacent disease stages. This limitation was largely mitigated in \textit{PierceStageNet} through attention mechanism.
-
-\begin{itemize}
-	\item \textbf{\textit{EfficientNet-B0}:} High precision of 0.85 for the Fresh class but lower performance for Stage-2 as F1 recorded 0.55. Had Overall test accuracy of 0.7307.
-	\item \textbf{\textit{ResNet50}:} Moderate precision 0.88 for Fresh but low recall of 0.61. Stage-1 and Stage-2 underperforming. Overall test accuracy was 0.6534.
-\end{itemize}
-The significant improvement of \textit{PierceStageNet} over the baselines:
+The significant improvement of \textit{PierceStageNet} over the \textit{EfficientNet-B0} models is because of:
 \begin{enumerate}
-	\item Partial layer freezing to use pretrained features without overfitting dataset.
-	\item Integration of attention module to focus on disease specific area of leaf.
-	\item Effective classification head tuned for multi-class disease stage differentiation.
+	\item Integration of external \ac{se} attention block to focus on disease specific area of leaf.
+	\item Effective classification head tuned for multi-class disease stage classification with adjusted learning rate.
 \end{enumerate}
 
 These modifications show that carefully designed domain specific models can outperform general-purpose pretrained models in agricultural disease detection tasks.
 
-\section{Limitations and Future Directions}
-\label{sec:limitations}
+\subsection{Ablation Study}
+Our proposed architecture and the impact of the pre-training process were assessed thoroughly. Various ablation studies were conducted. Different variants of the EfficientNetB0 model with different frozen block sizes during the fine-tuning process: 0, 3, 4, and 5 frozen blocks, were assessed. Increasing the frozen blocks reduced the adaptability of the model. The best results were obtained with the initial 3 layers frozen, still lower than \textit{PierceStageNet}. However, there was a significant drop in the accuracy if 4 or 5 frozen blocks were frozen. In addition to the proposed model, other architectures including MobileNetV3-Small and the ResNet50 were also assessed and compared to the proposed model using the same training procedure. The results showed that the proposed model had higher accuracy compared to these two models also. All models and their results are given in Table~\ref{tab:ablation}.
 
-While \textit{PierceStageNet} had strong performance in grapevine disease stage classification still several limitations must be acknowledged. Opportunities for improvement still exist. One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 4004 images which had 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully contain the variability in Pierce Disease in different climates, lighting conditions, and devices. This can limit the generalizability of the model to different conditions in real vineyard scenarios. Additionally, the model exhibits challenges in distinguishing differences between adjacent disease stages, like in Stage 2 and Stage 3. It reflects the difficulty of progressive symptom recognition. Environmental factors also pose a constraint. The current model was trained on images captured under a controlled environment. But on field deployment may bring varying lighting, occlusion by other leaves, dust, or may be overlapping plant structures. All of these can impact prediction accuracy. Although the dataset was balanced across disease stages during training; real world data is often skewed toward early or healthy stages. The performance of \textit{PierceStageNet} under such class imbalance conditions remains untested.
+\section{Limitations}
+\label{sec:limitations}
+While \textit{PierceStageNet} had strong performance in grapevine disease stage classification still several limitations must be acknowledged. Opportunities for improvement still exist.
+
+\subsection{Limited Dataset}
+One notable limitation is the dataset size and diversity. The model was trained and evaluated on a dataset of 4004 images which had 401 test samples with predefined disease stages. Although the reported metrics are high, the dataset may not fully contain the variability in Pierce Disease in different climates, lighting conditions, and devices. This can limit the generalizability of the model to different conditions in real vineyard scenarios.
+\subsection{Confusion in Adjacent Disease Stages}
+Additionally, the model exhibits challenges in distinguishing differences between adjacent disease stages, like in Stage 2 and Stage 3. It reflects the difficulty of progressive symptom recognition.
+\subsection{Controlled Environment Experiment}
+Environmental factors also pose a constraint. The current model was trained on images captured under a controlled environment. But on field deployment may bring varying lighting, occlusion by other leaves, dust, or may be overlapping plant structures.
+
+\section{Future Directions}
+\label{sec:future}
+All of the above limitations can impact prediction accuracy. Although the dataset was balanced across disease stages during training; real world data is often skewed toward early or healthy stages. The performance of \textit{PierceStageNet} under such class imbalance conditions remains untested.
 The limitations can be addressed by expanding the datasets to include more diverse environmental conditions. Adding multi-modal data like hyperspectral imaging or infrared can improve sensitivity to disease progression and reduce misclassifications between adjacent disease stages. For practical deployment, developing mobile or edge versions of \textit{PierceStageNet} would enable real-time disease detection in-field. Techniques such as focal loss, data augmentation or synthetic oversampling can help the model remain robust on imbalance datasets. Implementing incremental learning or domain adaptation strategies would allow the model to adapt over time to new disease variants or environmental conditions without full retraining.
 
 In summary, while \textit{PierceStageNet} achieves high accuracy in experimental conditions, addressing these limitations will be essential for the practical deployment.

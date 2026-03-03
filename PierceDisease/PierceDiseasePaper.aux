@@ -38,6 +38,7 @@
 \acronymused{se}
 \AC@undonewlabel{acro:gradcam}
 \newlabel{acro:gradcam}{{I}{1}{Introduction}{section*.6}{}}
+\acronymused{gradcam}
 \citation{Malagol2025}
 \citation{Zhang2024GMamba}
 \citation{Khan2025YOLOv7}
@@ -58,7 +59,6 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Methodology of the proposed PierceStageNet: grapevine disease stage classification framework.\relax }}{2}{figure.caption.3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:methodology}{{1}{2}{Methodology of the proposed PierceStageNet: grapevine disease stage classification framework.\relax }{figure.caption.3}{}}
-\acronymused{gradcam}
 \acronymused{se}
 \acronymused{dl}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{section.2}\protected@file@percent }
@@ -216,34 +216,50 @@
 \newlabel{sub@fig:f14}{{d}{8}{F1-score\relax }{figure.caption.29}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Training and validation curves for \textit  {PierceStageNet} (not pretrained).\relax }}{8}{figure.caption.29}\protected@file@percent }
 \newlabel{fig:performance_notPretrained}{{11}{8}{Training and validation curves for \textit {PierceStageNet} (not pretrained).\relax }{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Test predictions samples for \textit  {PierceStageNet} (ImageNet1k pretrained).\relax }}{8}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:testsamples_pretrained_PierceStageNet}{{12}{8}{Test predictions samples for \textit {PierceStageNet} (ImageNet1k pretrained).\relax }{figure.caption.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Test predictions samples for \textit  {PierceStageNet} (not pretrained).\relax }}{9}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:testsamples_notPretrained_PierceStageNet}{{13}{9}{Test predictions samples for \textit {PierceStageNet} (not pretrained).\relax }{figure.caption.31}{}}
-\acronymused{gradcam}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Model Explainability with \ac {gradcam}}{9}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Test prediction samples for \textit  {PierceStageNet} (ImageNet1k pretrained backbone).\relax }}{9}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:testsamples_pretrained_PierceStageNet}{{12}{9}{Test prediction samples for \textit {PierceStageNet} (ImageNet1k pretrained backbone).\relax }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Test prediction samples for \textit  {PierceStageNet} (without pretrained backbone).\relax }}{10}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:testsamples_notPretrained_PierceStageNet}{{13}{10}{Test prediction samples for \textit {PierceStageNet} (without pretrained backbone).\relax }{figure.caption.31}{}}
 \acronymused{gradcam}
 \acronymused{gradcam}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \ac {gradcam} explainability for \textit  {PierceStageNet} (pretrained) on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }}{11}{figure.caption.32}\protected@file@percent }
 \acronymused{gradcam}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Model Comparison and Analysis}{9}{section.5}\protected@file@percent }
-\newlabel{sec:comparison}{{V}{9}{Model Comparison and Analysis}{section.5}{}}
+\acronymused{gradcam}
+\newlabel{fig:gradcam_explainability_pretrained}{{14}{11}{\ac {gradcam} explainability for \textit {PierceStageNet} (pretrained) on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }{figure.caption.32}{}}
+\acronymused{gradcam}
+\acronymused{gradcam}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \ac {gradcam} explainability for \textit  {PierceStageNet} (not pretrained) on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }}{12}{figure.caption.33}\protected@file@percent }
+\acronymused{gradcam}
+\acronymused{gradcam}
+\newlabel{fig:gradcam_explainability_nopretrained}{{15}{12}{\ac {gradcam} explainability for \textit {PierceStageNet} (not pretrained) on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Learning curves for \textit  {EfficientNet-B0} (ImageNet1K Pretrained).\relax }}{13}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:eb_pretrained}{{16}{13}{Learning curves for \textit {EfficientNet-B0} (ImageNet1K Pretrained).\relax }{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Learning curves for \textit  {EfficientNet-B0} (not Pretrained).\relax }}{13}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:eb_not_pretrained}{{17}{13}{Learning curves for \textit {EfficientNet-B0} (not Pretrained).\relax }{figure.caption.35}{}}
+\acronymused{gradcam}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Model Explainability with \ac {gradcam}}{13}{subsection.4.4}\protected@file@percent }
+\acronymused{gradcam}
+\acronymused{gradcam}
+\acronymused{gradcam}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Model Comparison and Analysis}{13}{section.5}\protected@file@percent }
+\newlabel{sec:comparison}{{V}{13}{Model Comparison and Analysis}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Comparison with baseline models}{13}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Test results for \textit  {EfficientNetB0}.\relax }}{13}{table.caption.36}\protected@file@percent }
+\newlabel{tab:eb_metrics}{{VIII}{13}{Test results for \textit {EfficientNetB0}.\relax }{table.caption.36}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Comparison of test results for \textit  {EfficientNetB0} and \textit  {PierceStageNet} with and without ImageNet1K pretraining.\relax }}{14}{table.caption.37}\protected@file@percent }
+\newlabel{tab:comparison_all_models}{{IX}{14}{Comparison of test results for \textit {EfficientNetB0} and \textit {PierceStageNet} with and without ImageNet1K pretraining.\relax }{table.caption.37}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Ablation Study on different Model Variants, Backbone Architectures, Pretraining, and Layer Freezing Strategies for Grapevine Leaf Disease Classification.\relax }}{14}{table.caption.38}\protected@file@percent }
+\newlabel{tab:ablation}{{X}{14}{Ablation Study on different Model Variants, Backbone Architectures, Pretraining, and Layer Freezing Strategies for Grapevine Leaf Disease Classification.\relax }{table.caption.38}{}}
 \acronymused{se}
-\acronymused{gradcam}
-\newlabel{fig:gradcam_explainability_1.1}{{14a}{10}{\textit {PierceStageNet} (ImageNet1K pretrained) representative correct test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\newlabel{sub@fig:gradcam_explainability_1.1}{{a}{10}{\textit {PierceStageNet} (ImageNet1K pretrained) representative correct test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\acronymused{gradcam}
-\newlabel{fig:gradcam_explainability_1.2}{{14b}{10}{\textit {PierceStageNet} (ImageNet1K pretrained) representative wrong test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\newlabel{sub@fig:gradcam_explainability_1.2}{{b}{10}{\textit {PierceStageNet} (ImageNet1K pretrained) representative wrong test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\acronymused{gradcam}
-\newlabel{fig:gradcam_explainability_2.1}{{14c}{10}{\textit {PierceStageNet} (not pretrained) representative correct test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\newlabel{sub@fig:gradcam_explainability_2.1}{{c}{10}{\textit {PierceStageNet} (not pretrained) representative correct test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\acronymused{gradcam}
-\newlabel{fig:gradcam_explainability_2.2}{{14d}{10}{\textit {PierceStageNet} (not pretrained) representative wrong test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\newlabel{sub@fig:gradcam_explainability_2.2}{{d}{10}{\textit {PierceStageNet} (not pretrained) representative wrong test samples with \ac {gradcam} overlay\relax }{figure.caption.32}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \ac {gradcam} explainability for \textit  {PierceStageNet} on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }}{10}{figure.caption.32}\protected@file@percent }
-\acronymused{gradcam}
-\acronymused{gradcam}
-\newlabel{fig:gradcam_explainability}{{14}{10}{\ac {gradcam} explainability for \textit {PierceStageNet} on representative test images. Original images are shown with the \ac {gradcam} heatmap overlay. Regions most influential for the model's prediction are highlighted in red.\relax }{figure.caption.32}{}}
+\acronymused{se}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Ablation Study}{14}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations}{14}{section.6}\protected@file@percent }
+\newlabel{sec:limitations}{{VI}{14}{Limitations}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Limited Dataset}{14}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Confusion in Adjacent Disease Stages}{14}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Controlled Environment Experiment}{14}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Future Directions}{14}{section.7}\protected@file@percent }
+\newlabel{sec:future}{{VII}{14}{Future Directions}{section.7}{}}
 \bibstyle{IEEEtran}
 \bibdata{references.bib}
 \bibcite{GimenezRomero2025}{1}
@@ -256,13 +272,6 @@
 \bibcite{Zhou2025YOLOGrape}{8}
 \bibcite{Sagar2025}{9}
 \bibcite{Vo2026AFCNet}{10}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations and Future Directions}{11}{section.6}\protected@file@percent }
-\newlabel{sec:limitations}{{VI}{11}{Limitations and Future Directions}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{11}{section.7}\protected@file@percent }
-\newlabel{sec:con}{{VII}{11}{Conclusion}{section.7}{}}
-\acronymused{se}
-\acronymused{gradcam}
-\@writefile{toc}{\contentsline {section}{References}{11}{section*.33}\protected@file@percent }
 \bibcite{Zhang2025Transformer}{11}
 \bibcite{AlNasseri2025}{12}
 \bibcite{Tanvir2025}{13}
@@ -276,4 +285,9 @@
 \bibcite{Lee2024}{21}
 \bibcite{Islam2025PierceDisease}{22}
 \bibcite{Selvaraju_2017_ICCV}{23}
-\gdef \@abspage@last{12}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{15}{section.8}\protected@file@percent }
+\newlabel{sec:con}{{VIII}{15}{Conclusion}{section.8}{}}
+\acronymused{se}
+\acronymused{gradcam}
+\@writefile{toc}{\contentsline {section}{References}{15}{section*.39}\protected@file@percent }
+\gdef \@abspage@last{15}
