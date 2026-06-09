@@ -47,3 +47,73 @@ for class_name, files in class_files.items():
 
 print("Data splits created successfully!")
 print(f"Location: {output_dir}")
+
+# class mapping
+class_mapping = {"Fresh": 0, "Stage1": 1, "Stage-2": 2, "Stage-3": 3}
+
+# train data transformations and augmentation
+train_transform = transforms.Compose(
+    [
+        transforms.Resize((224, 224)),
+        transforms.RandomHorizontalFlip(),  # gorizontal flip
+        transforms.RandomVerticalFlip(),  # vertical flip
+        transforms.RandomRotation(20),  # random rotation ±20°
+        transforms.ColorJitter(
+            brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1
+        ),  # color changes
+        transforms.RandomAffine(
+            degrees=0, translate=(0.1, 0.1), scale=(0.9, 1.1), shear=5
+        ),  # slight affine transforms
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ]
+)
+
+# validation and test transformations , no augmentation
+val_test_transform = transforms.Compose(
+    [
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ]
+)
+
+# load datasets
+train_dataset = datasets.ImageFolder(
+    "/content/drive/MyDrive/TermPaper/GrapeVineDataSplits/train",
+    transform=train_transform,
+)
+val_dataset = datasets.ImageFolder(
+    "/content/drive/MyDrive/TermPaper/GrapeVineDataSplits/val",
+    transform=val_test_transform,
+)
+test_dataset = datasets.ImageFolder(
+    "/content/drive/MyDrive/TermPaper/GrapeVineDataSplits/test",
+    transform=val_test_transform,
+)
+
+# updating labels according to class mapping
+for dataset in [train_dataset, val_dataset, test_dataset]:
+    dataset.samples = [
+        (path, class_mapping[Path(path).parent.name]) for path, _ in dataset.samples
+    ]
+    dataset.targets = [s[1] for s in dataset.samples]
+    dataset.class_to_idx = class_mapping
+    dataset.classes = list(class_mapping.keys())
+
+# data loaders
+train_loader = DataLoader(
+    train_dataset, batch_size=32, shuffle=True, num_workers=2, pin_memory=True
+)
+val_loader = DataLoader(
+    val_dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True
+)
+test_loader = DataLoader(
+    test_dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True
+)
+
+print(
+    f"Final counts:\ntraining: {len(train_dataset)} | validation: {len(val_dataset)} | testing: {len(test_dataset)}"
+)
+print(f"class mapping: {train_dataset.class_to_idx}")
+print(f"classes: {train_dataset.classes}")
