@@ -17,3 +17,8 @@ under identical experimental setup.
 
 
 
+
+<img width="1426" height="997" alt="fig4" src="https://github.com/user-attachments/assets/c0c14e50-94ec-49ad-8c6f-a598cf477edf" />
+
+<img width="1920" height="1353" alt="fig3" src="https://github.com/user-attachments/assets/eea89442-32b9-4bfb-a801-2a68b6571347" />
+
