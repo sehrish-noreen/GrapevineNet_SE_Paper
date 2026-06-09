@@ -1,8 +1,0 @@
-Metric,Value
-Best Epoch,8
-Best Validation Accuracy,0.9000 (90.00%)
-Best Validation F1,0.9004 (90.04%)
-Final Training Accuracy,0.9825 (98.25%)
-Final Validation Accuracy,0.8825 (88.25%)
-Overfitting Gap,0.1000 (10.00%)
-Total Training Epochs,13
