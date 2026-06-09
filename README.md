@@ -14,11 +14,13 @@ is evaluated on a dataset containing 4,004 grapevine leaf images, achieving accu
 0.9751, 0.9754, 0.9750, and 0.9749 for Accuracy, Precision, Recall, and F1-Score,
 respectively. These results outperform those of the baseline EfficientNet-B0 model
 under identical experimental setup.
-
-
-
+## Model Config:
 
 <img width="1426" height="997" alt="fig4" src="https://github.com/user-attachments/assets/c0c14e50-94ec-49ad-8c6f-a598cf477edf" />
 
+## Dataset
 <img width="1920" height="1353" alt="fig3" src="https://github.com/user-attachments/assets/eea89442-32b9-4bfb-a801-2a68b6571347" />
+
+## Model Predictions with Mean Feature Map Visualizations
+<img width="2062" height="2959" alt="fig13" src="https://github.com/user-attachments/assets/33dec755-1577-4b7f-b8f1-5ec31dbd1cb5" />
 
